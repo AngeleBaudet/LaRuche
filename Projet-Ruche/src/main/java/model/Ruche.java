@@ -3,23 +3,44 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ruche {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+	private Integer id;
 	private int cadre ; 
 	private boolean limite ; 
 	private Vulnerabilite vulnerabilite ; //optionnel
 	// private boolean nourissage ; 
 	private Recolteur recolteur ; //obligatoire
-	private static int id =0; 
 	private List<Production> productions ; //optionnel, on peut avoir plus qu'une production
 	private static List<Ruche> listeRuche= new ArrayList();
-	
+
+	public Ruche() {
+	}
 
 	public Ruche(int cadre, boolean limite, Recolteur recolteur) {
 		listeRuche.add(this);
 		this.cadre = cadre;
 		this.limite = limite;
 		this.recolteur = recolteur;
-		this.id ++ ;
+	}
+
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public int getCadre() {
@@ -54,15 +75,7 @@ public class Ruche {
 		this.recolteur = recolteur;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id_Ruche) {
-		this.id = id_Ruche;
-	}
-
-	
 	public List<Production> getProductions() {
 		return productions;
 	}
@@ -75,6 +88,8 @@ public class Ruche {
 		return listeRuche;
 	}
 
+	
+	
 	public boolean nourrissage(Production productionPollen, Production productionMiel) {
 		//determiner famine
 		//eau pollen miel 
@@ -87,7 +102,7 @@ public class Ruche {
 			return false ; 
 		}
 	}
-	
+
 	public Ruche division(Ruche rucheMere, Recolteur recolteur) {
 		if (rucheMere.isLimite()) {
 			System.out.println("vous avez une nouvelle ruche");
@@ -101,11 +116,12 @@ public class Ruche {
 
 	@Override
 	public String toString() {
-		return "Ruche [cadre=" + cadre + ", limite=" + limite + ", vulnerabilite=" + vulnerabilite + ", recolteur="
-				+ recolteur + ", productions=" + productions + "]";
+		return "Ruche [id=" + id + ", cadre=" + cadre + ", limite=" + limite + ", vulnerabilite=" + vulnerabilite
+				+ ", recolteur=" + recolteur + "]";
 	}
 
+	
 
-	
-	
+
+
 }

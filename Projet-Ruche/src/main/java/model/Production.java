@@ -2,13 +2,28 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Production {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	private Integer id;
 	private double quantite ; //en kg!!
 	private LocalDate annee ; 
 	private Ruche ruche ; 
 	private Produit produit ; 
 	private Recolteur recolteur ; 
-	private static int id = 0;
+
+	public Production()
+	{
+	}
 	
 	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit, Recolteur recolteur) {
 		this.quantite = quantite;
@@ -16,13 +31,15 @@ public class Production {
 		this.ruche = ruche;
 		this.produit = produit;
 		this.recolteur = recolteur;
-		this.id++ ;
 	}
 
-	@Override
-	public String toString() {
-		return "Production [quantite=" + quantite + ", annee=" + annee + ", produit=" + produit
-				+ ", recolteur=" + recolteur + "]";
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public double getQuantite() {
@@ -65,14 +82,13 @@ public class Production {
 		this.recolteur = recolteur;
 	}
 
-	public int getId() {
-		return id;
+	
+	@Override
+	public String toString() {
+		return "Production [id=" + id + ", quantite=" + quantite + ", annee=" + annee + ", ruche=" + ruche
+				+ ", produit=" + produit + ", recolteur=" + recolteur + "]";
 	}
 
-	public void setId(int id_Production) {
-		this.id = id_Production;
-	} 
-	
 	public static void donneeRecolte(double kg, Produit type) {
 		
 	}
