@@ -13,7 +13,6 @@ public class Ruche {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
 	private Integer id;
 	private int cadre ; 
 	private boolean limite ; 

@@ -1,16 +1,35 @@
 package model;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
+//PENSER A CHANGER SI CA NE CONVIENT PAS
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('recolteur','gestionnaire')")
 public abstract class User {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	protected String password ; 
 	protected String login; 
-	protected static int id =0 ;
 	
 	
 	public User(String password, String login) {
 		this.password = password;
 		this.login = login;
-		this.id ++ ;
+	}
+	
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 
 
