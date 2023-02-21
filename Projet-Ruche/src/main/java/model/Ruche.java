@@ -31,7 +31,7 @@ public class Ruche {
 	@ManyToOne
 	private Recolteur recolteur ; //obligatoire
 	
-	@OneToMany(mappedBy = "production")
+	@OneToMany(mappedBy = "ruche")
 	private List<Production> productions ; //optionnel, on peut avoir plus qu'une production
 	
 

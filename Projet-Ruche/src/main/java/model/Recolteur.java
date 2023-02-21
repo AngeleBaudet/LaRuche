@@ -13,11 +13,11 @@ import javax.persistence.Table;
 @DiscriminatorValue("recolteur")
 public class Recolteur extends User {
 	
-	@OneToMany
+	@OneToMany //unidirectionnel
 	@JoinColumn(nullable=true)
-	private Production production ; //optionnel
+	private List<Production> production ; //optionnel
 	
-	@OneToMany (mappedBy = "ruche")
+	@OneToMany(mappedBy = "recolteur")
 	private static List<Ruche> listeRuche;
 	
 	// Constructeurs
@@ -33,16 +33,18 @@ public class Recolteur extends User {
 	
 	// Getters et setters
 
-	public Production getProduction() {
-		return production;
-	}
 
-	public void setProduction(Production production) {
-		this.production = production;
-	}
 
 	public static List<Ruche> getListeRuche() {
 		return listeRuche;
+	}
+
+	public List<Production> getProduction() {
+		return production;
+	}
+
+	public void setProduction(List<Production> production) {
+		this.production = production;
 	}
 
 	public static void setListeRuche(List<Ruche> listeRuche) {
