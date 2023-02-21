@@ -17,29 +17,29 @@ import model.User;
 public class testRuche {
 	static LocalDate date = LocalDate.now();
 	static User connected;
-	
-	
+
+
 	public static String saisieString(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
 		System.out.println(msg);
 		return monScanner.nextLine();
 	}
-	
+
 	public static int saisieInt(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
 		System.out.println(msg);
 		return monScanner.nextInt();
 	}
-	
+
 	public static double saisieDouble(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
 		System.out.println(msg);
 		return monScanner.nextDouble();
 	}
-	
+
 	public static boolean saisieBoolean(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
@@ -47,7 +47,7 @@ public class testRuche {
 		return monScanner.nextBoolean();
 	}
 
-	
+	//Accueil de l'appli
 	public static void menuPrincipal() 
 	{
 		System.out.println("Application Votre Ruche");
@@ -64,6 +64,7 @@ public class testRuche {
 		menuPrincipal();
 	}
 
+	//Se connecter
 	public static void seConnecter() {
 
 		String vousEtes = saisieString("Etes vous gestionnaire ou recolteur ?");
@@ -71,7 +72,7 @@ public class testRuche {
 		String password = saisieString("Saisir votre password");
 
 		//parce qu'on a pas de dao !!-------------
-	//	connected = daoC.findByLoginAndPassword(login, password);
+		//	connected = daoC.findByLoginAndPassword(login, password);
 
 		if (vousEtes.equalsIgnoreCase("gestionnaire")) {
 			connected = new Gestionnaire(login, password);
@@ -80,8 +81,8 @@ public class testRuche {
 			connected = new Recolteur(login, password);
 		}
 		//----------------------------------------
-		
-		
+
+
 		if(connected == null) 
 		{
 			System.out.println("Identifiants invalides");
@@ -95,49 +96,57 @@ public class testRuche {
 			menuRecolteur();
 		}
 	}
-	
+
+	//Celui a accès les fonctionnalités
 	public static void menuGestionnaire() {
-		
-	}
-	
-	public static void menuRecolteur() {
-		
-	}
-	
-	public static void Recolte() {
-		System.out.println("Votre Récolte:");
-		
-	}
-	
-	
-	public static void main(String[] args) {
-		
-		Recolteur r1 = new Recolteur("rec1", "rec1");
-		Ruche ruche1 = new Ruche(2,false, r1);
-		
-		
-		String typeProduit= saisieString("Saisir le type de récolte : "+Arrays.toString(Produit.values()));
-		Produit choixProduit = Produit.valueOf(typeProduit);
-		
-		double kg = saisieDouble("Saisir la quantité en kg : ");
-		
-		Production.donneeRecolte(kg, choixProduit);
-		
-		
-		Production p1 = new Production(kg, date, ruche1, choixProduit, r1);
-		
-		System.out.println(p1.getQuantite());
-		
-	//	List<Production> = new ArrayList();
-		List<Production> listeProd= new ArrayList();
-		listeProd.add(p1);
-				
-		ruche1.setProductions(listeProd);
-		
-		
-		System.out.println(ruche1.getProductions());
-		
+		System.out.println("Menu Gestionnaire");
+		System.out.println("1 - ");
+		System.out.println("2 - Se déconnecter");
+
 	}
 
-	
+	//Récolter, voir ses récoltes/ rentrée récoltes /  
+	public static void menuRecolteur() {
+		System.out.println("Menu Recolteur");
+		System.out.println("1 - Voir les récoltes");
+		System.out.println("1 - Saisir une récolte");
+		System.out.println("2 - Se déconnecter");
+	}
+
+	public static void Recolte() {
+		System.out.println("Votre Récolte:");
+
+	}
+
+
+	public static void main(String[] args) {
+
+		Recolteur r1 = new Recolteur("rec1", "rec1");
+		Ruche ruche1 = new Ruche(2,false, r1);
+
+
+		String typeProduit= saisieString("Saisir le type de récolte : "+Arrays.toString(Produit.values()));
+		Produit choixProduit = Produit.valueOf(typeProduit);
+
+		double kg = saisieDouble("Saisir la quantité en kg : ");
+
+		Production.donneeRecolte(kg, choixProduit);
+
+
+		Production p1 = new Production(kg, date, ruche1, choixProduit, r1);
+
+		System.out.println(p1.getQuantite());
+
+		//	List<Production> = new ArrayList();
+		List<Production> listeProd= new ArrayList();
+		listeProd.add(p1);
+
+		ruche1.setProductions(listeProd);
+
+
+		System.out.println(ruche1.getProductions());
+
+	}
+
+
 }
