@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -24,24 +25,24 @@ public class Production {
 	private double quantite ; //en kg!!
 	
 	private LocalDate annee ; 
+	
+	@ManyToOne
 	private Ruche ruche ;
 	
 	@Column(name="produit",columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
 	private Produit produit ; 
 	
-	private Recolteur recolteur ; 
 
 	public Production()
 	{
 	}
 	
-	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit, Recolteur recolteur) {
+	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit) {
 		this.quantite = quantite;
 		this.annee = annee;
 		this.ruche = ruche;
 		this.produit = produit;
-		this.recolteur = recolteur;
 	}
 
 
@@ -85,19 +86,11 @@ public class Production {
 		this.produit = produit;
 	}
 
-	public Recolteur getRecolteur() {
-		return recolteur;
-	}
-
-	public void setRecolteur(Recolteur recolteur) {
-		this.recolteur = recolteur;
-	}
-
 	
 	@Override
 	public String toString() {
 		return "Production [id=" + id + ", quantite=" + quantite + ", annee=" + annee + ", ruche=" + ruche
-				+ ", produit=" + produit + ", recolteur=" + recolteur + "]";
+				+ ", produit=" + produit + "]";
 	}
 
 	public static void donneeRecolte(double kg, Produit type) {

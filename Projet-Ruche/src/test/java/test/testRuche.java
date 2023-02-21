@@ -133,8 +133,8 @@ public class testRuche {
 		Production.donneeRecolte(kg, choixProduit);
 
 
-		Production p1 = new Production(kg, date, ruche1, choixProduit, r1);
-
+		Production p1 = new Production(kg, date, ruche1, choixProduit);
+		System.out.println(p1.getRuche().getRecolteur());
 		System.out.println(p1.getQuantite());
 
 		//	List<Production> = new ArrayList();

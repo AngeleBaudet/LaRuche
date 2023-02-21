@@ -1,14 +1,20 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ruche")
 public class Ruche {
 
 	@Id
@@ -16,17 +22,23 @@ public class Ruche {
 	private Integer id;
 	private int cadre ; 
 	private boolean limite ; 
+	
+	@Column(name="vulnerabilite",columnDefinition = "ENUM('Parasites','Pesticides','Predateurs','Loques')")
+	@Enumerated(EnumType.STRING)
 	private Vulnerabilite vulnerabilite ; //optionnel
 	// private boolean nourissage ; 
+	
+	@ManyToOne
 	private Recolteur recolteur ; //obligatoire
+	
+	@OneToMany(mappedBy = "production")
 	private List<Production> productions ; //optionnel, on peut avoir plus qu'une production
-	private static List<Ruche> listeRuche= new ArrayList();
+	
 
 	public Ruche() {
 	}
 
 	public Ruche(int cadre, boolean limite, Recolteur recolteur) {
-		listeRuche.add(this);
 		this.cadre = cadre;
 		this.limite = limite;
 		this.recolteur = recolteur;
@@ -83,9 +95,6 @@ public class Ruche {
 		this.productions = productions;
 	}
 
-	public static List<Ruche> getListeRuche() {
-		return listeRuche;
-	}
 
 	
 	

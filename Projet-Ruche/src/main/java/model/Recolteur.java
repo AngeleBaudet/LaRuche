@@ -1,16 +1,24 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="recolteur")
 @DiscriminatorValue("recolteur")
 public class Recolteur extends User {
-
-	private Ruche ruche ; //optionnel
+	
+	@OneToMany
+	@JoinColumn(nullable=true)
 	private Production production ; //optionnel
+	
+	@OneToMany (mappedBy = "ruche")
+	private static List<Ruche> listeRuche;
 	
 	// Constructeurs
 	public Recolteur(String password, String login) {
@@ -24,13 +32,6 @@ public class Recolteur extends User {
 
 	
 	// Getters et setters
-	public Ruche getRuche() {
-		return ruche;
-	}
-
-	public void setRuche(Ruche ruche) {
-		this.ruche = ruche;
-	}
 
 	public Production getProduction() {
 		return production;
@@ -40,12 +41,14 @@ public class Recolteur extends User {
 		this.production = production;
 	}
 
-	//ToString
-	@Override
-	public String toString() {
-		return "Recolteur [ruche=" + ruche + ", production=" + production + ", password=" + password + ", login="
-				+ login + "]";
+	public static List<Ruche> getListeRuche() {
+		return listeRuche;
 	}
+
+	public static void setListeRuche(List<Ruche> listeRuche) {
+		Recolteur.listeRuche = listeRuche;
+	}
+
 
 	
 	

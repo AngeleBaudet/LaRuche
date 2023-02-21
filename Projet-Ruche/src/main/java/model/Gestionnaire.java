@@ -2,14 +2,20 @@ package model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="gestionnaire")
 @DiscriminatorValue("gestionnaire")
 public class Gestionnaire extends User {
 
+	@OneToMany
+	@JoinColumn(nullable=true)
 	private Ruche ruche ; //optionnel
+	
+	@OneToMany
+	@JoinColumn(nullable=true)
 	private Production production ; //optionnel
 	
 	
