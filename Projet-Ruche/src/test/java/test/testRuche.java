@@ -126,41 +126,55 @@ public class testRuche {
 	public static void main(String[] args) {
 
 		Recolteur r1 = new Recolteur("rec1", "rec1");
-		Ruche ruche1 = new Ruche(2,false, r1);
+		Recolteur r2 = new Recolteur("rec2", "rec2");
+		
 		Gestionnaire g1 = new Gestionnaire("ges1", "ges1");
 
-
+		Ruche ruche1 = new Ruche(2,false, r1);
+		Ruche ruche2 = new Ruche(2,false, r2);
+		
+		/*
 		String typeProduit= saisieString("Saisir le type de récolte : "+Arrays.toString(Produit.values()));
 		Produit choixProduit = Produit.valueOf(typeProduit);
 
 		double kg = saisieDouble("Saisir la quantité en kg : ");
 
 		Production.donneeRecolte(kg, choixProduit);
+*/
 
-
-		Production p1 = new Production(kg, date, ruche1, choixProduit);
-		System.out.println(p1.getRuche().getRecolteur());
-		System.out.println(p1.getQuantite());
+	//	Production p0 = new Production(kg, date, ruche1, choixProduit);
+	//	System.out.println(p1.getRuche().getRecolteur());
+	//	System.out.println(p1.getQuantite());
 
 		//	List<Production> = new ArrayList();
-		List<Production> listeProd= new ArrayList();
-		listeProd.add(p1);
+	//	List<Production> listeProd= new ArrayList();
+	//	listeProd.add(p1);
 
-		ruche1.setProductions(listeProd);
+	//	ruche1.setProductions(listeProd);
 
 
-		System.out.println(ruche1.getProductions());
+	//	System.out.println(ruche1.getProductions());
+		
+		Production p1 = new Production(2, date, ruche1, Produit.Miel,r1);
+		Production p2 = new Production(1, date, ruche1, Produit.Gelee_Royale,r1);
+		Production p3 = new Production(0.5, date, ruche1, Produit.Gelee_Royale,r2);
+
+		
+//		r2.getProduction().add(p1);
+//		r2.getProduction().add(p2);
+//		r2.getListeRuche().add(ruche1);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet-Ruche");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 
-
-		
-
 		em.persist(r1);
+		em.persist(r2);
 		em.persist(ruche1);
+		em.persist(ruche2);
 		em.persist(p1);
+		em.persist(p2);
+		em.persist(p3);
 		em.persist(g1);
 
 

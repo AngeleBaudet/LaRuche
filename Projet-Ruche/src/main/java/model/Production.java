@@ -33,15 +33,18 @@ public class Production {
 	@Enumerated(EnumType.STRING)
 	private Produit produit ; 
 	
+	@ManyToOne
+	private Recolteur recolteur;
 
 	public Production()
 	{}
 	
-	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit) {
+	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit, Recolteur recolteur) {
 		this.quantite = quantite;
 		this.annee = annee;
 		this.ruche = ruche;
 		this.produit = produit;
+		this.recolteur=recolteur;
 	}
 
 
@@ -86,10 +89,15 @@ public class Production {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "Production [id=" + id + ", quantite=" + quantite + ", annee=" + annee + ", ruche=" + ruche
-				+ ", produit=" + produit + "]";
+	
+
+
+	public Recolteur getRecolteur() {
+		return recolteur;
+	}
+
+	public void setRecolteur(Recolteur recolteur) {
+		this.recolteur = recolteur;
 	}
 
 	public static void donneeRecolte(double kg, Produit type) {
