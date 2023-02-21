@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,9 +12,8 @@ import javax.persistence.Table;
 @DiscriminatorValue("gestionnaire")
 public class Gestionnaire extends User {
 
-	@OneToMany
-	@JoinColumn(nullable=true)
-	private Ruche ruche ; //optionnel
+	@OneToMany(mappedBy="ruche")
+	private List<Ruche> ruches; //optionnel
 	
 	@OneToMany
 	@JoinColumn(nullable=true)

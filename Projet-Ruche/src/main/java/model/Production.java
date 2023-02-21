@@ -35,8 +35,7 @@ public class Production {
 	
 
 	public Production()
-	{
-	}
+	{}
 	
 	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit) {
 		this.quantite = quantite;

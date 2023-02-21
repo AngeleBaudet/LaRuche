@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import model.Gestionnaire;
 import model.Production;
 import model.Produit;
@@ -123,6 +127,7 @@ public class testRuche {
 
 		Recolteur r1 = new Recolteur("rec1", "rec1");
 		Ruche ruche1 = new Ruche(2,false, r1);
+		Gestionnaire g1 = new Gestionnaire("ges1", "ges1");
 
 
 		String typeProduit= saisieString("Saisir le type de récolte : "+Arrays.toString(Produit.values()));
@@ -145,6 +150,27 @@ public class testRuche {
 
 
 		System.out.println(ruche1.getProductions());
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet-Ruche");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+
+
+		
+
+		em.persist(r1);
+		em.persist(ruche1);
+		em.persist(p1);
+		em.persist(g1);
+
+
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+
+
+
+		
 
 	}
 
