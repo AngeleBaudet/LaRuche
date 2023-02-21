@@ -13,12 +13,17 @@ import javax.persistence.Table;
 @DiscriminatorValue("recolteur")
 public class Recolteur extends User {
 	
+	/*
 	@OneToMany //unidirectionnel
 	@JoinColumn(nullable=true)
-	private List<Production> production ; //optionnel
+	private List<Production> production = new ArrayList() ; //optionnel
 	
-	@OneToMany(mappedBy = "recolteur")
-	private static List<Ruche> listeRuche;
+	@OneToMany
+	@JoinColumn(name="Recolteur")
+	private List<Ruche> listeRuche = new ArrayList();
+	*/
+	
+	
 	
 	// Constructeurs
 	public Recolteur(String password, String login) {
@@ -33,10 +38,13 @@ public class Recolteur extends User {
 	
 	// Getters et setters
 
-
-
-	public static List<Ruche> getListeRuche() {
+/*
+	public List<Ruche> getListeRuche() {
 		return listeRuche;
+	}
+
+	public void setListeRuche(List<Ruche> listeRuche) {
+		this.listeRuche = listeRuche;
 	}
 
 	public List<Production> getProduction() {
@@ -47,11 +55,6 @@ public class Recolteur extends User {
 		this.production = production;
 	}
 
-	public static void setListeRuche(List<Ruche> listeRuche) {
-		Recolteur.listeRuche = listeRuche;
-	}
-
-
-	
+	*/
 	
 }
