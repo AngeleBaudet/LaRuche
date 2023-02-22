@@ -155,9 +155,9 @@ public class testRuche {
 
 	//	System.out.println(ruche1.getProductions());
 		
-		Production p1 = new Production(2, date, ruche1, Produit.Miel,r1);
-		Production p2 = new Production(1, date, ruche1, Produit.Gelee_Royale,r1);
-		Production p3 = new Production(0.5, date, ruche1, Produit.Gelee_Royale,r2);
+		Production p1 = new Production(2,ruche1, Produit.Miel,r1);
+		Production p2 = new Production(1, ruche1, Produit.Gelee_Royale,r1);
+		Production p3 = new Production(0.5, ruche1, Produit.Gelee_Royale,r2);
 
 		
 //		r2.getProduction().add(p1);
