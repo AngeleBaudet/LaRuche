@@ -28,6 +28,8 @@ public class Achat {
 	@JoinColumn(name="production")
 	private Production production ;
 	
+	public Achat() {}
+
 	public Achat(Client client, Production production) {
 		this.dateAchat = LocalDate.now();
 		this.client = client;
