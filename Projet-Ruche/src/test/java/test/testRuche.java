@@ -10,6 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import model.Achat;
+import model.Adresse;
+import model.Client;
 import model.Gestionnaire;
 import model.Production;
 import model.Produit;
@@ -133,6 +136,12 @@ public class testRuche {
 		Ruche ruche1 = new Ruche(2,false, r1);
 		Ruche ruche2 = new Ruche(2,false, r2);
 		
+		Adresse a1 = new Adresse("3", "Rue de la Paix", "Paris", "75000");
+		
+		Client c1 = new Client("c1", "c1","paul", "tartampion", a1);
+		
+		
+		
 		/*
 		String typeProduit= saisieString("Saisir le type de récolte : "+Arrays.toString(Produit.values()));
 		Produit choixProduit = Produit.valueOf(typeProduit);
@@ -159,6 +168,7 @@ public class testRuche {
 		Production p2 = new Production(1, ruche1, Produit.Gelee_Royale,r1);
 		Production p3 = new Production(0.5, ruche1, Produit.Gelee_Royale,r2);
 
+		Achat achat1 = new Achat(c1, p1);
 		
 //		r2.getProduction().add(p1);
 //		r2.getProduction().add(p2);
@@ -176,7 +186,8 @@ public class testRuche {
 		em.persist(p2);
 		em.persist(p3);
 		em.persist(g1);
-
+		em.persist(c1);
+		em.persist(achat1);
 
 		em.getTransaction().commit();
 		em.close();

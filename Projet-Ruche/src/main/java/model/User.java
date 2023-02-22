@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,17 +15,17 @@ import javax.persistence.Table;
 @Table(name="user")
 //PENSER A CHANGER SI CA NE CONVIENT PAS
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('recolteur','gestionnaire')")
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('recolteur','gestionnaire','client')")
 public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	protected Integer id;
 	@Column(length = 50 ,nullable = false)
 	protected String password ; 
 	@Column(length = 50 ,nullable = false)
 	protected String login; 
-	
+		
 	
 	public User(String password, String login) {
 		this.password = password;
@@ -64,6 +65,7 @@ public abstract class User {
 	public void setId(int id_User) {
 		this.id = id_User;
 	}
+
 
 	@Override
 	public String toString() {

@@ -2,13 +2,34 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="achat")
 public class Achat {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
 	private LocalDate dateAchat ; 
+	
+	@ManyToOne
+	@JoinColumn(name="client")
 	private Client client; 
+	
+	@ManyToOne
+	@JoinColumn(name="production")
 	private Production production ;
 	
-	public Achat(LocalDate dateAchat, Client client, Production production) {
-		this.dateAchat = dateAchat;
+	public Achat(Client client, Production production) {
+		this.dateAchat = LocalDate.now();
 		this.client = client;
 		this.production = production;
 	}
@@ -35,6 +56,14 @@ public class Achat {
 
 	public void setProduction(Production production) {
 		this.production = production;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override
