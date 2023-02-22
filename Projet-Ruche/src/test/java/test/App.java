@@ -43,12 +43,12 @@ public class App {
 		return monScanner.nextBoolean();
 	}
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	//-------------------------------------Menus----------------------------------------------
 
 	//Accueil de l'appli
@@ -96,22 +96,41 @@ public class App {
 	public static void menuGestionnaire() {
 		System.out.println("Menu Gestionnaire");
 		System.out.println("1 - Afficher les récoltes");
-		System.out.println("2 - Afficher les récolteurs");
-		System.out.println("3 - Afficher les clients");
-		System.out.println("4 - Evaluer les ruches");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("2 - Gérer les utilisateurs");
+		System.out.println("3 - Evaluer les ruches");
+		System.out.println("4 - Se déconnecter");
 
 		int choix = saisieInt("Choisir un menu");
 		switch(choix) 
 		{
 		case 1 : afficherRecoltes();break;
-		case 2 : afficherRecolteurs();break;
-		case 3 : afficherClients();break;
-		case 4 : menuEvaluation();break;
-		case 5 : Singleton.getInstance().getEmf().close(); System.exit(0);
+		case 2 : menuGestionUtilisateurs();break;
+		case 3 : menuEvaluation();break;
+		case 4 : Singleton.getInstance().getEmf().close(); System.exit(0);
 		}
-		
+
 		menuGestionnaire();
+	}
+
+	public static void menuGestionUtilisateurs() {
+		System.out.println("Menu Gestion des utilisateurs");
+		System.out.println("1 - Afficher la liste des récolteurs");
+		System.out.println("2 - Ajouter un récolteur");
+		System.out.println("3 - Afficher la liste des clients");
+		System.out.println("4 - Ajouter un client");
+		System.out.println("5 - Retour");
+
+		int choix = saisieInt("Choisir un menu");
+		switch(choix) 
+		{
+		case 1 : afficherRecolteurs();break;
+		case 2 : ajouterRecolteurs();break;
+		case 3 : afficherClients();break;
+		case 4 : ajouterClients();break;
+		case 5 : menuGestionnaire();break;
+		}
+
+		menuGestionUtilisateurs();
 	}
 
 	private static void menuEvaluation() {
@@ -120,7 +139,7 @@ public class App {
 		System.out.println("1 - Afficher les ruches");
 		System.out.println("2 - Evaluer le nourrissage");
 		System.out.println("3 - Evaluer les populations");
-		System.out.println("4 - Se déconnecter");
+		System.out.println("4 - Retour");
 
 		int choix = saisieInt("Choisir un menu");
 		switch(choix) 
@@ -128,9 +147,10 @@ public class App {
 		case 1 : afficherRuches();break;
 		case 2 : determinerLaFamine();break;
 		case 3 : determinerDivision();break;
-		case 4 : Singleton.getInstance().getEmf().close(); System.exit(0);
+		case 4 : menuGestionnaire();break;
 		}
 		
+		menuEvaluation();		
 	}
 
 	//Récolter, voir ses récoltes/ rentrée récoltes /  
@@ -139,35 +159,31 @@ public class App {
 		System.out.println("Menu Recolteur");
 		System.out.println("1 - Afficher les récoltes");
 		System.out.println("2 - Saisir une récolte");
-		System.out.println("3 - Mes ruches");
-		System.out.println("4 - To-do list ! ");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("3 - Saisir une vulnerabilité");
+		System.out.println("4 - Mes ruches");
+		System.out.println("5 - To-do list ! ");
+		System.out.println("6 - Se déconnecter");
 
 		int choix = saisieInt("Choisir un menu");
 		switch(choix) 
 		{
 		case 1 : afficherRecoltes();break;
-		case 2 : afficherRecolteurs();break;
-		case 3 : afficherClients();break;
+		case 2 : saisieRecolte();break;
+		case 3 : saisieVulnerabilite();break;
 		case 4 : mesRuches();break;
 		case 5 : toDoList();break;
 		case 6 : Singleton.getInstance().getEmf().close(); System.exit(0);
 		}
-		
+
 		menuRecolteur();
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
+
 	//-------------------------------------Fonctions----------------------------------------------
+
 	
-	//--------gestionnaires
+	
+	//--------Gestionnaires
 	private static void determinerLaFamine() {
 		// TODO Auto-generated method stub
 		//utiliser la fonction nourrissage pour afficher si y'a besoin 
@@ -175,44 +191,62 @@ public class App {
 		//a voir si besoin de rediviser en 2 fonctions 
 
 	}
-	
+
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
 		//idem que famine mais pour les divisions
 	}
-	
+
 	private static void afficherRuches() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private static void afficherClients() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private static void afficherRecolteurs() {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	private static void ajouterClients() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void ajouterRecolteurs() {
+		// TODO Auto-generated method stub
+
 	}
 
 	
-	//--------communs
+	
+	
+	//--------Communs
+	
 	private static void afficherRecoltes() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	
-	//--------recolteurs
+	
+	
+
+	//--------Récolteurs
+	
+	
 	private static void mesRuches() {
 		// TODO Auto-generated method stub
 		System.out.println();
 	}
-	
+
 	private static void toDoList() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static void Recolte() {
@@ -220,16 +254,24 @@ public class App {
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private static void saisieVulnerabilite() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void saisieRecolte() {
+		// TODO Auto-generated method stub
+
+	}
+
+
+
+
+
+
+
+
+
 	//-------------------------------------MAIN----------------------------------------------
 
 	public static void main(String[] args) {
