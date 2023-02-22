@@ -19,7 +19,7 @@ public class Singleton {
 	private static Singleton instance;
 	
 	
-//	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("demoJPA");
+	private EntityManagerFactory emf= Persistence.createEntityManagerFactory("Projet-Ruche");
 	
 	
 	private Singleton() {}
@@ -38,7 +38,7 @@ public class Singleton {
 		Singleton.instance = instance;
 	}
 
-/*
+
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
@@ -48,7 +48,7 @@ public class Singleton {
 		this.emf = emf;
 	}
 
-*/
+
 
 	
 	
