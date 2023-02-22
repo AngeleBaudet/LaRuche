@@ -39,9 +39,9 @@ public class Production {
 	public Production()
 	{}
 	
-	public Production(double quantite, LocalDate annee, Ruche ruche, Produit produit, Recolteur recolteur) {
+	public Production(double quantite, Ruche ruche, Produit produit, Recolteur recolteur) {
 		this.quantite = quantite;
-		this.annee = annee;
+		this.annee = LocalDate.now();
 		this.ruche = ruche;
 		this.produit = produit;
 		this.recolteur=recolteur;

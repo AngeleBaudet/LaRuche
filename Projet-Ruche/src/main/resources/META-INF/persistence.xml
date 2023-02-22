@@ -13,11 +13,11 @@
 				value="com.mysql.jdbc.Driver" />
 				
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:8889/projet_ruche" />
+				value="jdbc:mysql://localhost:3306/projet_ruche" />
 				
 			<property name="hibernate.connection.user" value="root" />
 			
-			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.connection.password" value="" />
 			
 			
 			<property name="hibernate.dialect"

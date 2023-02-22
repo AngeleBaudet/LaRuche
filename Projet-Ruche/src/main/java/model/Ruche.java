@@ -21,7 +21,7 @@ public class Ruche {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private int cadre ; 
-	private boolean limite ; 
+	private transient boolean limite ; 
 	
 	@Column(name="vulnerabilite",columnDefinition = "ENUM('Parasites','Pesticides','Predateurs','Loques')")
 	@Enumerated(EnumType.STRING)

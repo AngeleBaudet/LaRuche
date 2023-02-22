@@ -20,7 +20,9 @@ public abstract class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@Column(length = 50 ,nullable = false)
 	protected String password ; 
+	@Column(length = 50 ,nullable = false)
 	protected String login; 
 	
 	
@@ -61,6 +63,11 @@ public abstract class User {
 
 	public void setId(int id_User) {
 		this.id = id_User;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", password=" + password + ", login=" + login + "]";
 	}
 	
 
