@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+
 import context.Singleton;
 import dao.*;
 import model.*;
@@ -13,6 +15,8 @@ public class App {
 	static LocalDate date = LocalDate.now();
 	static User connected = null;
 	static IDAOUser daoUser = Singleton.getInstance().getDaoUser();
+	static IDAORuche daoRuche = Singleton.getInstance().getDaoRuche();
+
 
 
 	public static String saisieString(String msg)
@@ -259,8 +263,12 @@ public class App {
 
 	//chloe
 	private static void mesRuches() {
-		// TODO Auto-generated method stub
-		System.out.println();
+		
+		List<Ruche> ruches = daoRuche.findRucheByRecolteur(connected.getId());
+		
+		for (Ruche r : ruches) {
+			System.out.println(r);
+		}
 	}
 
 	//chloe
@@ -293,6 +301,8 @@ public class App {
 
 	public static void main(String[] args) {
 
+		menuPrincipal();
+		
 	//	afficherRecolteurs() ;
 	//	Singleton.getInstance().getEmf().close();
 
