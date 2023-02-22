@@ -1,13 +1,13 @@
 package test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import context.Singleton;
-import dao.IDAOUser;
-import model.Gestionnaire;
-import model.Recolteur;
-import model.User;
+import dao.*;
+import model.*;
 
 public class App {
 	static LocalDate date = LocalDate.now();
@@ -149,7 +149,7 @@ public class App {
 		case 3 : determinerDivision();break;
 		case 4 : menuGestionnaire();break;
 		}
-		
+
 		menuEvaluation();		
 	}
 
@@ -181,8 +181,8 @@ public class App {
 
 	//-------------------------------------Fonctions----------------------------------------------
 
-	
-	
+
+
 	//--------Gestionnaires
 	//lina
 	private static void determinerLaFamine() {
@@ -192,7 +192,7 @@ public class App {
 		//a voir si besoin de rediviser en 2 fonctions 
 
 	}
-	
+
 	//julien
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
@@ -204,34 +204,46 @@ public class App {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//julien
 	private static void afficherClients() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//chloe
 	private static void afficherRecolteurs() {
-		// TODO Auto-generated method stub
+		String type = "recolteur";
+		List<User> users = daoUser.findAllByType(type);
+
+		if(users.isEmpty()) 
+		{
+			System.out.println("Pas de récolteurs");
+		}
+		else {
+			for(User tmp : users) 
+			{
+				System.out.println(tmp);
+			}
+		}
 
 	}
-	
+
 	//angele
 	private static void ajouterClients() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//lina
 	private static void ajouterRecolteurs() {
 		// TODO Auto-generated method stub
 
 	}
 
-	
-	
-	
+
+
+
 	//--------Communs
 	//lina
 	private static void afficherRecoltes() {
@@ -239,12 +251,12 @@ public class App {
 
 	}
 
-	
-	
-	
+
+
+
 
 	//--------Récolteurs
-	
+
 	//chloe
 	private static void mesRuches() {
 		// TODO Auto-generated method stub
@@ -281,6 +293,8 @@ public class App {
 
 	public static void main(String[] args) {
 
+	//	afficherRecolteurs() ;
+	//	Singleton.getInstance().getEmf().close();
 
 	}
 }
