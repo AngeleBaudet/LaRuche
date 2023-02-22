@@ -3,6 +3,9 @@ package context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import dao.DAOProduction;
+import dao.IDAOProduction;
+
 //Pour faire une migration : design pattern factory : fournit une fabrique (interface) pour faire la transition entre l'IDAO et le JDBC
 //On prend l'IDAO intermédiaire spécifique à la classe qui nous interesse pour les modifs.
 //
@@ -10,7 +13,7 @@ import javax.persistence.Persistence;
 
 public class Singleton {
 
-	/*private IDAODemande daoDemande = new DAODemande();
+	/*private IDAOProduction daoProduction = new DAOProduction();
 	private IDAODictateur daoDictateur = new DAODictateur();
 	private IDAOEnfant daoEnfant = new DAOEnfant();
 	private IDAOJouet daoJouet = new DAOJouet();
