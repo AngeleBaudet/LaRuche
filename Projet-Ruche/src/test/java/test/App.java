@@ -184,6 +184,7 @@ public class App {
 	
 	
 	//--------Gestionnaires
+	//lina
 	private static void determinerLaFamine() {
 		// TODO Auto-generated method stub
 		//utiliser la fonction nourrissage pour afficher si y'a besoin 
@@ -191,32 +192,38 @@ public class App {
 		//a voir si besoin de rediviser en 2 fonctions 
 
 	}
-
+	
+	//julien
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
 		//idem que famine mais pour les divisions
 	}
 
+	//angele
 	private static void afficherRuches() {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	//julien
 	private static void afficherClients() {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	//chloe
 	private static void afficherRecolteurs() {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	//angele
 	private static void ajouterClients() {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	//lina
 	private static void ajouterRecolteurs() {
 		// TODO Auto-generated method stub
 
@@ -226,7 +233,7 @@ public class App {
 	
 	
 	//--------Communs
-	
+	//lina
 	private static void afficherRecoltes() {
 		// TODO Auto-generated method stub
 
@@ -238,27 +245,25 @@ public class App {
 
 	//--------Récolteurs
 	
-	
+	//chloe
 	private static void mesRuches() {
 		// TODO Auto-generated method stub
 		System.out.println();
 	}
 
+	//chloe
 	private static void toDoList() {
 		// TODO Auto-generated method stub
 
 	}
 
-	public static void Recolte() {
-		System.out.println("Votre Récolte:");
-
-	}
-
+	//angele
 	private static void saisieVulnerabilite() {
 		// TODO Auto-generated method stub
 
 	}
 
+	//julien
 	private static void saisieRecolte() {
 		// TODO Auto-generated method stub
 
