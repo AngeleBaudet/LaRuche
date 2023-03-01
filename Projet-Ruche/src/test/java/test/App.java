@@ -1,20 +1,25 @@
 package test;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 import context.Singleton;
+import dao.IDAORuche;
 import dao.IDAOUser;
 import model.Gestionnaire;
 import model.Recolteur;
+import model.Ruche;
 import model.User;
+
 
 public class App {
 	static LocalDate date = LocalDate.now();
 	static User connected = null;
 	static IDAOUser daoUser = Singleton.getInstance().getDaoUser();
+	static IDAORuche daoRuche = Singleton.getInstance().getDaoRuche();
 
-
+	
 	public static String saisieString(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
@@ -201,7 +206,15 @@ public class App {
 
 	//angele
 	private static void afficherRuches() {
-		// TODO Auto-generated method stub
+		List<Ruche> ruches = daoRuche.findAll();
+		if(ruches.isEmpty()) 
+		{
+			System.out.println("Pas de ruche");
+		}
+		for(Ruche r : ruches) 
+		{
+			System.out.println(r);
+		}
 
 	}
 	

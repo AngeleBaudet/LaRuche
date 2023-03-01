@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import context.Singleton;
 import model.Ruche;
+
 import javax.persistence.EntityManager;
 
 
@@ -23,7 +24,7 @@ public class DAORuche implements IDAORuche {
 	public List<Ruche> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		
-		List<Ruche> ruches = em.createQuery("from Patient").getResultList();
+		List<Ruche> ruches = em.createQuery("from Ruche").getResultList();
 		em.close();
 		return ruches;
 	}
@@ -47,5 +48,6 @@ public class DAORuche implements IDAORuche {
 		em.getTransaction().commit();
 		em.close();	
 	}
+	
 
 }
