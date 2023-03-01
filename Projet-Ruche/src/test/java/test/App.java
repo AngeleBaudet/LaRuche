@@ -1,19 +1,28 @@
 package test;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.hibernate.Session;
+
+import com.mysql.cj.Query;
+
 import context.Singleton;
-import dao.IDAOUser;
-import model.Gestionnaire;
-import model.Recolteur;
-import model.User;
+import dao.*;
+import model.*;
 
 public class App {
 	static LocalDate date = LocalDate.now();
 	static User connected = null;
 	static IDAOUser daoUser = Singleton.getInstance().getDaoUser();
-
+	static IDAOProduction daoProduction = Singleton.getInstance().getDaoProduction();
+	static IDAORuche daoRuche = Singleton.getInstance().getDaoRuche();
 
 	public static String saisieString(String msg)
 	{
@@ -42,9 +51,6 @@ public class App {
 		System.out.println(msg);
 		return monScanner.nextBoolean();
 	}
-
-
-
 
 
 
@@ -103,7 +109,7 @@ public class App {
 		int choix = saisieInt("Choisir un menu");
 		switch(choix) 
 		{
-		case 1 : afficherRecoltes();break;
+		case 1 : afficherListeProduction();break;
 		case 2 : menuGestionUtilisateurs();break;
 		case 3 : menuEvaluation();break;
 		case 4 : Singleton.getInstance().getEmf().close(); System.exit(0);
@@ -149,7 +155,7 @@ public class App {
 		case 3 : determinerDivision();break;
 		case 4 : menuGestionnaire();break;
 		}
-		
+
 		menuEvaluation();		
 	}
 
@@ -167,7 +173,7 @@ public class App {
 		int choix = saisieInt("Choisir un menu");
 		switch(choix) 
 		{
-		case 1 : afficherRecoltes();break;
+		case 1 : afficherListeProduction();break;
 		case 2 : saisieRecolte();break;
 		case 3 : saisieVulnerabilite();break;
 		case 4 : mesRuches();break;
@@ -181,18 +187,26 @@ public class App {
 
 	//-------------------------------------Fonctions----------------------------------------------
 
-	
-	
+
+
 	//--------Gestionnaires
 	//lina
 	private static void determinerLaFamine() {
-		// TODO Auto-generated method stub
-		//utiliser la fonction nourrissage pour afficher si y'a besoin 
-		//affecter un récolteur si besoin 
-		//a voir si besoin de rediviser en 2 fonctions 
-
+		
+		List<Ruche> ruches = daoRuche.findRucheByNoussirage();
+		for(Ruche r : ruches) 
+		{
+			System.out.println(r);
+		}
 	}
-	
+
+	// TODO Auto-generated method stub
+	//utiliser la fonction nourrissage pour afficher si y'a besoin 
+	//affecter un récolteur si besoin 
+	//a voir si besoin de rediviser en 2 fonctions 
+
+
+
 	//julien
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
@@ -204,47 +218,71 @@ public class App {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//julien
 	private static void afficherClients() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//chloe
 	private static void afficherRecolteurs() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//angele
 	private static void ajouterClients() {
 		// TODO Auto-generated method stub
 
 	}
-	
-	//lina
+
+
+	//lina OK
 	private static void ajouterRecolteurs() {
-		// TODO Auto-generated method stub
 
+
+		System.out.println("Creation d'un nouveau récolteur :");
+		String login = saisieString("Saisir login");
+		String password = saisieString("Saisir mot de passe");		
+		
+		
+		
+		if (daoUser.findByLoginAndPassword(login, password)!=null) {
+			
+			System.out.println("Ce récolteur existe déjà !");
+			
+		} else {
+			
+		Recolteur r = new Recolteur(login, password);
+		daoUser.save(r);
+		System.out.println("Le récolteur "+r+" a ete ajoute en bdd");
+		}
+
+		menuGestionnaire();
 	}
 
-	
-	
-	
 	//--------Communs
-	//lina
-	private static void afficherRecoltes() {
-		// TODO Auto-generated method stub
+	//lina OK
+	private static void afficherListeProduction() {
+		
+		List<Production> productions =  daoProduction.findAll();
+		if(productions.isEmpty()) 
+		{
+			System.out.println("Vous n'avez aucune récolte en données");
+		}
+
+		for(Production r : productions) 
+		{
+			System.out.println("Type de récolte : "+ r.getProduit()+" \t Quantité : "+r.getQuantite()+"kg \t ID de la ruche : "+ r.getRuche().getId() +"\t Récolteur : "+r.getRecolteur().getLogin()+ "\t Année de récolte : "+r.getAnnee().getYear());
+		}
 
 	}
 
-	
-	
-	
+
 
 	//--------Récolteurs
-	
+
 	//chloe
 	private static void mesRuches() {
 		// TODO Auto-generated method stub
@@ -280,7 +318,31 @@ public class App {
 	//-------------------------------------MAIN----------------------------------------------
 
 	public static void main(String[] args) {
+		Recolteur r1 = new Recolteur("test", "test");
+		Ruche ruche = new Ruche(5, false, r1);
+		Production p1 = new Production(5.8, ruche, Produit.Miel, r1);
+		
+		determinerLaFamine();		
+		
+
+	/*	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet-Ruche");
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+
+		em.persist(r1);
+		em.persist(ruche);
+		em.persist(p1);
 
 
+
+		em.getTransaction().commit();
+
+		em.close();
+		emf.close();
+		ajouterRecolteurs();*/
+		
+		
+		
 	}
 }

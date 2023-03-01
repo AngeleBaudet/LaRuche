@@ -6,6 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import context.Singleton;
+import model.Client;
+import model.Gestionnaire;
+import model.Recolteur;
 import model.User;
 
 public class DAOUser implements IDAOUser{
@@ -66,6 +69,40 @@ public class DAOUser implements IDAOUser{
 		em.close();
 		return connected;
 	}
+
+	@Override
+	public Recolteur findRecolteurById(Integer id) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Recolteur recolteur = em.find(Recolteur.class,id);
+		em.close();
+		return recolteur;
+	}
+
+	@Override
+	public Gestionnaire findGestionnaireById(Integer id) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Gestionnaire gestionnaire = em.find(Gestionnaire.class,id);
+		em.close();
+		return gestionnaire;
+	}
+
+	@Override
+	public List<Recolteur> findAllRecolteur() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Recolteur> recolteur = em.createQuery("from Recolteur").getResultList();
+		em.close();
+		return recolteur;
+	}
+
+	@Override
+	public List<Gestionnaire> findAllGestionnaire() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Gestionnaire> gestionnaire = em.createQuery("from Gestionnaire").getResultList();
+		em.close();
+		return gestionnaire;
+	}
+	
+
 	
 
 }
