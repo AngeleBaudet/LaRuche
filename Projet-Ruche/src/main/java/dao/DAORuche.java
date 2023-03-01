@@ -3,10 +3,10 @@ package dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import context.Singleton;
 import model.Ruche;
-import javax.persistence.EntityManager;
 
 
 public class DAORuche implements IDAORuche {
@@ -23,7 +23,7 @@ public class DAORuche implements IDAORuche {
 	public List<Ruche> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		
-		List<Ruche> ruches = em.createQuery("from Patient").getResultList();
+		List<Ruche> ruches = em.createQuery("from Ruche").getResultList();
 		em.close();
 		return ruches;
 	}
@@ -47,5 +47,20 @@ public class DAORuche implements IDAORuche {
 		em.getTransaction().commit();
 		em.close();	
 	}
+
+	@Override
+	public List<Ruche> findRucheByNoussirage() {
+		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		
+		Query q = em.createQuery("SELECT r from Ruche r join fetch r.productions p where p.produit in ('Miel','Pollen') Group by r having Sum(p.quantite)>=12");
+		List<Ruche> ruches = q.getResultList();
+
+		em.close();
+		return ruches;
+	}
+
+
+
 
 }

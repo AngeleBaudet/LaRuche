@@ -13,18 +13,18 @@
 				value="com.mysql.jdbc.Driver" />
 				
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:8889/projet_ruche" />
+				value="jdbc:mysql://localhost:3306/projet_ruche" />
 				
 			<property name="hibernate.connection.user" value="root" />
 			
-			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.connection.password" value="" />
 			
 			
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			
 			<!-- validate, create, update -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
