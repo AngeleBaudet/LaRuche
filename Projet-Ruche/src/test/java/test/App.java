@@ -4,9 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Embedded;
+
 import context.Singleton;
 import dao.IDAORuche;
 import dao.IDAOUser;
+import model.Adresse;
+import model.Client;
 import model.Gestionnaire;
 import model.Recolteur;
 import model.Ruche;
@@ -19,7 +23,7 @@ public class App {
 	static IDAOUser daoUser = Singleton.getInstance().getDaoUser();
 	static IDAORuche daoRuche = Singleton.getInstance().getDaoRuche();
 
-	
+
 	public static String saisieString(String msg)
 	{
 		Scanner monScanner = new Scanner(System.in);
@@ -154,7 +158,7 @@ public class App {
 		case 3 : determinerDivision();break;
 		case 4 : menuGestionnaire();break;
 		}
-		
+
 		menuEvaluation();		
 	}
 
@@ -186,8 +190,8 @@ public class App {
 
 	//-------------------------------------Fonctions----------------------------------------------
 
-	
-	
+
+
 	//--------Gestionnaires
 	//lina
 	private static void determinerLaFamine() {
@@ -197,7 +201,7 @@ public class App {
 		//a voir si besoin de rediviser en 2 fonctions 
 
 	}
-	
+
 	//julien
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
@@ -217,34 +221,48 @@ public class App {
 		}
 
 	}
-	
+
 	//julien
 	private static void afficherClients() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//chloe
 	private static void afficherRecolteurs() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	//angele
-	private static void ajouterClients() {
-		// TODO Auto-generated method stub
+	private static void ajouterClients() {	
+		System.out.println("Création d'un nouveau client :");
+		String password = saisieString("Saisir password");
+		String login = saisieString("Saisir login");
+		String nom = saisieString("Saisir nom");
+		String prenom = saisieString("Saisir prenom");
+		
+		String numero = saisieString("Saisir numéro");
+		String voie = saisieString("Saisir voie");
+		String ville = saisieString("Saisir ville");
+		String cp = saisieString("Saisir cp");
+		Adresse adresse = new Adresse(numero,voie,ville,cp);
+		Client c = new Client(password,login,nom, prenom,adresse);
+		daoUser.save(c);
+		//System.out.println("Le client "+c+" a été ajouté en BDD");
+
 
 	}
-	
+
 	//lina
 	private static void ajouterRecolteurs() {
 		// TODO Auto-generated method stub
 
 	}
 
-	
-	
-	
+
+
+
 	//--------Communs
 	//lina
 	private static void afficherRecoltes() {
@@ -252,12 +270,12 @@ public class App {
 
 	}
 
-	
-	
-	
+
+
+
 
 	//--------Récolteurs
-	
+
 	//chloe
 	private static void mesRuches() {
 		// TODO Auto-generated method stub
@@ -294,6 +312,7 @@ public class App {
 
 	public static void main(String[] args) {
 
-
+ajouterClients();
+Singleton.getInstance().getEmf().close();
 	}
 }
