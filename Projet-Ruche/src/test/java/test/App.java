@@ -10,9 +10,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+<<<<<<< Updated upstream
 import org.hibernate.Session;
 
 import com.mysql.cj.Query;
+=======
+import context.Singleton;
+import dao.IDAORuche;
+import dao.IDAOUser;
+import model.Adresse;
+import model.Client;
+import model.Gestionnaire;
+import model.Recolteur;
+import model.Ruche;
+import model.User;
+import model.Vulnerabilite;
+>>>>>>> Stashed changes
 
 import context.Singleton;
 import dao.*;
