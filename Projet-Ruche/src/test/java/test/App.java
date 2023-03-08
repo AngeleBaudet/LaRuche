@@ -7,26 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.Embedded;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-<<<<<<< Updated upstream
 import org.hibernate.Session;
 
 import com.mysql.cj.Query;
-=======
-import context.Singleton;
-import dao.IDAORuche;
-import dao.IDAOUser;
-import model.Adresse;
-import model.Client;
-import model.Gestionnaire;
-import model.Recolteur;
-import model.Ruche;
-import model.User;
-import model.Vulnerabilite;
 
 import context.Singleton;
 import dao.*;
@@ -215,7 +202,6 @@ public class App {
 		}
 	}
 
-	}
 
 	//julien
 	private static void determinerDivision() {
@@ -375,12 +361,12 @@ public class App {
 	//julien
 	private static void saisieRecolte() {
 		
-		Recolteur r = (Recolteur)connected;
-		
-		int idRecolteur = r.getId();
-		
-		Production p = DAOProduction.findById(id);
-		
+//		Recolteur r = (Recolteur)connected;
+//		
+//		int idRecolteur = r.getId();
+//		
+//		Production p = DAOProduction.findById(id);
+//		
 	}
 
 
