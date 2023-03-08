@@ -27,11 +27,17 @@ public class testRuche {
 
 		Recolteur r1 = new Recolteur("rec1", "rec1");
 		Recolteur r2 = new Recolteur("rec2", "rec2");
+		Recolteur r3 = new Recolteur("rec3", "rec3");
 		
 		Gestionnaire g1 = new Gestionnaire("ges1", "ges1");
 
 		Ruche ruche1 = new Ruche(2,false, r1);
 		Ruche ruche2 = new Ruche(2,false, r2);
+		Ruche ruche3 = new Ruche(2,false, r2);
+		Ruche ruche4 = new Ruche(2,false, r2);
+		Ruche ruche5 = new Ruche(2,false, r2);
+		Ruche ruche6 = new Ruche(2,false, r2);
+		Ruche ruche7 = new Ruche(2,false, r2);
 		
 		Adresse a1 = new Adresse("3", "Rue de la Paix", "Paris", "75000");
 		
@@ -77,8 +83,14 @@ public class testRuche {
 
 		em.persist(r1);
 		em.persist(r2);
+		em.persist(r3);
 		em.persist(ruche1);
 		em.persist(ruche2);
+		em.persist(ruche3);
+		em.persist(ruche4);
+		em.persist(ruche5);
+		em.persist(ruche6);
+		em.persist(ruche7);
 		em.persist(p1);
 		em.persist(p2);
 		em.persist(p3);

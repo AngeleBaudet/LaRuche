@@ -125,7 +125,7 @@ public class Ruche {
 	@Override
 	public String toString() {
 		return "Ruche [id=" + id + ", cadre=" + cadre + ", limite=" + limite + ", vulnerabilite=" + vulnerabilite
-				+ ", recolteur=" + recolteur + "]";
+				+ ", id-recolteur=" + recolteur.id + "]";
 	}
 
 	
