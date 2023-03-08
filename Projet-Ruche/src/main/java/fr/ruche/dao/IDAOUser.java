@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import fr.ruche.model.Client;
 import fr.ruche.model.Gestionnaire;
 import fr.ruche.model.Recolteur;
 import fr.ruche.model.User;
@@ -22,6 +23,9 @@ public interface IDAOUser extends JpaRepository<User, Integer>{
 	
 	@Query("from Gestionnaire")
 	public List<Gestionnaire> findAllByGestionnaire();
+	
+	@Query("from Client")
+	public List<Client> findAllByClient();
 	
 	public User findByLoginAndPassword(String login,String password);
 

@@ -1,6 +1,7 @@
 package fr.ruche.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,6 @@ public interface IDAORuche extends JpaRepository<Ruche, Integer>{
 	
 	@Query("SELECT r FROM Ruche r JOIN r.recolteur u WHERE u.id = ?1")
 	public List<Ruche> findRucheByRecolteur(Integer id);
-	
+
+	public Optional<Ruche> findByIdAndRecolteurId(Integer id, Integer recolteurId);
 }

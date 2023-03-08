@@ -68,7 +68,7 @@ public class Client extends User {
 
 	@Override
 	public String toString() {
-		return "Client [nom=" + nom + ", prenom=" + prenom + ", achats=" + achats + ", adresse=" + adresse + "]";
+		return "Client [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + "]";
 	}
 
 	
