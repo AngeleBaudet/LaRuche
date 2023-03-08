@@ -4,4 +4,4 @@
 target/
 .metadata
 .DS_Store
-env.development.local
+.env.development.local
