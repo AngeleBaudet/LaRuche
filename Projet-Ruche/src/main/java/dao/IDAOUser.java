@@ -15,4 +15,5 @@ public interface IDAOUser extends IDAO<User,Integer> {
 	public List<Gestionnaire> findAllGestionnaire();
 	public User findByLoginAndPassword(String login,String password);
 
+	public List<User> findAllByType(String type);
 }

@@ -63,4 +63,16 @@ public class DAORuche implements IDAORuche {
 
 
 
+
+	public List<Ruche> findRucheByRecolteur(Integer id) {
+		//SELECT * FROM `ruche` join user on recolteur_id=user.id having recolteur_id=1;
+		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		
+		List<Ruche> ruches = em.createQuery("SELECT r FROM Ruche r JOIN r.recolteur u WHERE u.id = :id").setParameter("id", id).getResultList();
+		em.close();
+		
+		return ruches;
+	}
+
 }

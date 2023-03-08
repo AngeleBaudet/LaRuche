@@ -102,6 +102,15 @@ public class DAOUser implements IDAOUser{
 		return gestionnaire;
 	}
 	
+	public List<User> findAllByType(String type) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		
+		List<User> users = em.createQuery("from User where type_personne = :type").setParameter("type", type).getResultList();
+	
+		em.close();
+		return users;
+	}
+	
 
 	
 

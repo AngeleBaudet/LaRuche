@@ -2,6 +2,7 @@ package test;
 
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -227,7 +228,19 @@ public class App {
 
 	//chloe
 	private static void afficherRecolteurs() {
-		// TODO Auto-generated method stub
+		String type = "recolteur";
+		List<User> users = daoUser.findAllByType(type);
+
+		if(users.isEmpty()) 
+		{
+			System.out.println("Pas de récolteurs");
+		}
+		else {
+			for(User tmp : users) 
+			{
+				System.out.println(tmp);
+			}
+		}
 
 	}
 
@@ -281,12 +294,18 @@ public class App {
 
 
 
+
+
 	//--------Récolteurs
 
 	//chloe
 	private static void mesRuches() {
-		// TODO Auto-generated method stub
-		System.out.println();
+		
+		List<Ruche> ruches = daoRuche.findRucheByRecolteur(connected.getId());
+		
+		for (Ruche r : ruches) {
+			System.out.println(r);
+		}
 	}
 
 	//chloe
@@ -325,6 +344,10 @@ public class App {
 		determinerLaFamine();		
 		
 
+		menuPrincipal();
+		
+	//	afficherRecolteurs() ;
+	//	Singleton.getInstance().getEmf().close();
 	/*	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet-Ruche");
 
 		EntityManager em = emf.createEntityManager();

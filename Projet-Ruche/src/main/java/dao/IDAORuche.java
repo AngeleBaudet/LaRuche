@@ -7,4 +7,5 @@ import model.Ruche;
 public interface IDAORuche extends IDAO<Ruche,Integer>{
 
 	public List<Ruche> findRucheByNoussirage();
+	public List<Ruche> findRucheByRecolteur(Integer id);
 }
