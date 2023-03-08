@@ -23,7 +23,7 @@ public interface IDAOUser extends JpaRepository<User, Integer>{
 	@Query("from Gestionnaire")
 	public List<Gestionnaire> findAllByGestionnaire();
 	
-	public User findByLoginAndPassword(String login,String password);
+	public User findByLoginAndPassword(String login,String password); //pourquoi pas de optionnal obligatoire ?
 
 
 
