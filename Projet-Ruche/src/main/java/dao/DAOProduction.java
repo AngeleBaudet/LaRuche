@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import context.Singleton;
-import model.Production;
+import fr.ruche.model.Production;
 
 public class DAOProduction implements IDAOProduction{
 

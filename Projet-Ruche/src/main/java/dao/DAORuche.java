@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import context.Singleton;
-import model.Ruche;
+import fr.ruche.model.Ruche;
 
 import javax.persistence.EntityManager;
 

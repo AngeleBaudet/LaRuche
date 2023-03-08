@@ -2,10 +2,10 @@ package dao;
 
 import java.util.List;
 
-import model.Client;
-import model.Gestionnaire;
-import model.Recolteur;
-import model.User;
+import fr.ruche.model.Client;
+import fr.ruche.model.Gestionnaire;
+import fr.ruche.model.Recolteur;
+import fr.ruche.model.User;
 
 public interface IDAOUser extends IDAO<User,Integer> {
 	

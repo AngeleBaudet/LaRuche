@@ -10,15 +10,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import model.Achat;
-import model.Adresse;
-import model.Client;
-import model.Gestionnaire;
-import model.Production;
-import model.Produit;
-import model.Recolteur;
-import model.Ruche;
-import model.User;
+import fr.ruche.model.Achat;
+import fr.ruche.model.Adresse;
+import fr.ruche.model.Client;
+import fr.ruche.model.Gestionnaire;
+import fr.ruche.model.Production;
+import fr.ruche.model.Produit;
+import fr.ruche.model.Recolteur;
+import fr.ruche.model.Ruche;
+import fr.ruche.model.User;
 
 
 public class testRuche {

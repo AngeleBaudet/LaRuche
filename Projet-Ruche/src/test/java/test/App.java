@@ -17,7 +17,7 @@ import com.mysql.cj.Query;
 
 import context.Singleton;
 import dao.*;
-import model.*;
+import fr.ruche.model.*;
 
 public class App {
 	static LocalDate date = LocalDate.now();

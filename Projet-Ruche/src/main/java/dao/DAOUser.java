@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import context.Singleton;
-import model.Client;
-import model.Gestionnaire;
-import model.Recolteur;
-import model.User;
+import fr.ruche.model.Client;
+import fr.ruche.model.Gestionnaire;
+import fr.ruche.model.Recolteur;
+import fr.ruche.model.User;
 
 public class DAOUser implements IDAOUser{
 	

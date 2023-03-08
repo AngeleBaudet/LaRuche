@@ -1,4 +1,4 @@
-package model;
+package fr.ruche.model;
 
 import java.util.ArrayList;
 import java.util.List;

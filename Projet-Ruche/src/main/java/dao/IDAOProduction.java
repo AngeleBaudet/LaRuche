@@ -1,6 +1,6 @@
 package dao;
 
-import model.Production;
+import fr.ruche.model.Production;
 
 public interface IDAOProduction extends IDAO<Production, Integer>{
 
