@@ -1,4 +1,4 @@
-package model;
+package fr.ruche.model;
 
 public enum Produit {
 Miel(10), Pollen(12), Cire(15), Gelee_Royale(20);
