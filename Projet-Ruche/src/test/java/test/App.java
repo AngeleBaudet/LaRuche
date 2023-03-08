@@ -10,6 +10,7 @@ import fr.ruche.config.AppConfig;
 import fr.ruche.dao.IDAOProduction;
 import fr.ruche.dao.IDAORuche;
 import fr.ruche.dao.IDAOUser;
+import fr.ruche.exception.RecolteNotFoundException;
 import fr.ruche.exception.RucheNotFoundException;
 import fr.ruche.model.Adresse;
 import fr.ruche.model.Client;
@@ -234,7 +235,7 @@ public class App {
 
 	//julien
 	private static void afficherClients() {
-		
+
 		List<Client> clients = daoUser.findAllByClient();
 
 		if(clients.isEmpty()) 
@@ -361,14 +362,14 @@ public class App {
 		Integer idRecolteur = connected.getId();
 
 		int idV = saisieInt("Saisir l'id de la ruche vulnérable");
-		
+
 		try {
 			//orElseThrow : uniquement pour lancer une exeption, ici une exeption personalisée dans RucheNotFound 
 			// ::new pour récupérer une construction de RucheNot Found
-//			Ruche r = daoRuche.findByIdAndRecolteurId(idV, idRecolteur).orElseThrow(() -> new RucheNotFoundException());
+			//			Ruche r = daoRuche.findByIdAndRecolteurId(idV, idRecolteur).orElseThrow(() -> new RucheNotFoundException());
 			Ruche r = daoRuche.findByIdAndRecolteurId(idV, idRecolteur).orElseThrow(RucheNotFoundException::new);
 
-			
+
 			String choixVulnerabilite = saisieString("Saisir le nom de la vulnérabilite : Parasites, Pesticides, Predateurs, Loques");
 
 			Vulnerabilite v = Vulnerabilite.valueOf(choixVulnerabilite);
@@ -377,7 +378,7 @@ public class App {
 
 			daoRuche.save(r);
 		}
-		
+
 		catch (RucheNotFoundException e) {
 			System.out.println("L'identifiant de la ruche n'existe pas");
 		}
@@ -401,12 +402,9 @@ public class App {
 		int idRecolteur = recolteurRecolte.getId();
 
 		int idRuche = saisieInt("Saisir l'id de la ruche à récolter");
-		Ruche rucheRecolte = daoRuche.findById(idRuche).orElse(new Ruche());
 
-		if (rucheRecolte.getId()==null && rucheRecolte.getRecolteur().getId()!=idRecolteur) {
-			System.out.println("L'identifiant de la ruche n'existe pas");
-		} 
-		else {
+		try {
+			Ruche rucheRecolte = daoRuche.findByIdAndRecolteurId(idRuche,idRecolteur).orElseThrow(RecolteNotFoundException::new);
 
 			Produit produitRecolte = Produit.valueOf(saisieString("Saisir type de produit récolté"));
 			double quantiteRecolte = saisieDouble("Saisir la quantite recoltée");
@@ -414,10 +412,15 @@ public class App {
 			Production p = new Production(quantiteRecolte, rucheRecolte, produitRecolte, recolteurRecolte);
 
 			daoProduction.save(p);
+
+		} catch (RecolteNotFoundException e) {
+			System.out.println("L'identifiant de la ruche n'existe pas");
+
 		}
 
+
 		String recommence = saisieString("Voulez-vous saisir une nouvelle récolte ? y/n");
-		if(recommence == "y") {
+		if(recommence.equalsIgnoreCase("y")) {
 
 			saisieRecolte();
 
