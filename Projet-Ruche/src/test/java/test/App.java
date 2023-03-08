@@ -197,6 +197,9 @@ public class App {
 	private static void determinerDivision() {
 		// TODO Auto-generated method stub
 		//idem que famine mais pour les divisions
+		
+		
+		
 	}
 
 	//angele
@@ -207,7 +210,17 @@ public class App {
 
 	//julien
 	private static void afficherClients() {
-		// TODO Auto-generated method stub
+		String type = "client";
+		List<User> clients = daoUser.findAllByType(type);
+
+		if(clients.isEmpty()) 
+		{
+			System.out.println("Pas de clients");
+		}
+		for(User c : clients) 
+		{
+			System.out.println(c);
+		}
 
 	}
 
@@ -277,8 +290,12 @@ public class App {
 
 	//julien
 	private static void saisieRecolte() {
-		// TODO Auto-generated method stub
-
+		
+		Recolteur r = (Recolteur)connected;
+		
+		int idRecolteur = r.getId();
+		
+		Production p = DAOProduction.findById(id);
 	}
 
 
