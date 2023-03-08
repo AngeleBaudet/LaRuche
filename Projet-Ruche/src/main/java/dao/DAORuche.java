@@ -8,6 +8,8 @@ import javax.persistence.Query;
 import context.Singleton;
 import model.Ruche;
 
+import javax.persistence.EntityManager;
+
 
 public class DAORuche implements IDAORuche {
 
@@ -47,6 +49,7 @@ public class DAORuche implements IDAORuche {
 		em.getTransaction().commit();
 		em.close();	
 	}
+	
 
 	@Override
 	public List<Ruche> findRucheByNoussirage() {

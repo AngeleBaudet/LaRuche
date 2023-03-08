@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Embedded;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,7 +27,6 @@ import model.Recolteur;
 import model.Ruche;
 import model.User;
 import model.Vulnerabilite;
->>>>>>> Stashed changes
 
 import context.Singleton;
 import dao.*;
@@ -214,12 +215,7 @@ public class App {
 		}
 	}
 
-	// TODO Auto-generated method stub
-	//utiliser la fonction nourrissage pour afficher si y'a besoin 
-	//affecter un récolteur si besoin 
-	//a voir si besoin de rediviser en 2 fonctions 
-
-
+	}
 
 	//julien
 	private static void determinerDivision() {
@@ -229,7 +225,15 @@ public class App {
 
 	//angele
 	private static void afficherRuches() {
-		// TODO Auto-generated method stub
+		List<Ruche> ruches = daoRuche.findAll();
+		if(ruches.isEmpty()) 
+		{
+			System.out.println("Pas de ruche");
+		}
+		for(Ruche r : ruches) 
+		{
+			System.out.println(r);
+		}
 
 	}
 
@@ -258,13 +262,26 @@ public class App {
 	}
 
 	//angele
-	private static void ajouterClients() {
-		// TODO Auto-generated method stub
+	private static void ajouterClients() {	
+		System.out.println("Création d'un nouveau client :");
+		String password = saisieString("Saisir password");
+		String login = saisieString("Saisir login");
+		String nom = saisieString("Saisir nom");
+		String prenom = saisieString("Saisir prenom");
+		
+		String numero = saisieString("Saisir numéro");
+		String voie = saisieString("Saisir voie");
+		String ville = saisieString("Saisir ville");
+		String cp = saisieString("Saisir cp");
+		Adresse adresse = new Adresse(numero,voie,ville,cp);
+		Client c = new Client(password,login,nom, prenom,adresse);
+		daoUser.save(c);
+		//System.out.println("Le client "+c+" a été ajouté en BDD");
+
 
 	}
 
-
-	//lina OK
+	//lina
 	private static void ajouterRecolteurs() {
 
 
@@ -287,6 +304,9 @@ public class App {
 
 		menuGestionnaire();
 	}
+
+
+
 
 	//--------Communs
 	//lina OK
