@@ -15,6 +15,7 @@ import model.Gestionnaire;
 import model.Recolteur;
 import model.Ruche;
 import model.User;
+import model.Vulnerabilite;
 
 
 public class App {
@@ -290,7 +291,13 @@ public class App {
 
 	//angele
 	private static void saisieVulnerabilite() {
-		// TODO Auto-generated method stub
+		int idV = saisieInt("Saisir l'id de la ruche vulnérable");
+		Ruche r = daoRuche.findById(idV);
+		String choixVulnerabilite = saisieString("Saisir le nom de la vulnérabilite : Parasites, Pesticides, Predateurs, Loques");
+	
+		Vulnerabilite v = Vulnerabilite.valueOf(choixVulnerabilite);
+
+		daoRuche.save(r);
 
 	}
 
