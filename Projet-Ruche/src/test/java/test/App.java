@@ -352,8 +352,28 @@ public class App {
 
 	//chloe
 	private static void toDoList() {
-		// TODO Auto-generated method stub
+		List<Ruche> ruches = daoRuche.findRucheByNourissage();
 
+		if (ruches.isEmpty()) {
+			System.out.println("\nPas de ruches à nourrir");
+		}
+		else {
+			System.out.println("\nLes ruches suivantes doivent être nourries :");
+			determinerLaFamine();
+		}
+		
+//		ruches = daoRuche.findRucheByDivision();
+//		
+//		if (ruches.isEmpty()) {
+//			System.out.println("\nPas de ruches à diviser");
+//		}
+//		else {
+//			System.out.println("\nLes ruches suivantes doivent être divisées :");
+//			determinerDivision();
+//		}
+		
+		
+		menuRecolteur();
 	}
 
 	//angele
