@@ -1,5 +1,5 @@
 package fr.ruche.api;
 
-public class Views {
+public interface Views {
 
 }
