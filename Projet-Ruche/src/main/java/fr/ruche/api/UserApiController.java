@@ -68,6 +68,7 @@ public class UserApiController {
 			throw new UserBadRequestException();
 		}
 		
+		//ne fonctionne pas en switch car "user unreachable" en dehors du switch ? 
 		User user; 
 		if (userRequest.getType().equalsIgnoreCase("gestionnaire")) {
 			user = new Gestionnaire(); 	
