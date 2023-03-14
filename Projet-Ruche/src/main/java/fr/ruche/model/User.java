@@ -1,5 +1,8 @@
 package fr.ruche.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -19,6 +22,7 @@ public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	protected Integer id;
 	@Column(length = 50 ,nullable = false)
 	protected String password ; 
