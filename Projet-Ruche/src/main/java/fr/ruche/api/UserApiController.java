@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.dao.IDAOUser;
+import fr.ruche.exception.ClientBadRequestException;
 import fr.ruche.exception.UserBadRequestException;
 import fr.ruche.exception.UserNotFoundException;
+import fr.ruche.exception.WrongOrMissingTypeException;
 import fr.ruche.model.Adresse;
 import fr.ruche.model.Client;
 import fr.ruche.model.Gestionnaire;
@@ -37,35 +39,45 @@ public class UserApiController {
 	@Autowired
 	private IDAOUser daoUser ;
 	
+	//récupérer n'importe quel user par son id 
 	@GetMapping("/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User findById(@PathVariable int idUser) {
 		return this.daoUser.findById(idUser).orElseThrow(UserNotFoundException::new);
 	}
 	
+	//récupérer tous les users 
 	@GetMapping
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<User> findAll() {
 		return this.daoUser.findAll();
 	}
 	
+	//récupérer tous les clients 
 	@GetMapping("/clients")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<Client> findAllClient() {
 		return this.daoUser.findAllByClient();
 	}
 	
+	//récupérer tous les récolteurs
 	@GetMapping("/recolteurs")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<Recolteur> findAllRecolteurs() {
 		return this.daoUser.findAllByRecolteur();
 	}
 	
+	//ajouter un gestionnaire ou un récolteur, penser au type!
 	@PostMapping
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User add(@RequestBody @Valid UserRequest userRequest, BindingResult results) {
 		if (results.hasErrors()) {
-			throw new UserBadRequestException();
+			if (userRequest.getType()==null) {
+				throw new WrongOrMissingTypeException();
+			}
+			else {
+				throw new UserBadRequestException();
+			}	
 		}
 		
 		//ne fonctionne pas en switch car "user unreachable" en dehors du switch ? 
@@ -77,7 +89,7 @@ public class UserApiController {
 			user = new Recolteur(); 	
 		}
 		else { 
-			throw new UserBadRequestException();
+			throw new ClientBadRequestException();
 		}
 
 		BeanUtils.copyProperties(userRequest, user); 
@@ -85,13 +97,14 @@ public class UserApiController {
 		
 	}
 	
-	@PostMapping("/eshop")
-	@JsonView(Views.Common.class)
+	//ajouter un client
+	@PostMapping("/clients")
+	@JsonView(Views.User.class)
 	public User addClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results) {
 		if (results.hasErrors()) {
-			throw new UserBadRequestException();
+			throw new ClientBadRequestException();
 		}
-
+		
 		Client client = new Client(); 
 		BeanUtils.copyProperties(clientRequest, client); 
 		Adresse adresse = new Adresse(clientRequest.getNumero(), clientRequest.getRue(), clientRequest.getVille(), clientRequest.getCp());
@@ -100,8 +113,9 @@ public class UserApiController {
 		
 	}
 	
+	//modifier un utilisateur, mais seulement login/password
 	@PutMapping("/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User modify(@RequestBody @Valid UserRequest userRequest, BindingResult results, @PathVariable int idUser) {
 		if (results.hasErrors()) {
 			throw new UserBadRequestException();
@@ -113,11 +127,12 @@ public class UserApiController {
 		return this.daoUser.save(user);
 	}
 	
+	//modifier un client (avec les nom/prenom/adresse
 	@PutMapping("/eshop/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User modifyClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results, @PathVariable int idUser) {
 		if (results.hasErrors()) {
-			throw new UserBadRequestException();
+			throw new ClientBadRequestException();
 		}
 		
 		Client client = (Client) daoUser.findById(idUser).orElseThrow(UserNotFoundException::new);
@@ -127,6 +142,8 @@ public class UserApiController {
 		return this.daoUser.save(client);
 	}
 
+	
+	//supprimer un utilisateur
 	@DeleteMapping("/{idUser}")
 	public boolean deleteUser(@PathVariable int idUser) {
 		try {

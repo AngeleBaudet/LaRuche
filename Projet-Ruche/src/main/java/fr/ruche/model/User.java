@@ -26,11 +26,11 @@ public abstract class User {
 	protected Integer id;
 	
 	@Column(length = 50 ,nullable = false)
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	protected String password ; 
 	
 	@Column(length = 50 ,nullable = false)
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	protected String login; 
 		
 	

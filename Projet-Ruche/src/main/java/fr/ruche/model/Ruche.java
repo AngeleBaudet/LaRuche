@@ -2,6 +2,9 @@ package fr.ruche.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,16 +22,23 @@ public class Ruche {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
+	
+	@JsonView(Views.Ruche.class)
 	private int cadre ; 
+	
+	@JsonView(Views.Ruche.class)
 	private transient boolean limite ; 
 	
 	@Column(name="vulnerabilite",columnDefinition = "ENUM('Parasites','Pesticides','Predateurs','Loques')")
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Ruche.class)
 	private Vulnerabilite vulnerabilite ; //optionnel
 	// private boolean nourissage ; 
 	
 	@ManyToOne
+	@JsonView(Views.Ruche.class)
 	private Recolteur recolteur ; //obligatoire
 	
 	@OneToMany(mappedBy = "ruche")
@@ -103,7 +113,7 @@ public class Ruche {
 		//eau pollen miel 
 		//0,5L de sirop tous les 3-4jours en trois sessions
 		//12kg de reserve pour l'hivers par ruche
-		if (productionPollen.getQuantite()+productionMiel.getQuantite() < 12) {
+		if (productionPollen.getStock()+productionMiel.getStock() < 12) {
 			return true ;
 		}
 		else {
