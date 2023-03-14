@@ -1,18 +1,26 @@
 package fr.ruche.request;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import fr.ruche.model.Vulnerabilite;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class RucheRequest {
 	
 	@NotNull
+	@JsonView(Views.Ruche.class)
 	private int cadre;
+	
 	@NotNull
+	@JsonView(Views.Ruche.class)
 	private transient boolean limite;
 	
+	@JsonView(Views.Ruche.class)
 	private Vulnerabilite vulnerabilite;
+	
 	@NotNull
+	@JsonView(Views.Ruche.class)
 	private int recolteurId;
 	
 	public int getCadre() {
