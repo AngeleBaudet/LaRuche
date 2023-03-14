@@ -2,6 +2,12 @@ package fr.ruche.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,21 +24,28 @@ public class Production {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
 	@Column(columnDefinition = "DECIMAL(4,2)")
+	@JsonView(Views.Production.class)
 	private double quantite ; //en kg!!
 	
+	@JsonView(Views.Production.class)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate annee ; 
 	
 	@ManyToOne
+	@JsonView(Views.Production.class)
 	private Ruche ruche ;
 	
 	@Column(name="produit",columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Production.class)
 	private Produit produit ; 
 	
 	@ManyToOne
+	@JsonView(Views.Production.class)
 	private Recolteur recolteur;
 
 	public Production()
@@ -86,9 +99,6 @@ public class Production {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-
-	
-	
 
 
 	public Recolteur getRecolteur() {

@@ -2,6 +2,9 @@ package fr.ruche.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,6 +22,7 @@ public class Ruche {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	private int cadre ; 
 	private transient boolean limite ; 
