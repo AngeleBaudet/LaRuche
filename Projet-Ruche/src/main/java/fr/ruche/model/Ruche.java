@@ -24,15 +24,21 @@ public class Ruche {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonView(Views.Common.class)
 	private Integer id;
+	
+	@JsonView(Views.Ruche.class)
 	private int cadre ; 
+	
+	@JsonView(Views.Ruche.class)
 	private transient boolean limite ; 
 	
 	@Column(name="vulnerabilite",columnDefinition = "ENUM('Parasites','Pesticides','Predateurs','Loques')")
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Ruche.class)
 	private Vulnerabilite vulnerabilite ; //optionnel
 	// private boolean nourissage ; 
 	
 	@ManyToOne
+	@JsonView(Views.Ruche.class)
 	private Recolteur recolteur ; //obligatoire
 	
 	@OneToMany(mappedBy = "ruche")
