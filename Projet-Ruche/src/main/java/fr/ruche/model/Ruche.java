@@ -22,7 +22,7 @@ public class Ruche {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonView(Views.Ruche.class)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
 	@JsonView(Views.Ruche.class)
