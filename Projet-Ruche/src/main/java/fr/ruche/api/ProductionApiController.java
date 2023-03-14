@@ -22,7 +22,6 @@ import fr.ruche.dao.IDAOProduction;
 import fr.ruche.exception.ProductionBadRequestException;
 import fr.ruche.exception.ProductionNotFoundException;
 import fr.ruche.model.Production;
-import fr.ruche.model.Produit;
 import fr.ruche.model.Recolteur;
 import fr.ruche.model.Ruche;
 import fr.ruche.request.ProductionRequest;
@@ -78,7 +77,6 @@ public class ProductionApiController {
 		production.setRecolteur(recolteur);
 		production.setRuche(ruche);
 		production.setAnnee(LocalDate.now());
-
 
 		return this.daoProduction.save(production);
 	}

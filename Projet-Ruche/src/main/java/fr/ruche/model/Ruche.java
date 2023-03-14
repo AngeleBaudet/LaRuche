@@ -107,7 +107,7 @@ public class Ruche {
 		//eau pollen miel 
 		//0,5L de sirop tous les 3-4jours en trois sessions
 		//12kg de reserve pour l'hivers par ruche
-		if (productionPollen.getQuantite()+productionMiel.getQuantite() < 12) {
+		if (productionPollen.getStock()+productionMiel.getStock() < 12) {
 			return true ;
 		}
 		else {

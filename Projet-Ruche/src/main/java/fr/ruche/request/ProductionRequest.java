@@ -8,7 +8,7 @@ import fr.ruche.model.Produit;
 
 public class ProductionRequest {
 	
-	private double quantite ; 
+	private double stock ; 
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate annee ; 
@@ -16,10 +16,18 @@ public class ProductionRequest {
 	private int rucheId ;
 	
 	private Produit produit;
-	//private int produitId ; 
+
+	private double prixKg;
 	
 	private int recolteurId;
+	
+	public double getPrixKg() {
+		return prixKg;
+	}
 
+	public void setPrixKg(double prixKg) {
+		this.prixKg = prixKg;
+	}
 
 	public Produit getProduit() {
 		return produit;
@@ -29,12 +37,12 @@ public class ProductionRequest {
 		this.produit = produit;
 	}
 
-	public double getQuantite() {
-		return quantite;
+	public double getStock() {
+		return stock;
 	}
 
-	public void setQuantite(double quantite) {
-		this.quantite = quantite;
+	public void setStock(double stock) {
+		this.stock = stock;
 	}
 
 	public LocalDate getAnnee() {
@@ -52,14 +60,6 @@ public class ProductionRequest {
 	public void setRucheId(int rucheId) {
 		this.rucheId = rucheId;
 	}
-
-//	public int getProduitId() {
-//		return produitId;
-//	}
-//
-//	public void setProduitId(int produitId) {
-//		this.produitId = produitId;
-//	}
 
 	public int getRecolteurId() {
 		return recolteurId;
