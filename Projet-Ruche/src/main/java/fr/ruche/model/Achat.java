@@ -1,12 +1,17 @@
 package fr.ruche.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.api.Views;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,6 +28,8 @@ public class Achat {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	
+	@JsonView(Views.Achat.class)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dateAchat ; 
 	
 	@ManyToOne
@@ -30,16 +37,25 @@ public class Achat {
 	@JsonView(Views.Achat.class)
 	private Client client; 
 	
-	@ManyToOne
-	@JoinColumn(name="production")
-	private Production production ;
+	@Column(name="typeProduit", columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
+	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Achat.class)
+	private Produit produit;
 	
 	public Achat() {}
 
-	public Achat(Client client, Production production) {
+	public Achat(Client client, Produit produit) {
 		this.dateAchat = LocalDate.now();
 		this.client = client;
-		this.production = production;
+		this.produit = produit;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public LocalDate getDateAchat() {
@@ -58,26 +74,20 @@ public class Achat {
 		this.client = client;
 	}
 
-	public Production getProduction() {
-		return production;
+	public Produit getProduit() {
+		return produit;
 	}
 
-	public void setProduction(Production production) {
-		this.production = production;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
 	@Override
 	public String toString() {
-		return "Achat [dateAchat=" + dateAchat + ", client=" + client + ", production=" + production + "]";
-	} 
+		return "Achat [id=" + id + ", dateAchat=" + dateAchat + ", client=" + client + "]";
+	}
+
+
 	
 	
 }
