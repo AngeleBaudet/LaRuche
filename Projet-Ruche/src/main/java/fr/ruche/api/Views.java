@@ -7,5 +7,6 @@ public interface Views {
 	public static interface Achat extends Common{}
 	public static interface Client extends Common{}
 	public static interface ClientDetails extends Common{}
+	public static interface Production extends Common{}
 	}
 
