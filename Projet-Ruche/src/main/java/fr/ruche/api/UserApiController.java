@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.dao.IDAOUser;
+import fr.ruche.exception.ClientBadRequestException;
 import fr.ruche.exception.UserBadRequestException;
 import fr.ruche.exception.UserNotFoundException;
+import fr.ruche.exception.WrongOrMissingTypeException;
 import fr.ruche.model.Adresse;
 import fr.ruche.model.Client;
 import fr.ruche.model.Gestionnaire;
@@ -38,34 +40,39 @@ public class UserApiController {
 	private IDAOUser daoUser ;
 	
 	@GetMapping("/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User findById(@PathVariable int idUser) {
 		return this.daoUser.findById(idUser).orElseThrow(UserNotFoundException::new);
 	}
 	
 	@GetMapping
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<User> findAll() {
 		return this.daoUser.findAll();
 	}
 	
 	@GetMapping("/clients")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<Client> findAllClient() {
 		return this.daoUser.findAllByClient();
 	}
 	
 	@GetMapping("/recolteurs")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public List<Recolteur> findAllRecolteurs() {
 		return this.daoUser.findAllByRecolteur();
 	}
 	
 	@PostMapping
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User add(@RequestBody @Valid UserRequest userRequest, BindingResult results) {
 		if (results.hasErrors()) {
-			throw new UserBadRequestException();
+			if (userRequest.getType()==null) {
+				throw new WrongOrMissingTypeException();
+			}
+			else {
+				throw new UserBadRequestException();
+			}	
 		}
 		
 		//ne fonctionne pas en switch car "user unreachable" en dehors du switch ? 
@@ -77,7 +84,7 @@ public class UserApiController {
 			user = new Recolteur(); 	
 		}
 		else { 
-			throw new UserBadRequestException();
+			throw new ClientBadRequestException();
 		}
 
 		BeanUtils.copyProperties(userRequest, user); 
@@ -85,13 +92,13 @@ public class UserApiController {
 		
 	}
 	
-	@PostMapping("/eshop")
-	@JsonView(Views.Common.class)
+	@PostMapping("/clients")
+	@JsonView(Views.User.class)
 	public User addClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results) {
 		if (results.hasErrors()) {
-			throw new UserBadRequestException();
+			throw new ClientBadRequestException();
 		}
-
+		
 		Client client = new Client(); 
 		BeanUtils.copyProperties(clientRequest, client); 
 		Adresse adresse = new Adresse(clientRequest.getNumero(), clientRequest.getRue(), clientRequest.getVille(), clientRequest.getCp());
@@ -101,7 +108,7 @@ public class UserApiController {
 	}
 	
 	@PutMapping("/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User modify(@RequestBody @Valid UserRequest userRequest, BindingResult results, @PathVariable int idUser) {
 		if (results.hasErrors()) {
 			throw new UserBadRequestException();
@@ -114,7 +121,7 @@ public class UserApiController {
 	}
 	
 	@PutMapping("/eshop/{idUser}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.User.class)
 	public User modifyClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results, @PathVariable int idUser) {
 		if (results.hasErrors()) {
 			throw new UserBadRequestException();
