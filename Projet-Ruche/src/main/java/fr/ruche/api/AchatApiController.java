@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.dao.IDAOAchat;
+import fr.ruche.dao.IDAOProduction;
 import fr.ruche.dao.IDAOUser;
 import fr.ruche.exception.AchatBadRequestException;
 import fr.ruche.exception.AchatNotFoundException;
@@ -37,6 +38,9 @@ public class AchatApiController {
 
 	@Autowired
 	private IDAOUser daoClient;
+	
+	@Autowired
+	private IDAOProduction daoProduction;
 
 	//----------------------- CRUD -------------------------
 
@@ -67,6 +71,13 @@ public class AchatApiController {
 
 		Achat achat = new Achat();
 		List<Produit> listeProduit = List.of(Produit.values());
+		
+		for (Produit p : listeProduit) {
+	        if (p.name().equalsIgnoreCase("Miel")) {
+	            achat.setProduction(this.);
+	            break;
+	        }
+	    }
 
 		BeanUtils.copyProperties(achatRequest, achat);
 

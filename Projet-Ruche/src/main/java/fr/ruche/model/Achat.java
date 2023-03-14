@@ -23,6 +23,7 @@ public class Achat {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	
+	@JsonView(Views.Achat.class)
 	private LocalDate dateAchat ; 
 	
 	@ManyToOne
@@ -32,6 +33,7 @@ public class Achat {
 	
 	@ManyToOne
 	@JoinColumn(name="production")
+	@JsonView(Views.Achat.class)
 	private Production production ;
 	
 	public Achat() {}
