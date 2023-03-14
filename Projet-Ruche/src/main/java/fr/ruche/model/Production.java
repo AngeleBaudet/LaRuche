@@ -2,6 +2,10 @@ package fr.ruche.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,34 +22,52 @@ public class Production {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
 	@Column(columnDefinition = "DECIMAL(4,2)")
-	private double quantite ; //en kg!!
+	@JsonView(Views.Production.class)
+	private double stock ; //en kg!!
 	
+	@JsonView(Views.Production.class)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate annee ; 
 	
 	@ManyToOne
+	@JsonView(Views.Production.class)
 	private Ruche ruche ;
+	
+	@JsonView(Views.Production.class)
+	private double prixKg;
 	
 	@Column(name="produit",columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Production.class)
 	private Produit produit ; 
 	
 	@ManyToOne
+	@JsonView(Views.Production.class)
 	private Recolteur recolteur;
 
 	public Production()
 	{}
 	
-	public Production(double quantite, Ruche ruche, Produit produit, Recolteur recolteur) {
-		this.quantite = quantite;
+	public Production(double stock, Ruche ruche, Produit produit, Recolteur recolteur) {
+		this.stock = stock;
 		this.annee = LocalDate.now();
 		this.ruche = ruche;
 		this.produit = produit;
 		this.recolteur=recolteur;
 	}
 
+
+	public double getPrixKg() {
+		return prixKg;
+	}
+
+	public void setPrixKg(double prixKg) {
+		this.prixKg = prixKg;
+	}
 
 	public Integer getId() {
 		return id;
@@ -55,12 +77,12 @@ public class Production {
 		this.id = id;
 	}
 
-	public double getQuantite() {
-		return quantite;
+	public double getStock() {
+		return stock;
 	}
 
-	public void setQuantite(double quantite) {
-		this.quantite = quantite;
+	public void setStock(double stock) {
+		this.stock = stock;
 	}
 
 	public LocalDate getAnnee() {
@@ -86,9 +108,6 @@ public class Production {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-
-	
-	
 
 
 	public Recolteur getRecolteur() {
