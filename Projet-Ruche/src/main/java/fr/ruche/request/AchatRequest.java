@@ -3,7 +3,7 @@ package fr.ruche.request;
 import java.time.LocalDate;
 import java.util.List;
 
-import fr.ruche.model.Production;
+import fr.ruche.model.Produit;
 
 //Classe qui sert à créer le "form" pour envoyer une requête (par exemple add)
 public class AchatRequest {
@@ -12,7 +12,10 @@ public class AchatRequest {
 	
 	private int idClient;
 	
-	private List<Production> listeProduction;
+	private Produit produit;
+	
+//	private Produit produit;
+
 
 	public LocalDate getDateAchat() {
 		return dateAchat;
@@ -30,15 +33,12 @@ public class AchatRequest {
 		this.idClient = idClient;
 	}
 
-	public List<Production> getListeProduction() {
-		return listeProduction;
+	public Produit getProduit() {
+		return produit;
 	}
 
-	public void setListeProduction(List<Production> listeProduction) {
-		this.listeProduction = listeProduction;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
-
-	
-	
 }
