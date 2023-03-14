@@ -2,6 +2,7 @@ package fr.ruche.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.api.Views;
@@ -22,7 +23,6 @@ public class Achat {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	
-	@JsonView(Views.Common.class)
 	private LocalDate dateAchat ; 
 	
 	@ManyToOne
@@ -32,7 +32,6 @@ public class Achat {
 	
 	@ManyToOne
 	@JoinColumn(name="production")
-	@JsonView(Views.Achat.class)
 	private Production production ;
 	
 	public Achat() {}
