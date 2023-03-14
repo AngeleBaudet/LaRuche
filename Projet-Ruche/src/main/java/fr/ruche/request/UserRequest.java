@@ -1,11 +1,13 @@
 package fr.ruche.request;
 
+import fr.ruche.model.Adresse;
+
 public class UserRequest {
 	
 	private String password; 
 	private String login ; 
-	private String type ; //gestionnaire, client, recolteur
-	
+	private String type ; //gestionnaire, recolteur
+
 	
 	
 	public String getPassword() {
@@ -26,6 +28,8 @@ public class UserRequest {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	
 	
 	
 }

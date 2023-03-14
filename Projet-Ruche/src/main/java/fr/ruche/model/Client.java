@@ -16,11 +16,11 @@ import jakarta.persistence.OneToMany;
 public class Client extends User {
 	
 	@Column(length = 20)
-	@JsonView(Views.Client.class)
+	@JsonView(Views.Common.class)
 	private String nom; 
 	
 	@Column(length = 20)
-	@JsonView(Views.Client.class)
+	@JsonView(Views.Common.class)
 	private String prenom;
 	
 	@JsonView(Views.ClientDetails.class)
@@ -28,6 +28,7 @@ public class Client extends User {
 	private List<Achat> achats;
 	
 	@Embedded
+	@JsonView(Views.Common.class)
 	protected Adresse adresse;
 
 	public Client(String password, String login, String prenom, String nom,Adresse adresse) {

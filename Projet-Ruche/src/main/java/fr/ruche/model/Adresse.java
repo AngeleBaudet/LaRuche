@@ -1,17 +1,27 @@
 package fr.ruche.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
 
+	@JsonView(Views.Common.class)
 	@Column(length = 4)
 	private String numero;
+	
+	@JsonView(Views.Common.class)
 	@Column(length = 20)
 	private String rue;
+	
+	@JsonView(Views.Common.class)
 	@Column(length = 20)
 	private String ville;
+	
+	@JsonView(Views.Common.class)
 	@Column(length = 6)
 	private String cp;
 
