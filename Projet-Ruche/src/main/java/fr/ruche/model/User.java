@@ -24,9 +24,13 @@ public abstract class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonView(Views.Common.class)
 	protected Integer id;
+	
 	@Column(length = 50 ,nullable = false)
+	@JsonView(Views.Common.class)
 	protected String password ; 
+	
 	@Column(length = 50 ,nullable = false)
+	@JsonView(Views.Common.class)
 	protected String login; 
 		
 	

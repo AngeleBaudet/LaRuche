@@ -2,6 +2,9 @@ package fr.ruche.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Embedded;
@@ -13,14 +16,19 @@ import jakarta.persistence.OneToMany;
 public class Client extends User {
 	
 	@Column(length = 20)
+	@JsonView(Views.Common.class)
 	private String nom; 
+	
 	@Column(length = 20)
+	@JsonView(Views.Common.class)
 	private String prenom;
 	
+	@JsonView(Views.ClientDetails.class)
 	@OneToMany (mappedBy = "client")
 	private List<Achat> achats;
 	
 	@Embedded
+	@JsonView(Views.Common.class)
 	protected Adresse adresse;
 
 	public Client(String password, String login, String prenom, String nom,Adresse adresse) {
