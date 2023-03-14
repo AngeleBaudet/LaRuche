@@ -1,11 +1,15 @@
 package fr.ruche.request;
 
 import fr.ruche.model.Adresse;
+import jakarta.validation.constraints.NotBlank;
 
 public class UserRequest {
 	
+	@NotBlank
 	private String password; 
+	@NotBlank
 	private String login ; 
+	@NotBlank
 	private String type ; //gestionnaire, recolteur
 
 	

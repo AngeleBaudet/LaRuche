@@ -1,15 +1,22 @@
 package fr.ruche.request;
 
 import fr.ruche.model.Adresse;
+import jakarta.validation.constraints.NotBlank;
 
 public class ClientRequest extends UserRequest{
 
+	@NotBlank
 	private String nom;
+	@NotBlank
 	private String prenom;
 	
+	@NotBlank
 	private String numero ;
+	@NotBlank
 	private String rue ;
+	@NotBlank
 	private String ville; 
+	@NotBlank
 	private String cp;
 	
 	public String getNom() {
