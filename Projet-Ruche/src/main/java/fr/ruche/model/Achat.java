@@ -2,6 +2,9 @@ package fr.ruche.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,16 +19,20 @@ public class Achat {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
+	@JsonView(Views.Common.class)
 	private LocalDate dateAchat ; 
 	
 	@ManyToOne
 	@JoinColumn(name="client")
+	@JsonView(Views.Achat.class)
 	private Client client; 
 	
 	@ManyToOne
 	@JoinColumn(name="production")
+	@JsonView(Views.Achat.class)
 	private Production production ;
 	
 	public Achat() {}
