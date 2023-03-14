@@ -18,6 +18,8 @@ public interface IDAOUser extends JpaRepository<User, Integer>{
 	
 	public Optional<Gestionnaire> findGestionnaireById(Integer id);
 	
+	public Optional<Client> findClientById(Integer id);
+	
 	@Query("from Recolteur")
 	public List<Recolteur> findAllByRecolteur();
 	

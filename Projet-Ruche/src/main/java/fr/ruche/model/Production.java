@@ -2,6 +2,9 @@ package fr.ruche.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.ruche.api.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,6 +33,7 @@ public class Production {
 	
 	@Column(name="produit",columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.Achat.class)
 	private Produit produit ; 
 	
 	@ManyToOne
