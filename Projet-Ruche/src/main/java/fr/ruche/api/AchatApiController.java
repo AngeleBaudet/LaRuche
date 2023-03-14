@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fr.formation.exception.ProduitNotFoundException;
 import fr.ruche.dao.IDAOAchat;
 import fr.ruche.dao.IDAOProduction;
 import fr.ruche.dao.IDAOUser;

@@ -42,8 +42,7 @@ public class Production {
 	
 	@Column(name="produit",columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
-	@JsonView(Views.Production.class)
-	@JsonView(Views.Achat.class)
+	@JsonView({Views.Production.class, Views.Achat.class})
 	private Produit produit ; 
 	
 	@ManyToOne
