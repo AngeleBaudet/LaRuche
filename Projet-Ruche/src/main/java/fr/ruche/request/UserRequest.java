@@ -10,7 +10,7 @@ public class UserRequest {
 	@NotBlank
 	private String login ; 
 	@NotBlank
-	private String type ; //gestionnaire, recolteur
+	private String type ; //gestionnaire, recolteur, client
 
 	
 	

@@ -19,6 +19,8 @@ public class ClientRequest extends UserRequest{
 	@NotBlank
 	private String cp;
 	
+	
+	
 	public String getNom() {
 		return nom;
 	}
