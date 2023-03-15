@@ -1,6 +1,7 @@
 package fr.ruche.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -167,6 +168,13 @@ public class UserApiController {
 			return true;
 			} catch (Exception e) { return false;} 
 		}
+	
+	//--------------- RECOLTEUR BY ID ---------------
+	@GetMapping("/recolteur/{recolteurId}")
+	@JsonView(Views.User.class)
+	public Recolteur findRecolteurById(@PathVariable int recolteurId){
+		return this.daoUser.findRecolteurById(recolteurId).orElseThrow(UserNotFoundException::new);
+	}
 	
 	
 }

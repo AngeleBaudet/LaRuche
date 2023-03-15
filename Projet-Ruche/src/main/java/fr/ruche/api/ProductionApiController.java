@@ -65,15 +65,15 @@ public class ProductionApiController {
 		Ruche ruche = new Ruche();
 		ruche.setId(productionRequest.getRucheId());
 
-//		switch (productionRequest.getTypeProduit()) {
-//		case "miel": {production.setProduit(Produit.Miel);break;}
-//		case "pollen": {production.setProduit(Produit.Pollen);break;}
-//		case "cire": {production.setProduit(Produit.Cire);break;}
-//		case "gelee royale": {production.setProduit(Produit.Gelee_Royale);break;}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + productionRequest.getTypeProduit());
-//		}
-		
+		//		switch (productionRequest.getTypeProduit()) {
+		//		case "miel": {production.setProduit(Produit.Miel);break;}
+		//		case "pollen": {production.setProduit(Produit.Pollen);break;}
+		//		case "cire": {production.setProduit(Produit.Cire);break;}
+		//		case "gelee royale": {production.setProduit(Produit.Gelee_Royale);break;}
+		//		default:
+		//			throw new IllegalArgumentException("Unexpected value: " + productionRequest.getTypeProduit());
+		//		}
+
 		production.setRecolteur(recolteur);
 		production.setRuche(ruche);
 		production.setAnnee(LocalDate.now());
@@ -99,22 +99,21 @@ public class ProductionApiController {
 		Ruche ruche = new Ruche();
 		ruche.setId(productionRequest.getRucheId());
 
-//		switch (productionRequest.getTypeProduit()) {
-//		case "miel": {production.setProduit(Produit.Miel);break;}
-//		case "pollen": {production.setProduit(Produit.Pollen);break;}
-//		case "cire": {production.setProduit(Produit.Cire);break;}
-//		case "gelee royale": {production.setProduit(Produit.Gelee_Royale);break;}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + productionRequest.getTypeProduit());
-//		}
-		
+		//		switch (productionRequest.getTypeProduit()) {
+		//		case "miel": {production.setProduit(Produit.Miel);break;}
+		//		case "pollen": {production.setProduit(Produit.Pollen);break;}
+		//		case "cire": {production.setProduit(Produit.Cire);break;}
+		//		case "gelee royale": {production.setProduit(Produit.Gelee_Royale);break;}
+		//		default:
+		//			throw new IllegalArgumentException("Unexpected value: " + productionRequest.getTypeProduit());
+		//		}
+
 		production.setRecolteur(recolteur);
 		production.setRuche(ruche);
 		production.setAnnee(LocalDate.now());
 
 		return this.daoProduction.save(production);
 	}
-
 	//----------------- DELETE -------------------
 	@DeleteMapping("/{id}")
 	@JsonView(Views.Production.class)
@@ -126,5 +125,14 @@ public class ProductionApiController {
 			return false;
 		}
 	}
+	//--------------------- FIN CRUD -------------------
 
+	//--------------- PROD BY RECOLTEUR ---------------
+	@GetMapping("/by-recolteur/{recolteurId}")
+	@JsonView(Views.Production.class)
+	public List<Production> findProductionByRecolteur(@PathVariable int recolteurId){
+		return this.daoProduction.findProductionByRecolteur(recolteurId);
+	}
+	
+	
 }
