@@ -6,10 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import fr.ruche.model.Client;
-import fr.ruche.model.Gestionnaire;
-import fr.ruche.model.Recolteur;
-import fr.ruche.model.User;
+import fr.ruche.model.*;
 
 public interface IDAOUser extends JpaRepository<User, Integer>{
 
@@ -30,6 +27,9 @@ public interface IDAOUser extends JpaRepository<User, Integer>{
 	public List<Client> findAllByClient();
 	
 	public User findByLoginAndPassword(String login,String password);
+
+	@Query("select c from Client c left join fetch c.achats where c.id = ?1")
+	public Optional<Client> findByIdWithAchat(Integer id) ;
 
 
 

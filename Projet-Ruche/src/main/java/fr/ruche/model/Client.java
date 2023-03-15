@@ -23,7 +23,7 @@ public class Client extends User {
 	@JsonView(Views.User.class)
 	private String prenom;
 	
-	@JsonView(Views.ClientDetails.class)
+	@JsonView(Views.Client.class)
 	@OneToMany (mappedBy = "client")
 	private List<Achat> achats;
 	

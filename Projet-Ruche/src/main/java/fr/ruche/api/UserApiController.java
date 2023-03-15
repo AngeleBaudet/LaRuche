@@ -21,10 +21,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.dao.IDAOUser;
 import fr.ruche.exception.ClientBadRequestException;
+import fr.ruche.exception.ClientNotFoundException;
 import fr.ruche.exception.GestionnaireNotFoundException;
 import fr.ruche.exception.UserBadRequestException;
 import fr.ruche.exception.UserNotFoundException;
 import fr.ruche.exception.WrongOrMissingTypeException;
+import fr.ruche.model.Achat;
 import fr.ruche.model.Adresse;
 import fr.ruche.model.Client;
 import fr.ruche.model.Gestionnaire;
@@ -70,21 +72,30 @@ public class UserApiController {
 		return this.daoUser.findAllByRecolteur();
 	}
 	
-	//récupérer tous les getsionnaires
-		@GetMapping("/gestionnaires")
-		@JsonView(Views.User.class)
-		public List<Gestionnaire> findAllGestionaires() {
-			return this.daoUser.findAllByGestionnaire();
-		}
+	//récupérer tous les gestionnaires
+	@GetMapping("/gestionnaires")
+	@JsonView(Views.User.class)
+	public List<Gestionnaire> findAllGestionaires() {
+		return this.daoUser.findAllByGestionnaire();
+	}
 		
 	//findByLoginAndPassword
 	//http://localhost:8080/Projet-Ruche/api/user/connexion?login=GeorgeRecolte&password=recolteur
-		@GetMapping("/connexion")
-		@JsonView(Views.User.class)
-		public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
-			return this.daoUser.findByLoginAndPassword(login, password);
-		}
+	@GetMapping("/connexion")
+	@JsonView(Views.User.class)
+	public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
+		return this.daoUser.findByLoginAndPassword(login, password);
+	}
 	
+		
+	//Afficher un client avec sa liste d'achat
+	@GetMapping("/client/achats/{idUser}")
+	@JsonView(Views.Client.class)
+	public User findByIdWithAchats(@PathVariable int idUser) {
+		return this.daoUser.findByIdWithAchat(idUser).orElseThrow(ClientNotFoundException::new);
+	}
+		
+		
 	//ajouter un gestionnaire ou un récolteur, penser au type!
 	@PostMapping
 	@JsonView(Views.User.class)
@@ -176,8 +187,8 @@ public class UserApiController {
 	public Recolteur findRecolteurById(@PathVariable int recolteurId){
 		return this.daoUser.findRecolteurById(recolteurId).orElseThrow(UserNotFoundException::new);
 	}
-	//------------ Fing gestionnaire by Id ------------
 	
+	//------------ Find gestionnaire by Id ------------
 	@GetMapping("/gestionnaire/{id}")
 	@JsonView(Views.User.class)
 	public Gestionnaire findGestionnaireById(@PathVariable int id) {
