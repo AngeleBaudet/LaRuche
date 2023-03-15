@@ -1,7 +1,11 @@
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.google.com/specimen/Poppins');
+
 body
 {
   margin:0;
   background-color:#ede8ec;
+  font-family: 'Glacial Indifference';
 }
 
 #page
@@ -11,29 +15,35 @@ body
   height:2500px;
 
 }
-#menu
+/* permet de faire une div large sur le côté */
+#menu-container
 {
-  position:relative;
   background-color:#2b414f;
   width:18%;
-  height:2500px;
-  //height:120px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#gestio
+/* contient les infos du menu, avec une marge par rapport à la div menu */
+#menu
 {
   position:sticky;
   top:10px;
-  width:100%;
+  width:95%; /*permet d'éviter que la div déborde du menu-container à cause de la marge*/
   margin-left:5px;
 }
 
-#image1
+.logo-container
 {
-  margin-top:30px;
-  margin-left:23%;
-  width:50%;
+  margin-top: 30px;
+  width: 50%;
+
+}
+
+#logo
+{
+  width:100%;
 }
 
 #accueil
@@ -60,8 +70,8 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 200px;
-  background-color:#2b414f;;
+  width: 100%;
+
 }
 
 li a,label {
@@ -72,7 +82,7 @@ li a,label {
 }
 
 li a:hover,label:hover {
-  font-weight: bold;
+
   color:#f58f29;
 }
 
@@ -88,4 +98,22 @@ input[type="checkbox"] {
 
 input:checked + .sub > li {
   height: 2em;
+}
+
+
+.iconesMenu
+{
+  display: inline-block;
+  width:10%
+}
+
+.alignIconeWithText
+{
+  display: inline-block;
+  vertical-align: center
+}
+
+.sousMenus
+{
+  margin-left:50px;
 }
