@@ -1,8 +1,6 @@
 package fr.ruche.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -28,7 +26,7 @@ public class Achat {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	
-	@JsonView(Views.Achat.class)
+	@JsonView({Views.Achat.class, Views.Client.class})
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dateAchat ; 
 	
@@ -39,7 +37,7 @@ public class Achat {
 	
 	@Column(name="typeProduit", columnDefinition = "ENUM('Miel','Pollen','Cire','Gelee_Royale')")
 	@Enumerated(EnumType.STRING)
-	@JsonView(Views.Achat.class)
+	@JsonView({Views.Achat.class,Views.Client.class})
 	private Produit produit;
 	
 	public Achat() {}
