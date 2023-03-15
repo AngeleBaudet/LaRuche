@@ -10,14 +10,15 @@
 */
 
 .wrapper {
-
-  /* adjust padding and margin as needed */
+  /* le wrapper doit envelopper le contenu du site (le contenu qui est scroll).
+  Le padding permet de s'assurer que le footer ne chevauche jamais le contenu.
+  Il doit être de la même hauteur que le footer */
   padding-bottom: 50px;
 }
 
 footer {
-  height: 50px; /* adjust height as needed */
-  background-color: #2B414F; /* adjust color as needed */
+  height: 50px; /* hauteur du footer*/
+  background-color: #2B414F;
   font-family: 'Glacial Indifference';
   color: white;
   position: fixed;
