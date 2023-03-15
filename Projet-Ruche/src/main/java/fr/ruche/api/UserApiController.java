@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -68,6 +69,21 @@ public class UserApiController {
 	public List<Recolteur> findAllRecolteurs() {
 		return this.daoUser.findAllByRecolteur();
 	}
+	
+	//récupérer tous les getsionnaires
+		@GetMapping("/gestionnaires")
+		@JsonView(Views.User.class)
+		public List<Gestionnaire> findAllGestionaires() {
+			return this.daoUser.findAllByGestionnaire();
+		}
+		
+	//findByLoginAndPassword
+	//http://localhost:8080/Projet-Ruche/api/user/connexion?login=GeorgeRecolte&password=recolteur
+		@GetMapping("/connexion")
+		@JsonView(Views.User.class)
+		public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
+			return this.daoUser.findByLoginAndPassword(login, password);
+		}
 	
 	//ajouter un gestionnaire ou un récolteur, penser au type!
 	@PostMapping
@@ -154,6 +170,12 @@ public class UserApiController {
 			} catch (Exception e) { return false;} 
 		}
 	
+	//--------------- RECOLTEUR BY ID ---------------
+	@GetMapping("/recolteur/{recolteurId}")
+	@JsonView(Views.User.class)
+	public Recolteur findRecolteurById(@PathVariable int recolteurId){
+		return this.daoUser.findRecolteurById(recolteurId).orElseThrow(UserNotFoundException::new);
+	}
 	//------------ Fing gestionnaire by Id ------------
 	
 	@GetMapping("/gestionnaire/{id}")
