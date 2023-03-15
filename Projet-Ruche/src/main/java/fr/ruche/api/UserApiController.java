@@ -1,6 +1,7 @@
 package fr.ruche.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.dao.IDAOUser;
 import fr.ruche.exception.ClientBadRequestException;
+import fr.ruche.exception.GestionnaireNotFoundException;
 import fr.ruche.exception.UserBadRequestException;
 import fr.ruche.exception.UserNotFoundException;
 import fr.ruche.exception.WrongOrMissingTypeException;
@@ -152,5 +154,13 @@ public class UserApiController {
 			} catch (Exception e) { return false;} 
 		}
 	
+	//------------ Fing gestionnaire by Id ------------
+	
+	@GetMapping("/gestionnaire/{id}")
+	@JsonView(Views.User.class)
+	public Gestionnaire findGestionnaireById(@PathVariable int id) {
+		
+		return this.daoUser.findGestionnaireById(id).orElseThrow(GestionnaireNotFoundException::new);
+	}
 	
 }

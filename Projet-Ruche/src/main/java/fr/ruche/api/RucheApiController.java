@@ -1,5 +1,6 @@
 package fr.ruche.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -102,5 +103,15 @@ public class RucheApiController {
 				e.printStackTrace();
 				return false;
 			}
+		}
+		
+		//------------ Find Ruche by Nourrissage --------------
+		
+		@GetMapping("/nourrissage")
+		@JsonView(Views.Ruche.class)
+		public List<Ruche> findRucheByNourrissage(){
+			
+			return this.daoRuche.findRucheByNourissage();
+		
 		}
 }
