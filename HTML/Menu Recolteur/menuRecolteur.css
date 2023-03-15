@@ -82,9 +82,39 @@ li a,label {
 }
 
 li a:hover,label:hover {
-
   color:#f58f29;
 }
+
+
+
+/*Pour changer la couleur des images :) */
+.linkAccueil:hover .iconesMenu
+{
+  content: url("page-daccueilDorange.png");
+}
+
+.linkCompte:hover .iconesMenu
+{
+  content: url("marque-de-croix.png"); /*Manque image :) */
+}
+
+.linkRuche:hover .iconesMenu
+{
+  content: url("ruche2Dorange.png");
+}
+
+.linkRecoltes:hover .iconesMenu
+{
+  content: url("marque-de-croix.png"); /*Manque image :) */
+}
+
+.linkDeco:hover .iconesMenu
+{
+  content: url("marque-de-croix.png");/*Manque image :) */
+}
+/*fin de pour changer la couleur des images :) */
+
+
 
 .sub > li {
   height: 0;
