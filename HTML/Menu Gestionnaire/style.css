@@ -57,22 +57,35 @@ img {
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color:#2b414f;;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color:#2b414f;;
 }
 
-li a {
-    display: block;
-    color: #000;
-    padding:0 8px 16px;
-    text-decoration: none;
-    color:white;
+li a,label {
+  display: block;
+  padding:0 4px 16px;
+  text-decoration: none;
+  color:white;
 }
 
-li a:hover {
-    font-weight: bold;
-    color:#f58f29;
+li a:hover,label:hover {
+  font-weight: bold;
+  color:#f58f29;
+}
+
+.sub > li {
+  height: 0;
+  overflow: hidden;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none
+}
+
+input:checked + .sub > li {
+  height: 2em;
 }

@@ -1,5 +1,9 @@
 <head>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <meta charset="utf-8">
@@ -20,12 +24,17 @@
               <a href="#" style="display: inline-block; vertical-align: center">Mon compte</a>
             </li>
             <li>
-              <img src="ruche2blanc.png" alt="logo" style="display: inline-block; width:10%">
-              <a href="#"style="display: inline-block; vertical-align: center">Mes ruches</a>
-              <ul>
-                <li><a href="#">Afficher les ruches</a></li>
-                <li><a href="#">Évaluer le nourrissage</a></li>
-                <li><a href="#">Évaluer les populations</a></li>
+              <ul class="accordion">
+                <li class="has-sub">
+                  <img src="ruche2blanc.png" alt="logo" style="display: inline-block; width:10%">
+                  <label for="menu1">Mes ruches<b class="caret"></b></label>
+                  <input id="menu1" type="checkbox" name="menu" />
+                  <ul class="sub">
+                    <li><a href="#">Afficher les ruches</a></li>
+                    <li><a href="#">Évaluer le nourrissage</a></li>
+                    <li><a href="#">Évaluer les populations</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li>
@@ -33,115 +42,30 @@
               <a href="#" style="display: inline-block; vertical-align: center">Les récoltes</a>
             </li>
             <li>
-              <img src="apiculteur (3).png" alt="logo" style="display: inline-block; width:10%">
-              <a href="#" style="display: inline-block; vertical-align: center">Gestion des utilisateurs</a>
-              <ul>
-                <li><a href="#">Récolteurs</a></li>
-                <ul>
-                  <li><a href="#">Afficher les récolteurs</a></li>
-                  <li><a href="#">Ajouter un récolteur</a></li>
-                </ul>
-                <ul>
-                  <li><a href="#">Clients</a></li>
-                  <ul>
-                    <li><a href="#">Afficher les clients</a></li>
-                    <li><a href="#">Ajouter un client</a></li>
+              <ul class="accordion">
+                <li class="has-sub">
+                  <img src="apiculteur (3).png" alt="logo" style="display: inline-block; width:10%">
+                  <label for="menu2">Gestion des utilisateurs<b class="caret"></b></label>
+                  <input id="menu2" type="checkbox" name="menu" />
+                  <ul class="sub">
+                    <li><a href="#">Récolteurs</a></li>
+                    <li><a href="#">Clients</a></li>
                   </ul>
                 </ul>
+                <li>
+                  <img src="les-abeilles.png" alt="logo" style="display: inline-block; width:10%">
+                  <a href="#" style="display: inline-block; vertical-align: center">Déconnexion</a>
+                </li>
               </ul>
+          </nav>
 
-            </li>
-            <li>
-              <img src="les-abeilles.png" alt="logo" style="display: inline-block; width:10%">
-              <a href="#" style="display: inline-block; vertical-align: center">Déconnexion</a>
-            </li>
-          </ul>
-        </nav>
-
+        </div>
       </div>
+      <div id="accueil"></div>
     </div>
-    <div id="accueil"></div>
-  </div>
 
 
 
 
 
-
-
-
-</main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-.vertical-menu {
-  width: 200px; /* Set a width if you like */
-}
-
-.vertical-menu a {
-  background-color: #eee; /* Grey background color */
-  color: black; /* Black text color */
-  display: block; /* Make the links appear below each other */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove underline from links */
-}
-
-.vertical-menu a:hover {
-  font-weight: bold; /* Dark grey background on mouse-over */
-}
-
-.vertical-menu a.active {
-  background-color: #04AA6D; /* Add a green color to the "active/current" link */
-  color: white;
-}
-
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav ul li {
-  position: relative;
-}
-
-nav ul li.dropdown ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  padding: 0;
-  margin-top: 0.5rem;
-}
-
-nav ul li.dropdown.active ul {
-  display: block;
-}
-
-nav ul li.dropdown ul li {
-  width: 100%;
-}
-
-nav ul li.dropdown ul li a {
-  color: #333;
-  display: block;
-  padding: 0.5rem;
-  text-decoration: none;
-}
-
-nav ul li.dropdown ul li a:hover {
-  background-color: #eee;
-}
+  </main>
