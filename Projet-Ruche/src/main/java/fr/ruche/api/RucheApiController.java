@@ -2,6 +2,7 @@ package fr.ruche.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,22 @@ public class RucheApiController {
 		
 		@GetMapping("/by-recolteur-id/{recolteur-id}")
 		@JsonView(Views.Ruche.class)
-		public List<Ruche> findRucheByRecolteur(@PathVariable int recolteurId){
+		public List<Ruche> findRucheByRecolteur(@PathVariable("recolteur-id") int recolteurId){
 			return this.daoRuche.findRucheByRecolteur(recolteurId);
+		}
+		
+		@GetMapping("/by-recolteur-id/{recolteur-id}/{id}")
+		@JsonView(Views.Ruche.class)
+		public Ruche findByIdAndRecolteurId(@PathVariable("recolteur-id") int recolteurId, 
+				@PathVariable("id") int id){
+			//Optional<Ruche> optionalRuche = this.daoRuche.findByIdAndRecolteurId(recolteurId, id);
+			
+			//if (optionalRuche.isPresent()) {
+		        Ruche ruche = this.daoRuche.findByIdAndRecolteurId(id,recolteurId).orElseThrow(RucheNotFoundException::new);
+		        return ruche;
+		    //} else {
+		    //	throw new RucheNotFoundException();
+		   // }
 		}
 		
 		@PostMapping
