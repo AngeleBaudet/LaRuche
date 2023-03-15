@@ -1,0 +1,20 @@
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.google.com/specimen/Poppins');
+
+/*   CHARTE COULEUR
+  #2B414F CHARCOAL
+  #33658A LAPIS LAZULI
+  #EDE8EC GHOST WHITE
+  #F6AE2D  HUNYADI YELLOW
+  #F58F29 DRAK ORANGE WEB
+*/
+
+p {
+   font-family: 'Glacial Indifference';
+   font-weight: normal;
+   font-style: normal;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+}
