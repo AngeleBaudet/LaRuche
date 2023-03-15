@@ -76,6 +76,7 @@ public class UserApiController {
 		}
 		
 	//findByLoginAndPassword
+	//http://localhost:8080/Projet-Ruche/api/user/connexion?login=GeorgeRecolte&password=recolteur
 		@GetMapping("/connexion")
 		@JsonView(Views.User.class)
 		public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
