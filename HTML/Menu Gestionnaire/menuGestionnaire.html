@@ -1,0 +1,147 @@
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<meta charset="utf-8">
+<main>
+  <div id="page">
+    <div id="menu">
+      <div id="gestio">
+        <img id="image1" src="test3.png" alt="logo">
+        <p>Bienvenue Gestionnaire</p><br><br>
+        <nav>
+          <ul>
+            <li>
+              <img src="page-daccueil.png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#" style="display: inline-block; vertical-align:center">Accueil</a>
+            </li>
+            <li>
+              <img src="iconecompte.png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#" style="display: inline-block; vertical-align: center">Mon compte</a>
+            </li>
+            <li>
+              <img src="ruche2blanc.png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#"style="display: inline-block; vertical-align: center">Mes ruches</a>
+              <ul>
+                <li><a href="#">Afficher les ruches</a></li>
+                <li><a href="#">Évaluer le nourrissage</a></li>
+                <li><a href="#">Évaluer les populations</a></li>
+              </ul>
+            </li>
+            <li>
+              <img src="pot-de-miel.png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#" style="display: inline-block; vertical-align: center">Les récoltes</a>
+            </li>
+            <li>
+              <img src="apiculteur (3).png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#" style="display: inline-block; vertical-align: center">Gestion des utilisateurs</a>
+              <ul>
+                <li><a href="#">Récolteurs</a></li>
+                <ul>
+                  <li><a href="#">Afficher les récolteurs</a></li>
+                  <li><a href="#">Ajouter un récolteur</a></li>
+                </ul>
+                <ul>
+                  <li><a href="#">Clients</a></li>
+                  <ul>
+                    <li><a href="#">Afficher les clients</a></li>
+                    <li><a href="#">Ajouter un client</a></li>
+                  </ul>
+                </ul>
+              </ul>
+
+            </li>
+            <li>
+              <img src="les-abeilles.png" alt="logo" style="display: inline-block; width:10%">
+              <a href="#" style="display: inline-block; vertical-align: center">Déconnexion</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+    <div id="accueil"></div>
+  </div>
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+.vertical-menu {
+  width: 200px; /* Set a width if you like */
+}
+
+.vertical-menu a {
+  background-color: #eee; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  font-weight: bold; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+  background-color: #04AA6D; /* Add a green color to the "active/current" link */
+  color: white;
+}
+
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li.dropdown ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+nav ul li.dropdown.active ul {
+  display: block;
+}
+
+nav ul li.dropdown ul li {
+  width: 100%;
+}
+
+nav ul li.dropdown ul li a {
+  color: #333;
+  display: block;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+nav ul li.dropdown ul li a:hover {
+  background-color: #eee;
+}
