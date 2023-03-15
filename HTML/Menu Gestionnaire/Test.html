@@ -1,44 +1,44 @@
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
+<style>
+  .sub > li {
+    height: 0;
+    overflow: hidden;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none
+  }
+
+  input:checked + .sub > li {
+    height: 2em;
+  }
+
+</style>
+
 
 <main>
+  <ul class="accordion">
+    <li class="has-sub">
+      <img src="ruche2blanc.png" alt="logo" style="display: inline-block; width:10%">
+      <label for="menu1">Mes ruches<b class="caret"></b></label>
+      <input id="menu1" type="checkbox" name="menu" />
+      <ul class="sub">
+        <li>Sous-menu #1</li>
+        <li>Sous-menu #2</li>
+      </ul>
+    </li>
+    <li class="has-sub">
+      <label for="menu2">Menu #2</label>
+      <input id="menu2" type="checkbox" name="menu" />
+      <ul class="sub">
+        <li>Sous-menu #1</li>
+        <li>Sous-menu #2</li>
+      </ul>
+    </li>
+  </ul>
 
-  <!--<div class="vertical-menu">
-    <a href="#" class="active">Home</a>
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-    <a href="#">Link 4</a>
-  </div>-->
 
-  <nav>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="">News</a></li>
-      <li><a href=""">Contact</a></li>
-      <li><a href="">About</a></li>
-    </ul>
-  </nav>
+
+
 
 </main>
-
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-}
-
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    font-weight: bold;
-}

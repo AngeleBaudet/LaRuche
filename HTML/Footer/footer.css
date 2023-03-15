@@ -1,0 +1,30 @@
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.google.com/specimen/Poppins');
+
+/*   CHARTE COULEUR
+  #2B414F CHARCOAL
+  #33658A LAPIS LAZULI
+  #EDE8EC GHOST WHITE
+  #F6AE2D  HUNYADI YELLOW
+  #F58F29 DRAK ORANGE WEB
+*/
+
+.wrapper {
+  /* le wrapper doit envelopper le contenu du site (le contenu qui est scroll).
+  Le padding permet de s'assurer que le footer ne chevauche jamais le contenu.
+  Il doit être de la même hauteur que le footer */
+  padding-bottom: 50px;
+}
+
+footer {
+  height: 50px; /* hauteur du footer*/
+  background-color: #2B414F;
+  font-family: 'Glacial Indifference';
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
