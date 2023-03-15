@@ -1,39 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Two Backgrounds</title>
+	<title>Page with Two Blocks</title>
 	<style>
-		body {
-			background: #fff url("image.jpg") top left no-repeat;
-			background-size: 50% 100%;
-			margin: 0;
-			padding: 0;
-			font-family: Arial, sans-serif;
-		}
-		.container {
-			background-color: #eee;
-			width: 50%;
+		.block1 {
+			background-image: url('ImagesBee/honey-bee-6506809_1920.jpg');
+			background-size: cover;
 			height: 100vh;
-			float: right;
-			box-sizing: border-box;
-			padding: 50px;
+			width: 50%;
+			float: left;
 		}
-		h1 {
-			color: #333;
-			font-size: 36px;
-			margin-top: 0;
+		.block2 {
+      background-color: #fff;
+    height: 100vh;
+    width: 50%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 		}
-		p {
-			color: #666;
-			font-size: 18px;
-			line-height: 1.5;
+
+    .login-form {
+      width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+    position: relative;
 		}
+
+    .login-form label, .login-form input[type="text"], .login-form input[type="password"] {
+      display: block;
+      margin: 10px auto;
+      width: 100%;
+      max-width: 300px;
+      text-align: left;
+
+      @font-face {
+        font-family: 'poppins';
+        src: url('https://fonts.google.com/specimen/Poppins') format('truetype');
+      }
+
+      .login-form label {
+        font-family: 'poppins', sans-serif;
+      }
+
+    }
+    .login-form input[type="submit"] {
+  position: absolute;
+  right: 10;
+}
+
+.login-form a {
+  position: absolute;
+  right: 10;
+}
+
+
 	</style>
 </head>
 <body>
-	<div class="container">
-		<h1>Background Color</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel tristique mi. Fusce eget ultrices eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-	</div>
+	<div class="block1"></div>
+	<div class="block2">
+    <div class="login-form">
+  			<form action="#" method="post">
+  				<label for="username">Username:</label><br>
+  				<input type="text" name="username" id="username"><br>
+  				<label for="password">Password:</label><br>
+  				<input type="password" name="password" id="password"><br>
+  				<input type="submit" value="Se Connecter"><br>
+            <a href="">Mot de passe oublié ?</a>
+  			</form>
+  		</div>
+    </div>
 </body>
 </html>
