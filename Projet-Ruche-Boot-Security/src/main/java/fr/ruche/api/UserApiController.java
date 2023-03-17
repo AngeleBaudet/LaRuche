@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.formation.config.jwt.JwtUtil;
+import fr.formation.request.UtilisateurRequest;
+import fr.formation.response.AuthResponse;
 import fr.ruche.dao.IDAOUser;
 import fr.ruche.exception.ClientBadRequestException;
 import fr.ruche.exception.ClientNotFoundException;
@@ -81,7 +86,7 @@ public class UserApiController {
 		
 	//findByLoginAndPassword
 	//http://localhost:8080/Projet-Ruche/api/user/connexion?login=GeorgeRecolte&password=recolteur
-	@GetMapping("/connexion")
+	@GetMapping("/client")
 	@JsonView(Views.User.class)
 	public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
 		return this.daoUser.findByLoginAndPassword(login, password).orElseThrow(null);
@@ -196,4 +201,12 @@ public class UserApiController {
 		return this.daoUser.findGestionnaireById(id).orElseThrow(GestionnaireNotFoundException::new);
 	}
 	
+	@PostMapping("/connexion")
+	public fr.ruche.response.AuthResponse seConnecter(@RequestBody UserRequest userRequest) {
+		Authentication authentication = this.authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(userRequest.getUsername(), userRequest.getPassword())
+				);
+		
+		return new AuthResponse(true, JwtUtil.generate(authentication));
+	}
 }

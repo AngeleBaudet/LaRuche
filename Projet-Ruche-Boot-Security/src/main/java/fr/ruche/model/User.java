@@ -25,7 +25,7 @@ public abstract class User {
 	@JsonView(Views.Common.class)
 	protected Integer id;
 	
-	@Column(length = 50 ,nullable = false)
+	@Column(nullable = false)
 	@JsonView(Views.User.class)
 	protected String password ; 
 	
