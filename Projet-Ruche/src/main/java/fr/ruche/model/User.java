@@ -22,6 +22,7 @@ public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(Views.Achat.class)
 	@JsonView(Views.Common.class)
 	protected Integer id;
 	
