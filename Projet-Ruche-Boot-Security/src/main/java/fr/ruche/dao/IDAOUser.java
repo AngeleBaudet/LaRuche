@@ -26,12 +26,12 @@ public interface IDAOUser extends JpaRepository<User, Integer>{
 	@Query("from Client")
 	public List<Client> findAllByClient();
 	
-	public User findByLoginAndPassword(String login,String password);
+	public Optional<User> findByLoginAndPassword(String login,String password);
 
 	@Query("select c from Client c left join fetch c.achats where c.id = ?1")
 	public Optional<Client> findByIdWithAchat(Integer id) ;
 
-
+	public Optional<User> findByLogin(String login);
 
 	
 }

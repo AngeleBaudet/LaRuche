@@ -84,7 +84,7 @@ public class UserApiController {
 	@GetMapping("/connexion")
 	@JsonView(Views.User.class)
 	public User findByLoginAndPassword(@RequestParam String login, @RequestParam String password) {
-		return this.daoUser.findByLoginAndPassword(login, password);
+		return this.daoUser.findByLoginAndPassword(login, password).orElseThrow(null);
 	}
 	
 		
@@ -127,7 +127,7 @@ public class UserApiController {
 	}
 	
 	//ajouter un client
-	@PostMapping("/clients")
+	@PostMapping("/inscription")
 	@JsonView(Views.User.class)
 	public User addClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results) {
 		if (results.hasErrors()) {
