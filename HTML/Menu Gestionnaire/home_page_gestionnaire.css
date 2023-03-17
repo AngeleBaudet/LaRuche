@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+* {
+  margin: 0;
+  ;
+}
+
+.menu {
+  width: 18%;
+  background-color: #2B414F;
+  color: #fff;
+  height: 130vh
+}
+
+.body_page {
+  width: 82%;
+  background-color: #EDE8EC;
+  display: flex;
+  flex-direction: column; /* new */
+  height: 130vh
+}
+
+.home_message_top {
+  height: 60%;
+  background-image:url("pagecouverture.jpg");
+  background-size :cover;
+  position: relative; /* make .home_message_top a positioned element */
+}
+
+.home_box_message {
+  width: 50%;
+  height: 30%;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.6); /* white with 60% opacity */
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* make .home_box_message appear on top of .home_message_top */
+}
+
+.home_box_message.alert_message {
+  flex: 1;
+  height: 100px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.home_box_message.buttons {
+  height: 100px;
+  background-color: #EDE8EC;
+  margin-top: 20px;
+  flex: 0 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home_button_bot {
+  height: 40%; /* new */
+  /* add any other styles you need */
+}
+
+
+
+
+.wrapper {
+  display: flex;
+  /* adjust padding and margin as needed */
+  padding-bottom: 50px;
+}
+
+footer {
+  height: 50px; /* adjust height as needed */
+  background-color: #2B414F; /* adjust color as needed */
+  font-family: 'Glacial Indifference';
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
