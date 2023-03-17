@@ -6,7 +6,7 @@ body
   margin:0;
   background-color:#ede8ec;
   font-family: 'Glacial Indifference';
-  font-size: 20;
+  font-size: 18;
 }
 
 #page
@@ -96,7 +96,7 @@ li a:hover,label:hover {
 
 .linkCompte:hover .iconesMenu
 {
-  content: url("marque-de-croix.png"); /*Manque image :) */
+  content: url("compteOrange.png"); /*Manque image :) */
 }
 
 .linkRuche:hover .iconesMenu
@@ -106,12 +106,17 @@ li a:hover,label:hover {
 
 .linkRecoltes:hover .iconesMenu
 {
-  content: url("marque-de-croix.png"); /*Manque image :) */
+  content: url("pot-de-miel-Orange.png"); /*Manque image :) */
 }
 
 .linkDeco:hover .iconesMenu
 {
-  content: url("marque-de-croix.png");/*Manque image :) */
+  content: url("decoOrange.png");/*Manque image :) */
+}
+
+.linkUtilisateurs:hover .iconesMenu
+{
+  content: url("apiculteur Dorange.png");/*Manque image :) */
 }
 /*fin de pour changer la couleur des images :) */
 
