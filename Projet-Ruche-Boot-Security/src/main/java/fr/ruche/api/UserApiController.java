@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,9 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fr.formation.config.jwt.JwtUtil;
-import fr.formation.request.UtilisateurRequest;
-import fr.formation.response.AuthResponse;
 import fr.ruche.dao.IDAOUser;
 import fr.ruche.exception.ClientBadRequestException;
 import fr.ruche.exception.ClientNotFoundException;
@@ -31,7 +30,6 @@ import fr.ruche.exception.GestionnaireNotFoundException;
 import fr.ruche.exception.UserBadRequestException;
 import fr.ruche.exception.UserNotFoundException;
 import fr.ruche.exception.WrongOrMissingTypeException;
-import fr.ruche.model.Achat;
 import fr.ruche.model.Adresse;
 import fr.ruche.model.Client;
 import fr.ruche.model.Gestionnaire;
@@ -48,6 +46,12 @@ public class UserApiController {
 
 	@Autowired
 	private IDAOUser daoUser ;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager; 
+	
+	@Autowired
+	private PasswordEncoder encoder ; 
 	
 	//récupérer n'importe quel user par son id 
 	@GetMapping("/{idUser}")
@@ -201,12 +205,16 @@ public class UserApiController {
 		return this.daoUser.findGestionnaireById(id).orElseThrow(GestionnaireNotFoundException::new);
 	}
 	
+	
+	
+	
+	//------------ SECURITY ------------
 	@PostMapping("/connexion")
 	public fr.ruche.response.AuthResponse seConnecter(@RequestBody UserRequest userRequest) {
 		Authentication authentication = this.authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(userRequest.getUsername(), userRequest.getPassword())
+				new UsernamePasswordAuthenticationToken(userRequest.getLogin(), userRequest.getPassword())
 				);
 		
-		return new AuthResponse(true, JwtUtil.generate(authentication));
+		return new fr.ruche.response.AuthResponse(true, fr.ruche.config.jwt.JwtUtil.generate(authentication));
 	}
 }
