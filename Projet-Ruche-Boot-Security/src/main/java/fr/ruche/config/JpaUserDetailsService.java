@@ -27,7 +27,7 @@ public class JpaUserDetailsService implements UserDetailsService{
 		
 		fr.ruche.model.User user = this.daoUser.findByLogin(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Utilisateur not found"));
-		
+
 		UserBuilder userBuilder = User
 				.withUsername(username)
 				.password(user.getPassword()); //il faut avoir déclaré le passwordEncoder dans le securityConfig !!

@@ -34,11 +34,13 @@ public class JwtHeaderAuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		String header = request.getHeader("Authorization");
+		
+		String token = null;
 
 		if (header != null) {
-			header = header.substring(7);
-		}
-			String username = JwtUtil.getUsername(header).orElseThrow(UserBadRequestException::new);
+			token = header.substring(7);
+			
+			String username = JwtUtil.getUsername(token).orElseThrow(UserBadRequestException::new);
 
 			User user = this.daoUser.findByLogin(username).orElseThrow(UserBadRequestException::new);
 			
@@ -71,7 +73,7 @@ public class JwtHeaderAuthorizationFilter extends OncePerRequestFilter {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 
-
+		}
 		// sans cette méthode, la chaine s'arrete ici 
 		filterChain.doFilter(request, response);
 
