@@ -36,12 +36,12 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http, JwtHeaderAuthorizationFilter jwtFilter) throws Exception{
 		
+//		http.formLogin();
 		http.httpBasic();
 		
 		http.authorizeHttpRequests(authorize -> {
 			//Penser à l'annotation prepost=true
-			authorize.requestMatchers("/api/user/connexion").permitAll();
-			authorize.requestMatchers("/api/user/inscription").permitAll();
+			authorize.requestMatchers("/api/user/**").permitAll();
 			authorize.requestMatchers("/api/**").authenticated();
 		});
 		
@@ -52,7 +52,6 @@ public class SecurityConfig {
 		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
 		return http.build();
 	}
 

@@ -37,6 +37,7 @@ import fr.ruche.model.Recolteur;
 import fr.ruche.model.User;
 import fr.ruche.request.ClientRequest;
 import fr.ruche.request.UserRequest;
+import fr.ruche.response.AuthResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -51,7 +52,7 @@ public class UserApiController {
 	private AuthenticationManager authenticationManager; 
 	
 	@Autowired
-	private PasswordEncoder encoder ; 
+	private PasswordEncoder passwordEncoder ; 
 	
 	//récupérer n'importe quel user par son id 
 	@GetMapping("/{idUser}")
@@ -136,7 +137,7 @@ public class UserApiController {
 	}
 	
 	//ajouter un client
-	@PostMapping("/inscription")
+	@PostMapping("/client")
 	@JsonView(Views.User.class)
 	public User addClient(@RequestBody @Valid ClientRequest clientRequest, BindingResult results) {
 		if (results.hasErrors()) {
@@ -209,12 +210,32 @@ public class UserApiController {
 	
 	
 	//------------ SECURITY ------------
+//	@PostMapping("/connexion")
+//	public boolean seConnecter(@RequestBody UserRequest userRequest) {
+//
+//		this.authenticationManager.authenticate(
+//				   new UsernamePasswordAuthenticationToken(userRequest.getLogin(), userRequest.getPassword())
+//				  );
+//		
+//		return true;
+//	}
+	
 	@PostMapping("/connexion")
-	public fr.ruche.response.AuthResponse seConnecter(@RequestBody UserRequest userRequest) {
+	public AuthResponse seConnecter(@RequestBody UserRequest userRequest) {
+
 		Authentication authentication = this.authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(userRequest.getLogin(), userRequest.getPassword())
 				);
 		
 		return new fr.ruche.response.AuthResponse(true, fr.ruche.config.jwt.JwtUtil.generate(authentication));
 	}
+	
+	@PostMapping("/inscription")
+	 public User inscription(@RequestBody UserRequest userRequest) {
+	  User user = new Client();
+	  
+	  user.setLogin(userRequest.getLogin());
+	  user.setPassword(this.passwordEncoder.encode(userRequest.getPassword()));
+	  
+	  return this.daoUser.save(user);   }
 }
