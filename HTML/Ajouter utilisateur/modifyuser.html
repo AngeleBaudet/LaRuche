@@ -1,0 +1,40 @@
+<head>
+  <link rel="stylesheet" href="styleAdd.css">
+</head>
+<div class="menu" style="float: left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+<body>
+<div class="wrapper">
+  <div id="content">
+
+    <h1><b>Gestion des utilisateurs - Modifier un utilisateur</b></h1>
+    <hr>
+    <div class="addUser">
+      <form class="form-add" action="add.html" method="post">
+        <legend><b>Modifier un utilisateur </b></legend><br>
+        <label for="typecompte">Type Compte :</label>
+
+        <input checked type="radio" name="typecompte" onchange="changeFontWeight(this)"> Apiculteur <input type="radio" name="typecompte" onchange="changeFontWeight(this)"> Gestionnaire <br>
+        <br>
+        <label for="login">Login :</label><br><br>
+        <input required name="login" type="text"><br><br>
+
+        <div class="mdp">
+          <div class="mdp1">
+            <label for="mdp">Mot de passe :</label>
+            <input required name="password" type="password">
+          </div>
+          <div class="mdp1">
+            <label for="mdp">Confirmer le mot de passe :</label>
+            <input class="password" required name="password" type="password"><br><br>
+          </div>
+        </div>
+        <input type="button" class ="btn1" value="Annuler">
+        <input type="button" class ="btn2" type="submit" value="Sauvegarder">
+      </form>
+</div>
+
+
+  </div>
+</div>
+<body>
+<include src="C:\Users\MusscheAllel\Desktop\Linaa\AJC Formation\Projets\RucheHtmlCss\Footer\footer.html"></include>
