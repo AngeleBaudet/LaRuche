@@ -37,7 +37,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http, JwtHeaderAuthorizationFilter jwtFilter) throws Exception{
 		
 //		http.formLogin();
-		http.httpBasic();
+//		http.httpBasic();
 		
 		http.authorizeHttpRequests(authorize -> {
 			//Penser à l'annotation prepost=true
