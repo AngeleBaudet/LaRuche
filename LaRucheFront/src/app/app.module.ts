@@ -6,9 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { GlobalService } from './global.service';
+import { RucheHttpService } from './httpServices/ruche-http.service';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  declarations: [
+    AppComponent, 
+    NavbarComponent, 
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -16,7 +22,10 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    GlobalService,
+    RucheHttpService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
