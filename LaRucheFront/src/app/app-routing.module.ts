@@ -12,7 +12,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations : [ListeRuchesComponent,RucheDetailComponent,AccueilComponent],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

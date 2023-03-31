@@ -8,12 +8,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { GlobalService } from './global.service';
 import { RucheHttpService } from './Ruches/ruche-http.service';
+import { AccueilComponent } from './accueil/accueil.component';
+import { ListeRuchesComponent } from './Ruches/liste-ruches/liste-ruches.component';
+import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     NavbarComponent, 
-    FooterComponent
+    FooterComponent,
+    ListeRuchesComponent,
+    RucheDetailComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
