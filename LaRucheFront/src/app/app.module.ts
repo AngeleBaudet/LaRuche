@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { GlobalService } from './global.service';
-import { RucheHttpService } from './httpServices/ruche-http.service';
+import { RucheHttpService } from './Ruches/ruche-http.service';
 
 @NgModule({
   declarations: [
