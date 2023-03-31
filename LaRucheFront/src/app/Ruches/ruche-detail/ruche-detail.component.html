@@ -21,15 +21,14 @@
             </div>
 
             <div class="mdp">
-              <input name="id" type="number" readonly [(ngModel)]="cetteRuche.id">
-              <input name="cadres" type="number" [(ngModel)]="cetteRuche.cadre" >
-              <select name="recolteur" *ngFor="let ruche of list()">
-                <option value="">{{ruche.id}}</option>
+              <input name="id" type="number" formControlName="id" readonly >
+              <input name="cadre" type="number" formControlName="cadre"  >
+              <select formControlName="recolteur" name="recolteur" >
+                <option *ngFor="let ruche of listRecolteurs()" value="">{{ruche.id}}</option>
                 <option value="">Recolteur - 2</option>
               </select>
               <select name="vulnérabilité" >
-                <option value="">Peste</option>
-                <option value="">Coléra</option>
+                <option *ngFor="let vulnerab of vulnerabilite" >{{vulnerab}}</option>
               </select>
             </div>
             
