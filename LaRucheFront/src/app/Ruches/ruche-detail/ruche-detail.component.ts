@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Ruche, Vulnerabilite } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 
@@ -15,7 +16,7 @@ export class RucheDetailComponent implements OnInit {
   vulnerabilite = Object.values(Vulnerabilite); //me donne aussi les keys???? pourquoi ???
   //La fonctionnalité CORB (Cross-Origin Read Blocking) a bloqué la réponse multi-origine https://fonts.google.com/specimen/Poppins ayant le type MIME text/html. Pour en savoir plus, rendez-vous sur https://www.chromestatus.com/feature/5629709824032768.
   
-  constructor(private formBuilder: FormBuilder, private rucheService: RucheHttpService) {}
+  constructor(private formBuilder: FormBuilder, private rucheService: RucheHttpService, private router: Router) {}
 
   ngOnInit(): void {
     this.rucheForm = this.formBuilder.group({
@@ -34,4 +35,7 @@ export class RucheDetailComponent implements OnInit {
     return this.rucheService.findAll(); //en attendant d'avoir les récolteur :x 
   }
 
+  goToListRuche(){
+    this.router.navigate([ '/ruche']);
+  }
 }
