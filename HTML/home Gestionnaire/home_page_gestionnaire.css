@@ -47,6 +47,7 @@
   align-items: flex-start; /* align items to the top */
   flex-direction: column;
   text-align: left; /* align text to left */
+  flex-grow: 1;
 }
 
 .message_content .top,
@@ -54,8 +55,28 @@
   width : 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* align buttons to right */
+  justify-content: space-between; /* align buttons to right */
+  flex-grow: 1;
+  flex-direction: row;
 }
+.message_content a {
+  font-weight: bold;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  justify-content: center; /* change this line to center align */
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.right{
+  display: flex;
+  justify-content: center; /* change this line to center align */
+  flex-basis: 50%;
+}
+
 .message_content .left {
   margin-right: 10px;
 }
@@ -68,7 +89,7 @@
   width: 20px;
   height: 20px;
 }
-.message_content button {
+button {
   height: 45px;
   border : none;
   border-radius: 20px;
@@ -100,46 +121,26 @@
   align-items: center;
   text-align: center;
 }
-.box {
-	background-color: #F6AE2D;;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-	border-radius: 30px;
-	padding: 20px;
-	width: 60%;
-	height: 30%;
-	float: left;
-  display : flex;
-  justify-content: space-between; /* position the button at the bottom */
-  margin: 10% auto; /* add a margin to the left and right of the box */
-}
 
-.box img {
-	max-width: 100%;
-	height: 100%;
-	display: block;
-  margin: 0 auto;
-}
-
-.button-link {
+.img_box{
   display: inline-block;
   border-radius: 30px;
-  background-color: #33658A;
-  color: #fff;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  background-color: #F6AE2D;
+  margin : 10%;
+  width : 30%;
+  padding: 7%;
 }
 
-.button-link:hover {
-  background-color: #3E8EDE;
+.img_box img {
+  max-width: 100%;
 }
 
 #button_bot {
-  width : 60%;
-  padding: 5% 10%;
+  width : 45%;
 }
 #button_top {
   width : 10%;
-  padding: 1% 8%;
+    padding: 1% 7%;
 }
 
 
