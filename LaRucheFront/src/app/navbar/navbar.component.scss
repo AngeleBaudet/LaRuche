@@ -6,7 +6,7 @@ body
   margin: 0;
   background-color:#ede8ec;
   font-family: 'Glacial Indifference';
-  font-size: 18;
+  font-size: 12; //ça marche pas :( 
 }
 
 #page
@@ -118,3 +118,38 @@ input:checked + .sub > li {
 {
   margin-left:50px;
 }
+
+
+/*Pour changer la couleur des images :) */
+/*
+.linkAccueil:hover .iconesMenu
+{
+  content: url("assets/navbar/home-o.png");
+}
+
+.linkCompte:hover .iconesMenu
+{
+  content: url("assets/navbar/compte-o.png"); 
+}
+
+.linkRuche:hover .iconesMenu
+{
+  content: url("assets/navbar/ruche-o.png.png");
+}
+
+.linkRecoltes:hover .iconesMenu
+{
+  content: url("assets/navbar/miel-o.png");
+}
+
+.linkDeco:hover .iconesMenu
+{
+  content: url("assets/navbar/bee-o.png");
+}
+
+.linkUtilisateurs:hover .iconesMenu
+{
+  content: url("assets/navbar/api-o.png");
+}
+*/
+/*fin de pour changer la couleur des images :) */
