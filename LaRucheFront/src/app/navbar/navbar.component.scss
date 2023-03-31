@@ -1,0 +1,120 @@
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.google.com/specimen/Poppins');
+
+body
+{
+  margin: 0;
+  background-color:#ede8ec;
+  font-family: 'Glacial Indifference';
+  font-size: 18;
+}
+
+#page
+{
+  position:relative;
+  display:flex;
+  height:2500px;
+
+}
+/* permet de faire une div large sur le côté */
+#menu-container
+{
+  background-color:#2b414f;
+  width:18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* contient les infos du menu, avec une marge par rapport à la div menu */
+#menu
+{
+  position:sticky;
+  top:10px;
+  width:95%; /*permet d'éviter que la div déborde du menu-container à cause de la marge*/
+  margin-left:5px;
+  margin:0;
+}
+
+.logo-container
+{
+  margin-top: 30px;
+  width: 60%;
+
+}
+
+#logo
+{
+  width:100%;
+}
+
+#accueil
+{
+  height:500px;
+  width:82%;
+  background-size :100% 100%;
+}
+
+p{
+  padding-top: 10px;
+  color:white;
+  text-align: center;
+}
+
+img {
+  font-family:Arial;
+  color:white;
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+}
+
+li a,label {
+  display: block;
+  padding:0 4px 16px;
+  text-decoration: none;
+  color:white;
+}
+
+li a:hover,label:hover {
+  color:#f58f29;
+}
+
+
+.sub > li {
+  height: 0;
+  overflow: hidden;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none
+}
+
+input:checked + .sub > li {
+  height: 2em;
+}
+
+
+.iconesMenu
+{
+  display: inline-block;
+  width:10%
+}
+
+.alignIconeWithText
+{
+  display: inline-block;
+  vertical-align: center
+}
+
+.sousMenus
+{
+  margin-left:50px;
+}
