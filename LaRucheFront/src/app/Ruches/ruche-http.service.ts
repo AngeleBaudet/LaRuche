@@ -13,7 +13,7 @@ export class RucheHttpService {
   private rucheApiPath: string;
 
   constructor(private http: HttpClient, private globalService: GlobalService) {
-    this.rucheApiPath = globalService.apiPath + "/ruche";
+    this.rucheApiPath = globalService.apiPath + "ruche";
     this.load();
   }
 
