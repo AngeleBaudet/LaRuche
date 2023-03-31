@@ -3,7 +3,7 @@
 @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
 
 h1 {
-  margin-top: 80px; /* Add margin to the top equal to the height of the navigation bar */
+  margin-top: 30px; /* Add margin to the top equal to the height of the navigation bar */
   color: #33658A;
   text-align: left;
   font-family: 'Poppins', sans-serif;
@@ -23,29 +23,12 @@ hr {
   z-index: 1;
 }
 
-
-/* Navigation */
-.menu {
-  position: absolute;
-  top: 0%;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #33658A;
-  padding: 20px;
-  height: 100vh;
-  width: 10%;
-}
-
 /* Body */
-.wrapper {
-  position: relative;
-}
 
 .wrapper {
   margin-left: 180px; /* Set the left margin equal to the width of the navigation bar */
   padding: 20px;
+  position: relative;
 }
 
 body {
@@ -53,10 +36,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  height: 100vh;
+  padding-bottom: 50px;
+  height: 95vh;
   margin: 0;
 }
+
+
 /* Form */
 
 .form-add {
@@ -68,34 +53,40 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: auto;
-  width: auto;
   margin-bottom: -12rem;
   padding: 35px;
   padding-top: 25px;
   padding-bottom: 10px;
   border-radius: 30px;
   font-family: 'Glacial Indifference', sans-serif;
+  display: grid;
+  width: 50%;
 }
 
 .form-add input, label {
   margin-bottom: 15px;
-  flex-basis: auto;
-}
+  }
 
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type="number"]
+ {
+  text-align: center;
   border: 1px solid #2B414F;
   border-radius: 40px;
   background-color: #EDE8EC;
   height: 25px;
-  width: 150px;
-
+  width: 250px;
 }
 
-
-input[type="radio"]:checked + label{
-  font-weight: bold;
+select{
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid #2B414F;
+  border-radius: 40px;
+  background-color: #EDE8EC;
+  height: 27px;
+  width: 255px;
 }
 
 .form-add legend {
@@ -106,31 +97,21 @@ input[type="radio"]:checked + label{
   margin-bottom: 10px;
 }
 
-
-label[for="login"]{
-  width: 150px;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  margin-right: 10px;
-}
-
-/* Mdp */
+/* organisation du formulaire : */
+.myForm{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ }
 
 .mdp{
   display: flex;
-  flex-flow: row wrap;
-  align-items: left;
-  gap: 20px;
-}
-
-.mdp label {
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  font-size: 15px;
-}
+  justify-content: space-between;
+  }
 
+
+  /* style des boutons: */
 .btn1, .btn2 {
   background-color: #33658A;
   font-size: 16px;
@@ -140,6 +121,7 @@ label[for="login"]{
   text-align: center;
   padding: 10px 25px;
   border-radius: 16px;
+  margin-top: 20px;
 }
 
 .btn2 {

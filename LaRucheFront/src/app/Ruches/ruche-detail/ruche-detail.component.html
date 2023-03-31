@@ -1,38 +1,49 @@
 
-  <div class="menu" style="float: left"></div>
-  <body>
+<body>
+  
   <div class="wrapper">
-    <div id="content">
-  
-      <h1><b>Gestion des utilisateurs - Ajouter un utilisateur</b></h1>
+    
+      <h1><b>Gestion des ruches - Ajouter une ruche</b></h1>
       <hr>
-      <div class="addUser">
-        <form class="form-add" action="add.html" method="post">
-          <legend><b>Ajouter un utilisateur </b></legend><br>
-          <label for="typecompte">Type Compte :</label>
-  
-          <input checked type="radio" name="typecompte" onchange="changeFontWeight(this)"> Apiculteur <input type="radio" name="typecompte" onchange="changeFontWeight(this)"> Gestionnaire <br>
-          <br>
-          <label for="login">Login :</label><br><br>
-          <input required name="login" type="text"><br><br>
-  
-          <div class="mdp">
-            <div class="mdp1">
-              <label for="mdp">Mot de passe :</label>
-              <input required name="password" type="password">
+      
+        <form class="form-add" [formGroup]="rucheForm" (ngSubmit)="submit()">
+
+          
+          <legend><b>Ajouter une ruche </b></legend><br>
+
+          <div class="myForm">
+          
+            <div class="mdp">
+              <label >Identifiant : </label>
+              <label >Nombre de cadres : </label>
+              <label >Récolteur :</label>
+              <label >Vulnérabilité :</label>
             </div>
-            <div class="mdp1">
-              <label for="mdp">Confirmer le mot de passe :</label>
-              <input class="password" required name="password" type="password"><br><br>
+
+            <div class="mdp">
+              <input name="id" type="number" readonly [(ngModel)]="cetteRuche.id">
+              <input name="cadres" type="number" [(ngModel)]="cetteRuche.cadre" >
+              <select name="recolteur" *ngFor="let ruche of list()">
+                <option value="">{{ruche.id}}</option>
+                <option value="">Recolteur - 2</option>
+              </select>
+              <select name="vulnérabilité" >
+                <option value="">Peste</option>
+                <option value="">Coléra</option>
+              </select>
             </div>
+            
+
+            <input type="button" class ="btn1" value="Annuler">
+            <input type="button" class ="btn2" type="submit" value="Sauvegarder">
+            
           </div>
-          <input type="button" class ="btn1" value="Annuler">
-          <input type="button" class ="btn2" type="submit" value="Sauvegarder">
+          
+
+
         </form>
-  </div>
-  
-  
-    </div>
-  </div>
-  <body>
-  
+      </div>
+
+    
+
+</body>
