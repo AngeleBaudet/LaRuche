@@ -1,1 +1,38 @@
-<p>ruche-detail works!</p>
+
+  <div class="menu" style="float: left"></div>
+  <body>
+  <div class="wrapper">
+    <div id="content">
+  
+      <h1><b>Gestion des utilisateurs - Ajouter un utilisateur</b></h1>
+      <hr>
+      <div class="addUser">
+        <form class="form-add" action="add.html" method="post">
+          <legend><b>Ajouter un utilisateur </b></legend><br>
+          <label for="typecompte">Type Compte :</label>
+  
+          <input checked type="radio" name="typecompte" onchange="changeFontWeight(this)"> Apiculteur <input type="radio" name="typecompte" onchange="changeFontWeight(this)"> Gestionnaire <br>
+          <br>
+          <label for="login">Login :</label><br><br>
+          <input required name="login" type="text"><br><br>
+  
+          <div class="mdp">
+            <div class="mdp1">
+              <label for="mdp">Mot de passe :</label>
+              <input required name="password" type="password">
+            </div>
+            <div class="mdp1">
+              <label for="mdp">Confirmer le mot de passe :</label>
+              <input class="password" required name="password" type="password"><br><br>
+            </div>
+          </div>
+          <input type="button" class ="btn1" value="Annuler">
+          <input type="button" class ="btn2" type="submit" value="Sauvegarder">
+        </form>
+  </div>
+  
+  
+    </div>
+  </div>
+  <body>
+  
