@@ -19,13 +19,16 @@ export class RucheDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.rucheForm = this.formBuilder.group({
-      id: this.formBuilder.control('', [Validators.required]),
+      id: this.formBuilder.control(''),
       cadre: this.formBuilder.control('', Validators.required),
-      recolteur: this.formBuilder.control('', Validators.required)
+      recolteur: this.formBuilder.control('')
     });
   }
 
-  submit(){}
+  submit(){
+    this.rucheForm.get('id').setValue(1);
+    this.rucheForm.get('cadre').setValue(2);
+  }
 
   listRecolteurs(){
     return this.rucheService.findAll(); //en attendant d'avoir les récolteur :x 

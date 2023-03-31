@@ -3,43 +3,52 @@
   
   <div class="wrapper">
     
-      <h1><b>Gestion des ruches - Ajouter une ruche</b></h1>
+      <h1><b>Gestion des ruches</b></h1>
       <hr>
       
         <form class="form-add" [formGroup]="rucheForm" (ngSubmit)="submit()">
 
+         
+          <legend *ngIf="!rucheForm.get('id').value else sinon"><b>Ajouter une ruche </b></legend><br>
+          <ng-template #sinon><legend> <b> Modifier la ruche n° {{rucheForm.get('id').value}} </b></legend></ng-template>
           
-          <legend><b>Ajouter une ruche </b></legend><br>
+          <div class="verifs">
+            <span *ngIf="rucheForm.get('cadre').dirty && rucheForm.get('cadre')?.hasError('required')" class="text-danger">
+              Le nombre de cadres est obligatoire.
+            </span>
+          </div>
 
           <div class="myForm">
           
-            <div class="mdp">
-              <label >Identifiant : </label>
-              <label >Nombre de cadres : </label>
-              <label >Récolteur :</label>
-              <label >Vulnérabilité :</label>
+            <div class="mdp">            
+              <label >Nombre de cadres : </label>              
+              <label >Vulnérabilité :</label>     
+              <label >Récolteur :</label>         
             </div>
 
             <div class="mdp">
-              <input name="id" type="number" formControlName="id" readonly >
-              <input name="cadre" type="number" formControlName="cadre"  >
-              <select formControlName="recolteur" name="recolteur" >
-                <option *ngFor="let ruche of listRecolteurs()" value="">{{ruche.id}}</option>
-                <option value="">Recolteur - 2</option>
-              </select>
+              <input name="cadre" type="number" formControlName="cadre" [value]="rucheForm.get('cadre').value" >
+              
               <select name="vulnérabilité" >
                 <option *ngFor="let vulnerab of vulnerabilite" >{{vulnerab}}</option>
               </select>
+
+              <select formControlName="recolteur" name="recolteur" >
+                <option *ngFor="let ruche of listRecolteurs()" value="">{{ruche.id}}</option>
+                <option value="">Recolteur - 2</option>
+              </select>              
+        
             </div>
+            
             
 
             <input type="button" class ="btn1" value="Annuler">
-            <input type="button" class ="btn2" type="submit" value="Sauvegarder">
+            <input type="button" class ="btn2" type="submit" value="Sauvegarder" [disabled]="rucheForm.invalid" >
+            
             
           </div>
           
-
-
+          
         </form>
       </div>
 

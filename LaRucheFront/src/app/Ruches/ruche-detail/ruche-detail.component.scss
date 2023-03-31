@@ -97,6 +97,16 @@ select{
   margin-bottom: 10px;
 }
 
+.text-danger{
+  color: #F58F29;
+}
+
+.verifs{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
 /* organisation du formulaire : */
 .myForm{
   display: flex;
@@ -128,7 +138,7 @@ select{
   background-color: #F58F29;
 }
 
-.btn1:hover, .btn2:hover{
+.btn1:hover, .btn2:hover:not([disabled]){
   background-color: #33658A;
   font-size: 16px;
   font-weight: bold;
@@ -138,4 +148,10 @@ select{
   text-align: center;
   padding: 10px 25px;
   border-radius: 16px;
+  cursor: pointer;
+}
+
+.btn2[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
