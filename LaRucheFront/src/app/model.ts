@@ -28,8 +28,63 @@ export class Ruche {
   limite: boolean;
   vulnerabilité: Vulnerabilite;
   recolteur: Recolteur;
+  production: Array<Production>;
+
+  constructor(
+    id?: number,
+    cadre?: number,
+    limite?: boolean,
+    vulnerabilite?: Vulnerabilite,
+    recolteur?: Recolteur,
+    production?: Array<Production>
+  ) {
+    this.id = id;
+    this.cadre = cadre;
+    this.limite = limite;
+    this.vulnerabilité = vulnerabilite;
+    this.recolteur = recolteur;
+    this.production = production;
+  }
 }
 
-export enum Vulnerabilite {}
+export class Production {
+  id: number;
+  stock: number;
+  annee: Date;
+  ruche: Ruche;
+  prixKg: number;
+  produit: Produit;
+  recolteur: Recolteur;
 
-export class Production {}
+  constructor(
+    id?: number,
+    stock?: number,
+    annee?: Date,
+    ruche?: Ruche,
+    prixKg?: number,
+    produit?: Produit,
+    recolteur?: Recolteur
+  ) {
+    this.id = id;
+    this.annee = annee;
+    this.stock = stock;
+    this.ruche = ruche;
+    this.prixKg = prixKg;
+    this.produit = produit;
+    this.recolteur = recolteur;
+  }
+}
+
+export enum Vulnerabilite {
+  Parasites,
+  Pesticides,
+  Predateurs,
+  Loques,
+}
+
+export enum Produit {
+  Miel,
+  Pollen,
+  Cire,
+  Gelee_Royale,
+}
