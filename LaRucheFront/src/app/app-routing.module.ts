@@ -7,7 +7,9 @@ import { AccueilComponent } from './accueil/accueil.component';
 const routes: Routes = [
   {path: "ruche", component: ListeRuchesComponent},
   {path: "accueil", component: AccueilComponent},
-  {path: "ruche/ma-ruche", component: RucheDetailComponent},
+  {path: "gestionnaire/ruche/ma-ruche", component: RucheDetailComponent},
+  {path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent },
+
 
 ];
 

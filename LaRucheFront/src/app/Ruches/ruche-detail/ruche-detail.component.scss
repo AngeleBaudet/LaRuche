@@ -1,6 +1,8 @@
-/* Police */
+/* Police 
 @import url('https://fonts.google.com/specimen/Poppins');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');*/
+  //La fonctionnalité CORB (Cross-Origin Read Blocking) a bloqué la réponse multi-origine https://fonts.google.com/specimen/Poppins ayant le type MIME text/html. Pour en savoir plus, rendez-vous sur https://www.chromestatus.com/feature/5629709824032768.
+
 
 h1 {
   margin-top: 30px; /* Add margin to the top equal to the height of the navigation bar */
@@ -88,6 +90,8 @@ select{
   height: 27px;
   width: 255px;
 }
+
+
 
 .form-add legend {
   color: #2B414F ;

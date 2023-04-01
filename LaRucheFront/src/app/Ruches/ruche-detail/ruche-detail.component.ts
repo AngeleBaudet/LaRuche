@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Ruche, Vulnerabilite } from 'src/app/model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recolteur, Ruche, Vulnerabilite } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 
 @Component({
@@ -9,30 +9,57 @@ import { RucheHttpService } from '../ruche-http.service';
   templateUrl: './ruche-detail.component.html',
   styleUrls: ['./ruche-detail.component.scss']
 })
-export class RucheDetailComponent implements OnInit {
-  
-  cetteRuche : Ruche = new Ruche();
-  rucheForm: FormGroup;
-  vulnerabilite = Object.values(Vulnerabilite); //me donne aussi les keys???? pourquoi ???
-  //La fonctionnalité CORB (Cross-Origin Read Blocking) a bloqué la réponse multi-origine https://fonts.google.com/specimen/Poppins ayant le type MIME text/html. Pour en savoir plus, rendez-vous sur https://www.chromestatus.com/feature/5629709824032768.
-  
-  constructor(private formBuilder: FormBuilder, private rucheService: RucheHttpService, private router: Router) {}
+export class RucheDetailComponent {
 
-  ngOnInit(): void {
+  rucheForm: FormGroup;
+  vulnerabilite = Object.values(Vulnerabilite).filter(value => isNaN(Number(value)));
+  /* Obligé de mettre le isNaN filtre car sinon il me retourne  
+  [   0,  1,  2,  3, "Parasites",  "Pesticides",  "Predateurs",  "Loques"] 
+  et pas [  "Parasites",  "Pesticides",  "Predateurs",  "Loques"]
+  j'ai testé Object.values(Vulnerabilite) et Object.keys(Vulnerabilite); 
+  ça ne fait que changer l'ordre des nb vs string dans le tableau
+  */
+
+  //en attendant les userService 
+  listRecolteur: Array<Recolteur> = new Array<Recolteur>;
+
+  constructor(private formBuilder: FormBuilder, 
+    private rucheService: RucheHttpService, 
+    private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
+    private routes: ActivatedRoute) // pour récupérer le param //[routerLink]="['/ruche/ma-ruche']" 
+    {
+    
+    //en attendant les userService 
+    this.listRecolteur.push(new Recolteur(1, "Huguette", "azerty"));
+    this.listRecolteur.push(new Recolteur(2, "GeorgeRecolte", "recolteur"));
+
+    //création du reactive form + validation 
     this.rucheForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
       cadre: this.formBuilder.control('', Validators.required),
-      recolteur: this.formBuilder.control('')
+      recolteur: this.formBuilder.control('', Validators.required),
+      vulnerabilite: this.formBuilder.control('')
     });
+
+    //pré-remplissage si on reçoit un paramètre
+    this.routes.params.subscribe(params => { 
+      this.rucheForm.patchValue({        
+        id: params['id'],
+        cadre: 1000,
+        vulnerabilite: Vulnerabilite[Vulnerabilite.Loques],
+        recolteur: this.listRecolteur[0]
+      })
+    })
   }
+  
 
   submit(){
-    this.rucheForm.get('id').setValue(1);
-    this.rucheForm.get('cadre').setValue(2);
-  }
+    
+    }
+
 
   listRecolteurs(){
-    return this.rucheService.findAll(); //en attendant d'avoir les récolteur :x 
+    return this.listRecolteur; //en attendant d'avoir le userService 
   }
 
   goToListRuche(){

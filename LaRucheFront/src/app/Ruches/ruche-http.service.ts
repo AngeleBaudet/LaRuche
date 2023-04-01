@@ -30,6 +30,13 @@ export class RucheHttpService {
       this.load();
     });
   }
+ 
+  /*exemple requete correcte : {
+    "cadre": 5,
+    "limite": false,
+    "vulnerabilite": "Pesticides",
+    "recolteurId": 1
+  }*/
 
   update(ruche: Ruche): void {
     this.http.put<Ruche>(this.rucheApiPath + "/" +  ruche.id, ruche).subscribe(resp => {

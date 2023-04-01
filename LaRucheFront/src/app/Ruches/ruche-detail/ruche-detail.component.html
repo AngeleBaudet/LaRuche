@@ -1,4 +1,6 @@
-
+<!-- A ajouter dans les pages nécéssaires pour récupérer la route : 
+  <a [routerLink]="['/ruche/ma-ruche']" routerLinkActive="active">Add/mod</a>
+-->
 <body>
   
   <div class="wrapper">
@@ -29,13 +31,15 @@
             <div class="mdp">
               <input name="cadre" type="number" formControlName="cadre" [value]="rucheForm.get('cadre').value" >
               
-              <select name="vulnérabilité" >
-                <option *ngFor="let vulnerab of vulnerabilite" >{{vulnerab}}</option>
+              <select formControlName="vulnerabilite">
+                <option disabled selected value="">Sélectionner une vulnérabilité</option>
+                <option [value]="null"> Pas de vulnérabilité </option>
+                <option *ngFor="let vulnerab of vulnerabilite" [value]="vulnerab">{{vulnerab}}</option>
               </select>
 
-              <select formControlName="recolteur" name="recolteur" >
-                <option *ngFor="let ruche of listRecolteurs()" value="">{{ruche.id}}</option>
-                <option value="">Recolteur - 2</option>
+              <select formControlName="recolteur">
+                <option disabled selected value="">Sélectionner un récolteur</option>
+                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur">{{recolteur.id}} - {{recolteur.login}}</option>              
               </select>              
         
             </div>
