@@ -53,9 +53,23 @@ export class RucheDetailComponent {
   }
   
 
+formValue: Ruche ; 
+
   submit(){
-    
+    this.formValue = this.rucheForm.value;
+    if(this.formValue.id) {
+      this.rucheService.update(this.formValue);
+    } else {
+      this.rucheService.create(this.formValue);
     }
+
+    this.cancel();
+  }
+
+  cancel(): void {
+    this.formValue = null;
+  }
+  
 
 
   listRecolteurs(){

@@ -26,7 +26,7 @@ export class Ruche {
   id: number;
   cadre: number;
   limite: boolean;
-  vulnerabilité: Vulnerabilite;
+  vulnerabilite: Vulnerabilite;
   recolteur: Recolteur;
   production: Array<Production>;
 
@@ -41,7 +41,7 @@ export class Ruche {
     this.id = id;
     this.cadre = cadre;
     this.limite = limite;
-    this.vulnerabilité = vulnerabilite;
+    this.vulnerabilite = vulnerabilite;
     this.recolteur = recolteur;
     this.production = production;
   }
