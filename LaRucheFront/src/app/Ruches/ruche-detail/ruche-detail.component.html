@@ -39,7 +39,7 @@
 
               <select formControlName="recolteur">
                 <option disabled selected value="">Sélectionner un récolteur</option>
-                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur">{{recolteur.id}} - {{recolteur.login}}</option>              
+                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur.id">{{recolteur.id}} - {{recolteur.login}}</option>              
               </select>              
         
             </div>

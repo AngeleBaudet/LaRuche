@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Ruche } from '../model';
+import { Ruche, RucheRequest } from '../model';
 import { GlobalService } from '../global.service';
 
 @Injectable({
@@ -25,8 +25,8 @@ export class RucheHttpService {
     return this.http.get<Ruche>(this.rucheApiPath + "/" + id);
   }
 
-  create(ruche: Ruche): void {
-    this.http.post<Ruche>(this.rucheApiPath, ruche).subscribe(resp => {
+  create(ruche: RucheRequest): void {
+    this.http.post<RucheRequest>(this.rucheApiPath, ruche).subscribe(resp => {
       this.load();
     });
   }
@@ -38,8 +38,8 @@ export class RucheHttpService {
     "recolteurId": 1
   }*/
 
-  update(ruche: Ruche): void {
-    this.http.put<Ruche>(this.rucheApiPath + "/" +  ruche.id, ruche).subscribe(resp => {
+  update(ruche: RucheRequest): void {
+    this.http.put<RucheRequest>(this.rucheApiPath + "/" +  ruche.id, ruche).subscribe(resp => {
       this.load();
     });
   }

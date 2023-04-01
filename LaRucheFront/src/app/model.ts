@@ -47,6 +47,22 @@ export class Ruche {
   }
 }
 
+export class RucheRequest {
+  id: number;
+  cadre: number;
+  limite: boolean;
+  vulnerabilite: Vulnerabilite;
+  recolteurId: number;
+
+  constructor(id:number, cadre: number, limite: boolean, vulnerabilite: Vulnerabilite, recolteurId: number){
+    this.id = id;
+    this.cadre = cadre;
+    this.limite = limite;
+    this.vulnerabilite = vulnerabilite;
+    this.recolteurId = recolteurId;
+  }
+}
+
 export class Production {
   id: number;
   stock: number;
