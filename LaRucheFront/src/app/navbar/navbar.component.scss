@@ -83,10 +83,11 @@ ul {
 }
 
 li a,label {
-  display: block;
+  display: inline-block;
   padding:0 4px 16px;
   text-decoration: none;
   color:white;
+  vertical-align: middle;
 }
 
 li a:hover,label:hover {
@@ -118,7 +119,7 @@ input:checked + .sub > li {
 .alignIconeWithText
 {
   display: inline-block;
-  vertical-align: center
+  vertical-align: center;
 }
 
 .sousMenus
@@ -126,37 +127,8 @@ input:checked + .sub > li {
   margin-left:50px;
 }
 
-
-/*Pour changer la couleur des images :) */
-/*
-.linkAccueil:hover .iconesMenu
-{
-  content: url("assets/navbar/home-o.png");
+.nav-element{
+  
+  flex-wrap: align-items;
 }
 
-.linkCompte:hover .iconesMenu
-{
-  content: url("assets/navbar/compte-o.png"); 
-}
-
-.linkRuche:hover .iconesMenu
-{
-  content: url("assets/navbar/ruche-o.png.png");
-}
-
-.linkRecoltes:hover .iconesMenu
-{
-  content: url("assets/navbar/miel-o.png");
-}
-
-.linkDeco:hover .iconesMenu
-{
-  content: url("assets/navbar/bee-o.png");
-}
-
-.linkUtilisateurs:hover .iconesMenu
-{
-  content: url("assets/navbar/api-o.png");
-}
-*/
-/*fin de pour changer la couleur des images :) */

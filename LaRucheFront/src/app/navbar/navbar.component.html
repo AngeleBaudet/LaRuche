@@ -22,23 +22,28 @@
   
   
             <ul>
-  
+           <div class="nav-element" (mouseenter)="sourisA=true" (mouseleave)="sourisA=false">
               <li class="linkAccueil">
-                <img src="assets/navbar/home-b.png" alt="logo" class="iconesMenu">
+                <img src="assets/navbar/home-b.png" alt="logo" class="iconesMenu" *ngIf="sourisA==false">
+                <img src="assets/navbar/home-o.png" alt="logo" class="iconesMenu" *ngIf="sourisA==true">
                 <a href="#" class="alignIconeWithText">Accueil</a>
               </li>
+            </div>
   
+            <div class="nav-element" (mouseenter)="sourisB=true" (mouseleave)="sourisB=false">
               <li class="linkCompte">
-                <img src="assets/navbar/compte-b.png" alt="logo" class="iconesMenu">
+                <img src="assets/navbar/compte-b.png" alt="logo" class="iconesMenu" *ngIf="sourisB==false">
+                <img src="assets/navbar/compte-o.png" alt="logo" class="iconesMenu" *ngIf="sourisB==true">
                 <a href="#" class="alignIconeWithText">Mon compte</a>
               </li>
+            </div>
   
-  
-  
+            <div class="nav-element" (mouseenter)="sourisC=true" (mouseleave)="sourisC=false">
               <li class="linkRuche">
                 <ul class="accordion">
                   <li class="has-sub">
-                    <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu">
+                    <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu" *ngIf="sourisC==false">
+                    <img src="assets/navbar/ruche-o.png" alt="logo" class="iconesMenu" *ngIf="sourisC==true">
                     <label for="menu1" class="alignIconeWithText">Mes ruches &#x25BE;</label>
                     <a [routerLink]="['/ruche/ma-ruche']" routerLinkActive="active">Add/mod</a>
 
@@ -52,20 +57,24 @@
                 </ul>
   
               </li>
+            </div>
   
-  
+            <div class="nav-element" (mouseenter)="sourisD=true" (mouseleave)="sourisD=false">
               <li class="linkRecoltes">
-                <img src="assets/navbar/miel-b.png" alt="logo" class="iconesMenu">
+                <img src="assets/navbar/miel-b.png" alt="logo" class="iconesMenu" *ngIf="sourisD==false">
+                <img src="assets/navbar/miel-o.png" alt="logo" class="iconesMenu" *ngIf="sourisD==true">
                 <a href="#" class="alignIconeWithText">Les récoltes</a>
               </li>
+            </div>
   
-  
+            <div class="nav-element" (mouseenter)="sourisE=true" (mouseleave)="sourisE=false">
               <li class="linkUtilisateurs">
   
                 <ul class="accordion">
   
                   <li class="has-sub">
-                    <img src="assets/navbar/api-b.png" alt="logo" class="iconesMenu">
+                    <img src="assets/navbar/api-b.png" alt="logo" class="iconesMenu" *ngIf="sourisE==false">
+                    <img src="assets/navbar/api-o.png" alt="logo" class="iconesMenu" *ngIf="sourisE==true">
                     <label for="menu2" class="alignIconeWithText">Gestion des utilisateurs &#x25BE;</label>
                     <input id="menu2" type="checkbox" />
                     <ul class="sub">
@@ -75,13 +84,17 @@
                     </li>
                   </ul>
                 </li>
-  
+  </div>
+  <div class="nav-element" (mouseenter)="sourisF=true" (mouseleave)="sourisF=false">  
                 <li class="linkDeco">
-                  <img src="assets/navbar/bee-b.png" alt="logo" class="iconesMenu">
+                  <img src="assets/navbar/bee-b.png" alt="logo" class="iconesMenu" *ngIf="sourisF==false">
+                  <img src="assets/navbar/bee-o.png" alt="logo" class="iconesMenu" *ngIf="sourisF==true">
                   <a href="#" class="alignIconeWithText">Déconnexion</a>
                 </li>
-  
+              </div>
               </ul>
+
+
             </nav>
   
           </div>
