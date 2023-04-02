@@ -5,9 +5,10 @@ import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.compone
 import { AccueilComponent } from './accueil/accueil.component';
 
 const routes: Routes = [
+  {path: "accueil", component: AccueilComponent,pathMatch:"full"},
   {path: "gestionnaire/ruche", component: ListeRuchesComponent},
-  {path: "accueil", component: AccueilComponent},
   {path: "gestionnaire/ruche/ma-ruche", component: RucheDetailComponent},
+  {path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent }
 ];
 
 @NgModule({

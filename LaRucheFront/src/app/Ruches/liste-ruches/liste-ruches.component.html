@@ -1,61 +1,44 @@
 <html>
 <head>
-  <title>Liste Recolteurs Gestionnaire</title>
+  <title>Liste Ruches Gestionnaire</title>
 </head>
 <body>
-  <div class="menu" style="float: left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+  <div class="menu" style="float: left">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum quo natus odio vero, necessitatibus quibusdam. Ducimus architecto odio saepe, eius mollitia beatae minus provident aspernatur quis nemo officiis, similique voluptatem.</div>
   <div class="wrapper">
     <div class="RightBlock">
       <div id="tableau-container">
-        <h1>Mes récolteurs</h1>
+        <h1>Mes ruches</h1>
         <hr size="2" color=#f6ae2d width="100%"><br>
         <table>
           <thead>
             <tr>
-              <th>Récolteur id</th>
-              <th>Login</th>
-              <th>Password</th>
+              <th width="20%">Alerte</th>
               <th>Ruche id</th>
+              <th>Nombre de cadres</th>
+              <th>Récolteur id</th>
+              <th>Vulnérabilité</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFort="let recolteur of listeR()">
-              <td>{{recolteur.id}}</td>
-              <td>{{recolteur.login}}</td>
-              <td>test</td>
-              <td>Ruche 1</td>
+            <tr *ngFor="let ruche of listR()">
+              <td><span *ngIf="ruche.vulnerabilite else sinon"><img src="assets/listeRuche/alerte.png" alt="logo" width="15%"></span><ng-template #sinon><span></span></ng-template></td>
+              <td>{{ruche.id}}</td>
+              <td>{{ruche.cadre}}</td>
+              <td>{{ruche.recolteur?.id}}</td>
+              <td>{{ruche.vulnerabilite}}</td>
               <td>
                 <button class="edit-btn">Modifier</button>
-                <button class="delete-btn">Supprimer</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Récolteur 2</td>
-              <td>recolteurr</td>
-              <td>recolteurr</td>
-              <td>Ruche 2 / Ruche 4</td>
-              <td>
-                <button class="edit-btn">Modifier</button>
-                <button class="delete-btn">Supprimer</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Récolteur 6</td>
-              <td>rec2</td>
-              <td>rec2</td>
-              <td></td>
-              <td>
-                <button class="edit-btn">Modifier</button>
-                <button class="delete-btn">Supprimer</button>
+                <button (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
               </td>
             </tr>
           </tbody>
         </table>
-          <button class="add-btn">Ajouter un récolteur</button>
+          <button class="add-btn">Ajouter une ruche</button>
       </div>
     </div>
   </div>
+  <footer></footer>
 </body>
 </html>
 
