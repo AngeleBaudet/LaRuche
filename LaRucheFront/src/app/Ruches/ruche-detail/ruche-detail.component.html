@@ -11,7 +11,7 @@
         <form class="form-add" [formGroup]="rucheForm" (ngSubmit)="submit()">
 
          
-          <legend *ngIf="!rucheForm.get('id').value else sinon"><b>Ajouter une ruche </b></legend><br>
+          <legend *ngIf="!formValue.id else sinon"><b>Ajouter une ruche </b></legend><br>
           <ng-template #sinon><legend> <b> Modifier la ruche n° {{rucheForm.get('id').value}} </b></legend></ng-template>
           
           <div class="verifs">
@@ -37,9 +37,9 @@
                 <option *ngFor="let vulnerab of vulnerabilite" [value]="vulnerab">{{vulnerab}}</option>
               </select>
 
-              <select formControlName="recolteur">
+              <select formControlName="recolteurId">
                 <option disabled selected value="">Sélectionner un récolteur</option>
-                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur.id">{{recolteur.id}} - {{recolteur.login}}</option>              
+                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur.id">Récolteur n°{{recolteur.id}} ({{recolteur.login}})</option>              
               </select>              
         
             </div>

@@ -10,10 +10,11 @@ import { RucheHttpService } from '../ruche-http.service';
   styleUrls: ['./ruche-detail.component.scss']
 })
 export class RucheDetailComponent {
+  //[routerLink]="['gestionnaire/ruche/ma-ruche']" 
 
-  formValue: RucheRequest;
-  id: string;
   rucheForm: FormGroup;
+  formValue: RucheRequest = new RucheRequest(); //initialiser sinon le html se perd
+
   vulnerabilite = Object.values(Vulnerabilite).filter(value => isNaN(Number(value)));
   /* Obligé de mettre le isNaN filtre car sinon il me retourne  
   [   0,  1,  2,  3, "Parasites",  "Pesticides",  "Predateurs",  "Loques"] 
@@ -25,76 +26,79 @@ export class RucheDetailComponent {
   //en attendant les userService 
   listRecolteur: Array<Recolteur> = new Array<Recolteur>;
 
+  
   constructor(private formBuilder: FormBuilder, 
     private rucheService: RucheHttpService, 
     private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
-    private routes: ActivatedRoute) // pour récupérer le param //[routerLink]="['/ruche/ma-ruche']" 
+    private routes: ActivatedRoute) // pour récupérer le param 
     {
     
     //en attendant les userService 
     this.listRecolteur.push(new Recolteur(1, "Huguette", "azerty"));
     this.listRecolteur.push(new Recolteur(2, "GeorgeRecolte", "recolteur"));
 
+    //création du reactive form (+validation)
+    this.rucheForm = this.formBuilder.group({
+      id: this.formBuilder.control(''),
+      cadre: this.formBuilder.control('', Validators.required),
+      recolteurId: this.formBuilder.control('', Validators.required),
+      vulnerabilite: this.formBuilder.control('')
+              
+    })
 
-    //création du reactive form + validation et pré-remplissage selon si un param est présent 
-    //attention à récupérer la bonne ruche
+    //pré-remplissage selon si un param est présent (sans le if, il confond les 2 routes)
     this.routes.params.subscribe(params => {
-      this.id = params['id']
-
-      if(this.id){
-        this.formValue = new RucheRequest(1,2,false, Vulnerabilite.Parasites, 1); 
-        this.rucheForm = this.formBuilder.group({
-
-          id: this.formBuilder.control(this.formValue.id),
-          cadre: this.formBuilder.control(this.formValue.cadre, Validators.required),
-          recolteur: this.formBuilder.control(this.formValue.recolteurId, Validators.required),
-          vulnerabilite: this.formBuilder.control(Vulnerabilite[this.formValue.vulnerabilite])
-          
-        });        
-      }
-      else{
-        this.rucheForm = this.formBuilder.group({
-
-          id: this.formBuilder.control(''),
-          cadre: this.formBuilder.control('', Validators.required),
-          recolteur: this.formBuilder.control('', Validators.required),
-          vulnerabilite: this.formBuilder.control('')
-          
-        });
+      if(params['id']){
+        this.edit(params['id']);
       }
     })
   }
+
   
   submit(){
-   this.formValue = this.rucheForm.value;
-   // this.formValue = new RucheRequest(this.rucheForm.get('id').value, this.rucheForm.get('cadre').value, false, this.rucheForm.get('vulnerabilite').value, this.rucheForm.get('recolteur').value.id);
-    if(this.formValue.id) {
+    this.formValue = this.rucheForm.value;
+   
+   //on vérifie si le champs du ReactiveForm égale null pour éviter les mauvaises post requests
+    if(this.rucheForm.get('vulnerabilite').value === 'null'){
+      this.formValue.vulnerabilite = null;
+    }
+    
+    if(this.formValue.id) {      
       this.rucheService.update(this.formValue);
+      this.router.navigate([ 'gestionnaire/ruche'])
     } else {
       this.rucheService.create(this.formValue);
+      this.router.navigate([ 'gestionnaire/ruche'])
     }
-    console.log(this.formValue)
-    console.log(this.rucheForm.value)
-    /*
-    problème : ça renvoit un recolteur:"1" au lieu d'un recolteurId : 1 
-    => probablement lié au fait que dans html on a value=recolteur.id 
-    mais comment faire du coup ? 
-    */
     this.cancel();
   }
 
   cancel(): void {
-    this.formValue = null;
+    this.formValue = new RucheRequest();
   }
-  
 
+  edit(id: number): void {
+    this.rucheService.findById(id).subscribe(resp => {
+      this.formValue = new RucheRequest(resp.id, resp.cadre,resp.limite,resp.vulnerabilite,resp.recolteur.id);
+
+      this.rucheForm = this.formBuilder.group({
+
+        id: this.formBuilder.control(this.formValue.id),
+        cadre: this.formBuilder.control(this.formValue.cadre, Validators.required),
+        recolteurId: this.formBuilder.control(this.formValue.recolteurId, Validators.required),
+        vulnerabilite: this.formBuilder.control(this.formValue.vulnerabilite)
+        
+      });   
+    });
+  }
 
   listRecolteurs(){
-    return this.listRecolteur; //en attendant d'avoir le userService 
+    return this.listRecolteur; //this.listRecolteur en attendant d'avoir le userService 
   }
 
   goToListRuche(){
     this.router.navigate([ 'gestionnaire/ruche']);
   }
+
 
 }
