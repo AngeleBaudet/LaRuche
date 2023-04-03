@@ -1,4 +1,25 @@
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-<navbar *ngIf="connectedUser"></navbar>
-<accueil></accueil>
+<body>
+    
+<div id="page" class="page">
+
+    <div id="router">
+        <router-outlet class="router"></router-outlet>
+    </div>
+
+    <div *ngIf="connectedUser" id="navbar">
+        <navbar  ></navbar>
+    </div>
+
+</div>
+
+
+<div id="footer">
+    <app-footer></app-footer>
+</div>
+
+
+
+</body>
+<!--
+    <navbar *ngIf="connectedUser"></navbar>
+-->

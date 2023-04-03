@@ -1,5 +1,7 @@
 package fr.ruche.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.ruche.api.Views;
@@ -18,6 +20,15 @@ import jakarta.persistence.Table;
 //PENSER A CHANGER SI CA NE CONVIENT PAS
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('recolteur','gestionnaire','client')")
+@JsonTypeInfo(
+		  use = JsonTypeInfo.Id.NAME,
+		  include = JsonTypeInfo.As.PROPERTY,
+		  property = "type")
+@JsonSubTypes({
+	  @JsonSubTypes.Type(value = Gestionnaire.class, name = "gestionnaire"),
+	  @JsonSubTypes.Type(value = Recolteur.class, name = "recolteur"),
+	  @JsonSubTypes.Type(value = Client.class, name = "client")
+	})
 public abstract class User {
 
 	@Id

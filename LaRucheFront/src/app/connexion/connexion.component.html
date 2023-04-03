@@ -9,14 +9,18 @@
 		<img src='assets/navbar/logo-ss.png' alt="Image Description">
     <div class="login-form">
   			<form action="#" method="post" form [formGroup]="loginForm" (ngSubmit)="seConnecter()">
-  				<label for="username">Login:</label>
+				
+				<label for="username">Login:</label>
   				<input type="text" name="username" id="username" formControlName="login"><br>
   				<label for="password">Mot de Passe :</label>
   				<input type="password" name="password" id="password" formControlName="password"><br>
   				<input type="submit" value="Se Connecter" [disabled]="loginForm.invalid"><br>
-            <a href="">Mot de passe oublié ?</a>
+        <!--    <a href="">Mot de passe oublié ?</a>-->
   			</form>
+			  <label *ngIf="wrongCredents">Identifiant ou mot de passe incorrect</label>
+			  
   		</div>
+		  
     </div>
 </div>
 </body>

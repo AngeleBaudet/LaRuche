@@ -19,7 +19,6 @@ p {
 }
 
 hr {
-  position: relative;
   border: 1px solid #33658A;
   margin-top: 0;
   z-index: 1;
@@ -27,12 +26,9 @@ hr {
 
 /* Body */
 
-.wrapper {
-  margin-left: 180px; /* Set the left margin equal to the width of the navigation bar */
-  padding: 20px;
-  position: relative;
-}
 
+
+/*
 body {
   background-color: #EDE8EC ;
   display: flex;
@@ -42,27 +38,23 @@ body {
   height: 95vh;
   margin: 0;
 }
-
+*/
 
 /* Form */
 
 .form-add {
+  /**/
   top: 20%;
-  left: 50%;
-  transform: translate(-50%, 40%);
+  left: 30%;
   position: absolute;
   background-color: #ffffff;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-bottom: -12rem;
   padding: 35px;
   padding-top: 25px;
   padding-bottom: 10px;
   border-radius: 30px;
   font-family: 'Glacial Indifference', sans-serif;
   display: grid;
-  width: 50%;
+  width: 40%;
 }
 
 .form-add input, label {

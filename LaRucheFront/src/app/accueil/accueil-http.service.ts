@@ -1,6 +1,6 @@
 import { Injectable, Query } from '@angular/core';
 import { Ruche } from '../model';
-import { Observable } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import { RucheHttpService } from '../Ruches/ruche-http.service';
@@ -21,9 +21,12 @@ export class AccueilHttpService {
     this.rucheApiPath = globalService.apiPath + "ruche";
 }
 
-findRucheByRecolteur(id: number): Observable<Array<Ruche>> {
-  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/" + id);
+findRucheByVulnerabilite(){
+  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/vulnerabilite");
 }
 
-  
+findRucheByNourissage(){
+  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/nourrissage");
+}
+
 }

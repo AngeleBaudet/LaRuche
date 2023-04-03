@@ -131,4 +131,12 @@ public class RucheApiController {
 			return this.daoRuche.findRucheByNourissage();
 		
 		}
+		
+		@GetMapping("/vulnerabilite")
+		@JsonView(Views.Ruche.class)
+		public List<Ruche> findRucheByVulnerabilite(){
+			
+			return this.daoRuche.findRucheByVulnerabilite();
+		
+		}
 }

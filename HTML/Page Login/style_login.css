@@ -1,118 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
 
-* {
-  margin: 0;
+#tableau-container
+{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  padding-bottom: 75px;
 }
 
-/*Background Image sur la gauche*/
-.imageLeft {
-  background-image: url('honey-bee-6506809_1920.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 50%;
-  float: left;
+h1{
+  color:#f6ae2d;
+  font-family: 'Poppins', sans-serif;
 }
 
-/*Block de droite*/
+.menu
+{
+  position:relative;
+  background-color:#2b414f;
+  width:18%;
+  height:800px;
+}
+
 .RightBlock {
-background-color: #EDE8EC;
-height: 100vh;
-width: 50%;
-float: left;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.RightBlock img {
-position: absolute;
-/*position en hauteur*/
-top: 15%;
-transform: translateY(-50%);
-width: 200px;
-max-width: 400px; /* Adjust as needed */
-}
-
-.login-form {
-  width: 400px;
-  height: 300px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 40px;
-  background-color: #fff;
-  text-align: center;
-  position: relative;
-}
-
-.login-form label {
-  display: block;
-  margin: 10px 0;
-  width: 100%;
-  max-width: 300px;
-  text-align: left;
-  position: relative;
-  font-family: 'Poppins', sans-serif;;
-  margin-left: 50px; /* add margin-left to align with input box */
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  display: block;
-  margin: 10px auto;
-  width: 100%;
-  max-width: 300px;
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-color: #33658A ;
-  background-color: #EDE8EC;
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-.login-form input[type="submit"] {
-  position: absolute;
-  bottom: calc(16%);;
-  height: 45px;
-  right: 20px;
-  border : none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  background-color: #33658A;
-  color: #fff;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-}
-
-.login-form a {
-  position: absolute;
-  bottom: calc(9%);;
-  right: 20px;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #F58F29;
-  text-decoration: none;
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
+  float: left;
+  width: 82%;
 }
 
 .wrapper {
-
-  /* adjust padding and margin as needed */
-  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+ // padding-bottom: 50px;
 }
 
-footer {
-  height: 50px; /* adjust height as needed */
-  background-color: #2B414F; /* adjust color as needed */
-  font-family: 'Glacial Indifference';
-  color: white;
-  position: fixed;
-  bottom: 0;
+table {
+ 
+  text-align: center;
+  border-collapse: collapse;
   width: 100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  font-family: 'Glacial Indifference', sans-serif;
 }
+
+table thead {
+  background: #F6AE2D;
+  border-bottom: 2px solid #444444;
+}
+
+tbody {
+  max-height: 6em;
+  overflow-y: auto;   
+}
+
+thead,
+tbody {
+  display: block;  
+} 
+
+th, td {
+  text-align: center;
+  padding: 8px;
+
+
+}
+
+table tr:nth-child(even) {
+  background: #cdd1db;
+}
+
+th {
+  background-color: #f6ae2d;
+  color:#2B414F;
+  font-family: 'Glacial Indifference', sans-serif;
+}
+
+.edit-btn, .delete-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: 'Glacial Indifference', sans-serif;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.edit-btn {
+  background-color: #f58f29;
+}
+.delete-btn {
+  background-color: #f44336;
+}
+.add-btn {
+  background-color: #f58f29;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 17px 2px;
+  cursor: pointer;
+  width:158px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+

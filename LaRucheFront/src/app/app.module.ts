@@ -12,6 +12,10 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ListeRuchesComponent } from './Ruches/liste-ruches/liste-ruches.component';
 import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { ListeProductionComponent } from './Production/liste-production/liste-production.component';
+import { ProductionDetailComponent } from './Production/production-detail/production-detail.component';
+import { ListeUserComponent } from './User/liste-user/liste-user.component';
+import { UserDetailComponent } from './User/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { ConnexionComponent } from './connexion/connexion.component';
     RucheDetailComponent,
     AccueilComponent,
     ConnexionComponent,
+    ListeProductionComponent,
+    ProductionDetailComponent,
+    ListeUserComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
-
 <html>
+
 <body>
 	<main>
 <div class="body_page">
@@ -11,13 +11,13 @@
 							<div class="message_content">
 								<div class="top">
 									<div class="left">
-										<ng-container *ngIf="vulnerabilite > 0; else noVulnerabilite">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{vulnerabilite}} vulnérabilités en cours</p>
+										<ng-container *ngIf=" listRucheVulnerabilite.length > 0; else noVulnerabilite">
+										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheVulnerabilite.length}} vulnérabilités en cours</p>
 										</ng-container>
 										<ng-template #noVulnerabilite>
 										  <p>Aucune vulnérabilité</p>
 										</ng-template>
-									</div>
+									</div>	
 
 
 									<div class="right">
@@ -26,8 +26,8 @@
 								</div>
 								<div class="bot">
 									<div class="left">
-										<ng-container *ngIf="nourissage > 0; else noNourissage">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{nourissage}} ruches à nourrir</p>
+										<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
+										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheNourissage.length}} ruches à nourrir</p>
 										</ng-container>
 										<ng-template #noNourissage>
 										  <p>Toutes vos ruches sont nourries</p>
@@ -41,39 +41,39 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			
 
 
 
-	<div class="home_button_bot">
+			<div class="home_button_bot">
+
+				<div class="box-container">
+					<a routerLink="gestionnaire/ruche/ma-ruche" class="img_box">
+						<img src="/assets/home_gestionnaire/miel-b.png">
+					</a>
+					<button routerLink="gestionnaire/ruche/ma-ruche" id="button_bot">Voir mes ruches</button>
+				</div>
+
+				<div class="box-container">
+					<a routerLink="gestionnaire/ruche/ma-production" class="img_box">
+						<img src="/assets/home_gestionnaire/hive-b.png">
+					</a>
+					<button routerLink="gestionnaire/ruche/ma-production" id="button_bot">Voir mes productions</button>
+
+				</div>
+
+				<div class="box-container">
+					<a routerLink="gestionnaire/ruche/users" class="img_box">
+
+						<img src="/assets/home_gestionnaire/apiculteur-b.png">
+					</a>
+					<button routerLink="gestionnaire/ruche/users" id="button_bot">Gérer les utilisateurs</button>
+				</div>
 
 
-		<div class="box-container">
-			<a routerLink="gestionnaire/ruche"  class="img_box">
-  			<img src="/assets/home_gestionnaire/miel-b.png">
-			</a>
-			<button routerLink="gestionnaire/ruche" id ="button_bot">Voir mes ruches</button>
-		</div>
-
-		<div class="box-container">
-				<a routerLink="gestionnaire/ruche/ma-production" class="img_box">
-				<img src="/assets/home_gestionnaire/hive-b.png">
-			</a>
-			<button routerLink="gestionnaire/ruche/ma-production" id ="button_bot">Voir mes productions</button>
-
-		</div>
-
-		<div class="box-container">
-			<a routerLink="gestionnaire/ruche/users" class="img_box">
-
-				<img src="/assets/home_gestionnaire/apiculteur-b.png">
-			</a>
-			<button routerLink="gestionnaire/ruche/users" id ="button_bot">Gérer les utilisateurs</button>
-		</div>
-
-
-	</div>
-
-</div>
-</main>
+			</div>
+	</main>
 </body>
+
 </html>

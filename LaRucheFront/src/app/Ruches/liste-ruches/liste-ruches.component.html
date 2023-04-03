@@ -3,16 +3,16 @@
   <title>Liste Ruches Gestionnaire</title>
 </head>
 <body>
-  <div class="menu" style="float: left"></div>
   <div class="wrapper">
     <div class="RightBlock">
-      <div id="tableau-container">
+      
         <h1>Mes ruches</h1>
         <hr size="2" color=#f6ae2d width="100%"><br>
+        <div class="tableau-container">
         <table>
           <thead>
             <tr>
-              <th width="20%">Alerte</th>
+              <th width="10%">Alerte</th>
               <th>Ruche id</th>
               <th>Nombre de cadres</th>
               <th>Récolteur id</th>
@@ -20,6 +20,7 @@
               <th></th>
             </tr>
           </thead>
+
           <tbody>
             <tr *ngFor="let ruche of listR()">
               <td><span *ngIf="ruche.vulnerabilite else sinon"><img src="assets/listeRuche/alerte.png" alt="logo" width="15%"></span><ng-template #sinon><span></span></ng-template></td>
@@ -29,13 +30,15 @@
               <td>{{ruche.vulnerabilite}}</td>
               <td>
                 <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
-                <button (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
+                <button *ngIf="allowed()" (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
               </td>
             </tr>
           </tbody>
+
         </table>
-          <button (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
       </div>
+          <button *ngIf="allowed()" (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
+      
     </div>
   </div>
   <footer></footer>
