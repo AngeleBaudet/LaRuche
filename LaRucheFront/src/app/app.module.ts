@@ -8,12 +8,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { GlobalService } from './global.service';
 import { RucheHttpService } from './Ruches/ruche-http.service';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    NavbarComponent, 
-    FooterComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,10 +24,7 @@ import { RucheHttpService } from './Ruches/ruche-http.service';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    GlobalService,
-    RucheHttpService
-  ],
+  providers: [GlobalService, RucheHttpService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
