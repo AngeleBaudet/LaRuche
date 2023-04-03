@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Production } from 'src/app/model';
+import { ProductionHttpService } from '../production-http.service';
 
 @Component({
   selector: 'app-liste-production',
@@ -7,4 +10,22 @@ import { Component } from '@angular/core';
 })
 export class ListeProductionComponent {
 
+  constructor(private listeProductionsService:ProductionHttpService, private router: Router){
+  }
+
+  listP():Array<Production> {
+    return this.listeProductionsService.findAll();
+  }
+
+  goToAdd() {
+    this.router.navigate([ 'gestionnaire/production/ma-production']);
+  }
+
+  goToEdit(id: number){
+    this.router.navigate([ 'gestionnaire/production/ma-production/'+id]);
+  }
+
+  remove(id: number) : void {
+    this.listeProductionsService.remove(id);
+  }
 }

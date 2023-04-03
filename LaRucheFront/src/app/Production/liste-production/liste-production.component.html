@@ -1,1 +1,45 @@
-<p>liste-production works!</p>
+<html>
+<head>
+  <title>Liste des productions</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="RightBlock">
+        <h1>Mes productions</h1>
+        <hr size="2" color=#f6ae2d width="100%"><br>
+        <div id="tableau-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Type de produit</th>
+              <th>Quantité (kg)</th>
+              <th>Prix au kilo</th>
+              <th>Année</th>
+              <th>Ruche id</th>
+              <th>Récolteur id</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let production of listP()">
+              <td>{{production.produit}}</td>
+              <td>{{production.stock}}</td>
+              <td>{{production.prixKg}}</td>
+              <td>{{production.annee}}</td>
+              <td>{{production.ruche.id}}</td>
+              <td>{{production.recolteur.id}}</td>
+              <td>
+                <button (click)="goToEdit(production.id)" class="edit-btn">Modifier</button>
+                <button (click)="remove(production.id)" class="delete-btn">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+          <button (click)="goToAdd()" class="add-btn">Ajouter une production</button>
+      </div>
+    </div>
+  <footer></footer>
+</body>
+</html>
