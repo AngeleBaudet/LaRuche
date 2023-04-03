@@ -25,7 +25,7 @@
               <td><span *ngIf="ruche.vulnerabilite else sinon"><img src="assets/listeRuche/alerte.png" alt="logo" width="15%"></span><ng-template #sinon><span></span></ng-template></td>
               <td>{{ruche.id}}</td>
               <td>{{ruche.cadre}}</td>
-              <td>{{ruche.recolteur?.id}}</td>
+              <td>{{ruche.recolteur.id}}</td>
               <td>{{ruche.vulnerabilite}}</td>
               <td>
                 <button class="edit-btn">Modifier</button>

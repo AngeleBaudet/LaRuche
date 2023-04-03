@@ -6,10 +6,10 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 
 const routes: Routes = [
-  {path: "accueil", component: AccueilComponent,pathMatch:"full"},
-  {path: "gestionnaire/ruche", component: ListeRuchesComponent},
-  {path: "gestionnaire/ruche/ma-ruche", component: RucheDetailComponent},
-  {path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent }
+  { path: 'accueil', component: AccueilComponent, pathMatch: 'full' },
+  { path: 'gestionnaire/ruche', component: ListeRuchesComponent },
+  { path: 'gestionnaire/ruche/ma-ruche', component: RucheDetailComponent },
+  { path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent },
   { path: 'connexion', component: ConnexionComponent },
 ];
 

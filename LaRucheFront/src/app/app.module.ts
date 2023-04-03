@@ -15,12 +15,12 @@ import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    NavbarComponent, 
+    AppComponent,
+    NavbarComponent,
     FooterComponent,
     ListeRuchesComponent,
     RucheDetailComponent,
-    AccueilComponent
+    AccueilComponent,
     ConnexionComponent,
   ],
   imports: [
