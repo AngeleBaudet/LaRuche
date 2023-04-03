@@ -17,7 +17,7 @@ html, body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-bottom: 75px;
+
 }
 
 h1 {
@@ -27,8 +27,10 @@ h1 {
 }
 
 tbody {
-  max-height: 35em;
-  overflow-y: auto;   
+  display: flex;
+  max-height: 40em;
+  overflow-y: auto; 
+  align-items: center;  
 }
 
 thead,
@@ -38,9 +40,11 @@ tbody {
 
 tr {
   display: flex;
+  align-items: center;
 } 
 
 td, th {
+  text-align: center;
   display: block; /* Needed for IE */
   width: 25%;
 } 
@@ -59,6 +63,7 @@ table thead {
 }
 
 table th, table td {
+ // border-right: 1px solid #000000;
   padding: 8px;
 }
 
@@ -70,7 +75,12 @@ table tr:nth-child(even) {
   background-color: #cdd1db;
 }
 
-.edit-btn, .delete-btn, .add-btn {
+
+table th:first-child, table td:first-child {
+  border-left: none; /* add vertical line to the left of first column */
+}
+
+.edit-btn, .delete-btn {
   background-color: #f58f29;
   border: none;
   border-radius: 20px;
@@ -86,12 +96,32 @@ table tr:nth-child(even) {
   width: 158px;
 }
 
-.edit-btn:hover, .delete-btn:hover, .add-btn:hover {
+.add-btn {
+  background-color: #f58f29;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Glacial Indifference', sans-serif;
+  font-size: 20px;
+  margin: 4px 2px;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  width: 20%;
+}
+
+.edit-btn:hover, .add-btn:hover {
   background-color: #f47d24;
 }
 
 .delete-btn {
   background-color: #f44336;
+}
+
+.delete-btn:hover {
+  background-color: #f11a0a;
 }
 
 /* Menu styles */
@@ -106,6 +136,6 @@ table tr:nth-child(even) {
 /* Right block styles */
 .RightBlock {
   float: left;
-  width: 82%;
-  margin-left: 50px;
+  width: 95%;
+  margin-left: 1%;
 }
