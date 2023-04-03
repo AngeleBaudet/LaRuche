@@ -28,13 +28,13 @@
               <td>{{ruche.recolteur.id}}</td>
               <td>{{ruche.vulnerabilite}}</td>
               <td>
-                <button class="edit-btn">Modifier</button>
+                <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
                 <button (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
               </td>
             </tr>
           </tbody>
         </table>
-          <button class="add-btn">Ajouter une ruche</button>
+          <button (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
       </div>
     </div>
   </div>

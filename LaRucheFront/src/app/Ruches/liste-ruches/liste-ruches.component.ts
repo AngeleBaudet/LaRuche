@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ruche } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 
@@ -9,7 +10,7 @@ import { RucheHttpService } from '../ruche-http.service';
 })
 export class ListeRuchesComponent {
 
-  constructor(private listeRuchesService:RucheHttpService){
+  constructor(private listeRuchesService:RucheHttpService, private router: Router){
 
   }
 
@@ -17,10 +18,12 @@ export class ListeRuchesComponent {
     return this.listeRuchesService.findAll();
   }
 
-  add() {
+  goToAdd() {
+    this.router.navigate([ 'gestionnaire/ruche/ma-ruche']);
   }
 
-  edit(){
+  goToEdit(id: number){
+    this.router.navigate([ 'gestionnaire/ruche/ma-ruche/'+id]);
   }
 
   remove(id: number) : void {
