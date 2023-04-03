@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
 body {
     margin: 0px;
+    padding: 0;
+}
+
+@media(min-width:576px) and (max-width:992px)
+{
+    body {
+        margin: 0px;
+        padding: 0;
+        height: 1366px;
+        width: 768px;
+    }
+}
+
+@media(min-width:1400px)
+{
+    body {
+        margin: 0px;
+        padding: 0;
+        height: 1080px;
+        width: 1920px;
+    }
 }
