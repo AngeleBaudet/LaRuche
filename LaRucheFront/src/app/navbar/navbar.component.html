@@ -17,7 +17,7 @@
   
   
   <div id="menu">
-          <p>Bienvenue Gestionnaire</p><br><br>
+          <p>Bienvenue {{youAre}}</p><br><br>
           <nav>
   
   
@@ -54,7 +54,7 @@
               </li>
             </div>
   
-            <div class="nav-element" (mouseenter)="sourisE=true" (mouseleave)="sourisE=false">
+            <div *ngIf="allowed()" class="nav-element" (mouseenter)="sourisE=true" (mouseleave)="sourisE=false">
               <li class="linkUtilisateurs">
   
                 <ul class="accordion">
@@ -76,7 +76,7 @@
                 <li class="linkDeco">
                   <img src="assets/navbar/bee-b.png" alt="logo" class="iconesMenu" *ngIf="sourisF==false">
                   <img src="assets/navbar/bee-o.png" alt="logo" class="iconesMenu" *ngIf="sourisF==true">
-                  <a [routerLink]="['connexion']" routerLinkActive="active" class="alignIconeWithText">Déconnexion</a>
+                  <a (click)="deconnexion()" [routerLink]="['connexion']" routerLinkActive="active" class="alignIconeWithText">Déconnexion</a>
                 </li>
               </div>
               </ul>

@@ -16,8 +16,17 @@ sourisF: boolean = false;
 
 constructor(private connexionService: ConnexionHttpService){}
 
+youAre:string = this.connexionService.connectedUser.login;
+
 deconnexion(){
   this.connexionService.connectedUser = null;
+}
+
+allowed():boolean{
+  if (this.connexionService.connectedUser.type === 'gestionnaire'){
+    return true;
+  }
+  return false;
 }
 }
 
