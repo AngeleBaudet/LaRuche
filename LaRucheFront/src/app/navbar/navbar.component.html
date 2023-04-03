@@ -5,9 +5,7 @@
   </head>
   
   <meta charset="utf-8"> -->
-  <body>
-  <main>
-    <div id="page">
+
   
   
       <div id="menu-container">
@@ -47,6 +45,8 @@
                     <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu" *ngIf="sourisC==false">
                     <img src="assets/navbar/ruche-o.png" alt="logo" class="iconesMenu" *ngIf="sourisC==true">
                     <label for="menu1" class="alignIconeWithText">Mes ruches &#x25BE;</label>
+                    <a [routerLink]="['gestionnaire/ruche/ma-ruche']" routerLinkActive="active">Add/mod</a>
+
                     <input id="menu1" type="checkbox" />
                     <ul class="sub">
                       <li class="sousMenus"><a href="#">Afficher les ruches</a></li>
@@ -99,11 +99,5 @@
   
           </div>
         </div>
-  
-        <div id="accueil"></div>
-  
-      </div>
-  
-    </main>
-</body>
+
   

@@ -1,1 +1,61 @@
-<p>ruche-detail works!</p>
+<!-- A ajouter dans les pages nécéssaires pour récupérer la route : 
+  <a [routerLink]="['/ruche/ma-ruche']" routerLinkActive="active">Add/mod</a>
+-->
+<body>
+  
+  <div class="wrapper">
+    
+      <h1><b>Gestion des ruches</b></h1>
+      <hr>
+      
+        <form class="form-add" [formGroup]="rucheForm" (ngSubmit)="submit()">
+
+         
+          <legend *ngIf="!formValue.id else sinon"><b>Ajouter une ruche </b></legend><br>
+          <ng-template #sinon><legend> <b> Modifier la ruche n° {{rucheForm.get('id').value}} </b></legend></ng-template>
+          
+          <div class="verifs">
+            <span *ngIf="rucheForm.get('cadre').dirty && rucheForm.get('cadre')?.hasError('required')" class="text-danger">
+              Le nombre de cadres est obligatoire.
+            </span>
+          </div>
+
+          <div class="myForm">
+          
+            <div class="mdp">            
+              <label >Nombre de cadres : </label>              
+              <label >Vulnérabilité :</label>     
+              <label >Récolteur :</label>         
+            </div>
+
+            <div class="mdp">
+              <input name="cadre" type="number" formControlName="cadre" [value]="rucheForm.get('cadre').value" >
+              
+              <select formControlName="vulnerabilite">
+                <option disabled selected value="">Sélectionner une vulnérabilité</option>
+                <option [value]="null"> Pas de vulnérabilité </option>
+                <option *ngFor="let vulnerab of vulnerabilite" [value]="vulnerab">{{vulnerab}}</option>
+              </select>
+
+              <select formControlName="recolteurId">
+                <option disabled selected value="">Sélectionner un récolteur</option>
+                <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur.id">Récolteur n°{{recolteur.id}} ({{recolteur.login}})</option>              
+              </select>              
+        
+            </div>
+            
+            
+
+            <input type="button" class ="btn1" value="Annuler" (click)="goToListRuche()">
+            <input type="button" class ="btn2" type="submit" value="Sauvegarder" [disabled]="rucheForm.invalid" >
+            
+            
+          </div>
+          
+          
+        </form>
+      </div>
+
+    
+
+</body>
