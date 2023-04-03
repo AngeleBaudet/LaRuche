@@ -1,4 +1,4 @@
-<!--
+
 <html>
 <body>
 	<main>
@@ -11,9 +11,6 @@
 							<div class="message_content">
 								<div class="top">
 									<div class="left">
-										<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez 2 vulnérabilités en cours</p>
-									</div>
-									<div class="left">
 										<ng-container *ngIf="vulnerabilite > 0; else noVulnerabilite">
 										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{vulnerabilite}} vulnérabilités en cours</p>
 										</ng-container>
@@ -24,14 +21,10 @@
 
 
 									<div class="right">
-											<button routerLink="gestionnaire/ruche/vulnerabilite">Voir mes vulnérabilités</button>
+											<button routerLink="gestionnaire/ruche">Voir mes vulnérabilités</button>
 									</div>
 								</div>
 								<div class="bot">
-									<div class="left">
-										<p>Toutes vos ruches sont nourries</p>
-									</div>
-
 									<div class="left">
 										<ng-container *ngIf="nourissage > 0; else noNourissage">
 										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{nourissage}} ruches à nourrir</p>
@@ -42,7 +35,7 @@
 									</div>
 
 									<div class="right">
-										<button routerLink="gestionnaire/ruche/ma-ruche">Voir mes ruches</button>
+										<button routerLink="gestionnaire/ruche">Voir mes ruches</button>
 									</div>
 								</div>
 							</div>
@@ -55,10 +48,10 @@
 
 
 		<div class="box-container">
-			<a routerLink="gestionnaire/ruche/ma-ruche"  class="img_box">
+			<a routerLink="gestionnaire/ruche"  class="img_box">
   			<img src="/assets/home_gestionnaire/miel-b.png">
 			</a>
-			<button routerLink="gestionnaire/ruche/ma-ruche" id ="button_bot">Voir mes ruches</button>
+			<button routerLink="gestionnaire/ruche" id ="button_bot">Voir mes ruches</button>
 		</div>
 
 		<div class="box-container">
@@ -84,4 +77,3 @@
 </main>
 </body>
 </html>
--->
