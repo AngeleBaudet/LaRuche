@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+* {
+  margin: 0;
+}
+
+.menu {
+  width: 18%;
+  background-color: #2B414F;
+  color: #fff;
+  height: 1000px;
+}
+
+.body_page {
+  width: 82%;
+  background-color: #EDE8EC;
+  display: flex;
+  flex-direction: column; /* new */
+  height: 1000px;
+}
+
+.home_message_top {
+  height: 60%;
+  background-image:url("/assets/home_gestionnaire/couverture-bee.jpg");
+  background-size :cover;
+  position: relative; /* make .home_message_top a positioned element */
+}
+
+.home_box_message {
+  width: 50%;
+  height: 30%;
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.6); /* white with 60% opacity */
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; /* add flex display */
+  flex-direction: column;
+   /* make .home_box_message appear on top of .home_message_top */
+}
+.message_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* align items to the top */
+  flex-direction: column;
+  text-align: left; /* align text to left */
+  flex-grow: 1;
+}
+
+.message_content .top,
+.message_content .bot {
+  width : 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* align buttons to right */
+  flex-grow: 1;
+  flex-direction: row;
+}
+.message_content a {
+  font-weight: bold;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  justify-content: center; /* change this line to center align */
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.right{
+  display: flex;
+  justify-content: center; /* change this line to center align */
+  flex-basis: 50%;
+}
+
+.message_content .left {
+  margin-right: 10px;
+}
+.message_content a,
+.message_content p {
+  display: inline-block;
+  margin: 0;
+}
+.message_content .icon {
+  width: 20px;
+  height: 20px;
+}
+button {
+  height: 45px;
+  border : none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #33658A;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.home_button_bot {
+  height: 40%;
+  width: 100%;
+  background-color: #EDE8EC;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  margin : 0px;
+}
+
+
+.box-container {
+  width : 30%;
+  position: relative;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.img_box{
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #F6AE2D;
+  margin : 10%;
+  width : 30%;
+  padding: 7%;
+}
+
+.img_box img {
+  max-width: 100%;
+}
+
+#button_bot {
+  width : 45%;
+}
+#button_top {
+  width : 10%;
+    padding: 1% 7%;
+}
+
+.wrapper {
+  display: flex;
+  /* adjust padding and margin as needed */
+  padding-bottom: 50px;
+}
+
+footer {
+  height: 50px; /* adjust height as needed */
+  background-color: #2B414F; /* adjust color as needed */
+  font-family: 'Glacial Indifference';
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}

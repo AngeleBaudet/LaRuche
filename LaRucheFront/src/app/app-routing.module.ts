@@ -8,7 +8,9 @@ const routes: Routes = [
   {path: "accueil", component: AccueilComponent,pathMatch:"full"},
   {path: "gestionnaire/ruche", component: ListeRuchesComponent},
   {path: "gestionnaire/ruche/ma-ruche", component: RucheDetailComponent},
-  {path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent }
+  {path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent },
+  {path: 'gestionnaire', component: AccueilComponent },
+
 ];
 
 @NgModule({
