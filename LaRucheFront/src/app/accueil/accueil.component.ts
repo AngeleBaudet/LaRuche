@@ -9,18 +9,16 @@ import { GlobalService } from '../global.service';
 @Component({
   selector: 'accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.scss']
+  styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent {
-
-
   private rucheApiPath: string;
-  listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>;
-  listRucheNourissage: Array<Ruche> = new Array<Ruche>;
+  listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
+  listRucheNourissage: Array<Ruche> = new Array<Ruche>();
 
-/*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
+  /*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
 
-  constructor(private accueilService: AccueilHttpService){ }
+  constructor(private accueilService: AccueilHttpService) {}
 
 
   ngOnInit() {
@@ -31,7 +29,7 @@ export class AccueilComponent {
 
   rucheNourissage(): void{
     this.accueilService.findRucheByNourissage().subscribe({
-      next: ruches=>{ 
+      next: (ruches) => {
         this.listRucheNourissage = ruches;
         //do something with the ruches
         
@@ -41,7 +39,7 @@ export class AccueilComponent {
     console.log(this.listRucheNourissage.length);
 } 
 
-  rucheVulnerabilite(): void{
+  rucheVulnerabilite(): void {
     this.accueilService.findRucheByVulnerabilite().subscribe({
       next: ruches=>{ this.listRucheVulnerabilite = ruches
         //do something with the ruches
@@ -51,8 +49,4 @@ export class AccueilComponent {
     console.log(this.listRucheVulnerabilite.length);
     
   }
-
-
 }
-
-
