@@ -1,6 +1,6 @@
 import { Injectable, Query } from '@angular/core';
 import { Ruche } from '../model';
-import { Observable } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import { RucheHttpService } from '../Ruches/ruche-http.service';

@@ -11,8 +11,8 @@
 							<div class="message_content">
 								<div class="top">
 									<div class="left">
-										<ng-container *ngIf=" listRucheVulnerabilite?.length > 0; else noVulnerabilite">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheVulnerabilite?.length}} vulnérabilités en cours</p>
+										<ng-container *ngIf=" listRucheVulnerabilite.length > 0; else noVulnerabilite">
+										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheVulnerabilite.length}} vulnérabilités en cours</p>
 										</ng-container>
 										<ng-template #noVulnerabilite>
 										  <p>Aucune vulnérabilité</p>
@@ -26,8 +26,8 @@
 								</div>
 								<div class="bot">
 									<div class="left">
-										<ng-container *ngIf="listRucheNourissage?.length > 0; else noNourissage">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheNourissage?.length}} ruches à nourrir</p>
+										<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
+										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheNourissage.length}} ruches à nourrir</p>
 										</ng-container>
 										<ng-template #noNourissage>
 										  <p>Toutes vos ruches sont nourries</p>

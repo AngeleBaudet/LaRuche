@@ -23,13 +23,22 @@ export class AccueilComponent {
   constructor(private accueilService: AccueilHttpService){ }
 
 
+  ngOnInit() {
+    this.rucheNourissage();
+    this.rucheVulnerabilite();
+  }
+
+
   rucheNourissage(): void{
     this.accueilService.findRucheByNourissage().subscribe({
       next: ruches=>{ 
         this.listRucheNourissage = ruches;
         //do something with the ruches
+        
       }
+     
     });
+    console.log(this.listRucheNourissage.length);
 } 
 
   rucheVulnerabilite(): void{
@@ -37,7 +46,10 @@ export class AccueilComponent {
       next: ruches=>{ this.listRucheVulnerabilite = ruches
         //do something with the ruches
       }
+      
     });
+    console.log(this.listRucheVulnerabilite.length);
+    
   }
 
 
