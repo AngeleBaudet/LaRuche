@@ -21,9 +21,12 @@ export class AccueilHttpService {
     this.rucheApiPath = globalService.apiPath + "ruche";
 }
 
-findRucheByRecolteur(id: number): Observable<Array<Ruche>> {
-  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/" + id);
+findRucheByVulnerabilite(){
+  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/vulnerabilite");
 }
 
-  
+findRucheByNourissage(){
+  return this.http.get<Array<Ruche>>(this.rucheApiPath + "/nourrissage");
+}
+
 }

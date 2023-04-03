@@ -24,21 +24,21 @@ export class AccueilComponent {
 
 
   rucheNourissage(): void{
-      this.accueilService.findRucheByNourissage().subscribe({
-        next: ruches=>{ 
-          this.listRucheNourissage = ruches;
-          //do something with the ruches
-        }
-      });
-  }
+    this.accueilService.findRucheByNourissage().subscribe({
+      next: ruches=>{ 
+        this.listRucheNourissage = ruches;
+        //do something with the ruches
+      }
+    });
+} 
 
-rucheVulnerabilite(): void{
-  this.accueilService.findRucheByVulnerabilite().subscribe({
-    next: ruches=>{ this.listRucheVulnerabilite = ruches
-      //do something with the ruches
-    }
-  });
-}
+  rucheVulnerabilite(): void{
+    this.accueilService.findRucheByVulnerabilite().subscribe({
+      next: ruches=>{ this.listRucheVulnerabilite = ruches
+        //do something with the ruches
+      }
+    });
+  }
 
 
 }
