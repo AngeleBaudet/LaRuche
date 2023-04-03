@@ -12,6 +12,8 @@ import { ConnexionHttpService } from './connexion-http.service';
 export class ConnexionComponent {
   loginForm: FormGroup;
   isSubmitted = false;
+  errorMessage:string;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,9 +40,9 @@ export class ConnexionComponent {
       next: (user) => {
         if (user) {
           this.connexionService.connectedUser = user;
-          this.router.navigateByUrl('/accueil');
+          this.router.navigateByUrl('/gestionnaire');
         } else {
-          console.log('not an existing user');
+          this.errorMessage = 'Mauvais mot de passe';
         }
       },
       error: () => {},
