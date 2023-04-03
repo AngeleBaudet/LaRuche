@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../model';
+import { Gestionnaire, User } from '../model';
 import { ConnexionHttpService } from './connexion-http.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { ConnexionHttpService } from './connexion-http.service';
 export class ConnexionComponent {
   loginForm: FormGroup;
   isSubmitted = false;
+  wrongCredents: boolean; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,11 +40,12 @@ export class ConnexionComponent {
         if (user) {
           this.connexionService.connectedUser = user;
           this.router.navigateByUrl('/accueil');
+          console.log(this.connexionService.connectedUser.type)
         } else {
           console.log('not an existing user');
+          this.wrongCredents=true;
         }
       },
-      error: () => {},
     });
   }
 }

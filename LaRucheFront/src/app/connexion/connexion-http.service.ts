@@ -19,6 +19,7 @@ export class ConnexionHttpService {
     // should be /user
     this.usersApiPath = globalService.apiPath + 'user';
     this.load();
+    
   }
 //Sert a rien
   findAll(): Array<User> {
@@ -41,4 +42,6 @@ export class ConnexionHttpService {
       params: { login, password },
     });
   }
+
+  
 }

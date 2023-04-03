@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ruche } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
+import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 
 @Component({
   selector: 'liste-ruches',
@@ -10,8 +11,12 @@ import { RucheHttpService } from '../ruche-http.service';
 })
 export class ListeRuchesComponent {
 
-  constructor(private listeRuchesService:RucheHttpService, private router: Router){
+  connectedType:string;
 
+  constructor(private listeRuchesService:RucheHttpService, private router: Router, private connexionService: ConnexionHttpService){
+    this.connectedType = this.connexionService.connectedUser.type;
+    console.log(this.allowed());
+    console.log(this.connexionService.connectedUser.type)
   }
 
   listR():Array<Ruche> {
@@ -28,5 +33,12 @@ export class ListeRuchesComponent {
 
   remove(id: number) : void {
     this.listeRuchesService.remove(id);
+  }
+
+  allowed():boolean{
+    if (this.connexionService.connectedUser.type === 'gestionnaire'){
+      return true;
+    }
+    return false;
   }
 }
