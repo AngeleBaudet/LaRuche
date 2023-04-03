@@ -26,6 +26,26 @@ h1 {
   margin-bottom: 20px;
 }
 
+tbody {
+  max-height: 35em;
+  overflow-y: auto;   
+}
+
+thead,
+tbody {
+  display: block;  
+}
+
+tr {
+  display: flex;
+} 
+
+td, th {
+  display: block; /* Needed for IE */
+  width: 25%;
+} 
+
+
 table {
   text-align: center;
   border-collapse: collapse;
@@ -85,5 +105,7 @@ table tr:nth-child(even) {
 
 /* Right block styles */
 .RightBlock {
+  float: left;
   width: 82%;
+  margin-left: 50px;
 }
