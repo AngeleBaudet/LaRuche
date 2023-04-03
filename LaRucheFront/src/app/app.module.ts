@@ -11,6 +11,7 @@ import { RucheHttpService } from './Ruches/ruche-http.service';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ListeRuchesComponent } from './Ruches/liste-ruches/liste-ruches.component';
 import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.compone
     ListeRuchesComponent,
     RucheDetailComponent,
     AccueilComponent
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,10 +30,7 @@ import { RucheDetailComponent } from './Ruches/ruche-detail/ruche-detail.compone
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    GlobalService,
-    RucheHttpService
-  ],
+  providers: [GlobalService, RucheHttpService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
