@@ -6,9 +6,10 @@
   <div class="menu" style="float: left"></div>
   <div class="wrapper">
     <div class="RightBlock">
-      <div id="tableau-container">
+      
         <h1>Mes ruches</h1>
         <hr size="2" color=#f6ae2d width="100%"><br>
+        <div class="tableau-container">
         <table>
           <thead>
             <tr>
@@ -20,6 +21,7 @@
               <th></th>
             </tr>
           </thead>
+
           <tbody>
             <tr *ngFor="let ruche of listR()">
               <td><span *ngIf="ruche.vulnerabilite else sinon"><img src="assets/listeRuche/alerte.png" alt="logo" width="15%"></span><ng-template #sinon><span></span></ng-template></td>
@@ -33,9 +35,11 @@
               </td>
             </tr>
           </tbody>
+
         </table>
-          <button (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
       </div>
+          <button (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
+      
     </div>
   </div>
   <footer></footer>

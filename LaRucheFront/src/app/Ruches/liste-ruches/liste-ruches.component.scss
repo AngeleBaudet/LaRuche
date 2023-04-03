@@ -1,112 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
-
+/* Global styles */
 * {
+  box-sizing: border-box;
   margin: 0;
-  background-color:#ede8ec;
+  padding: 0;
 }
 
-#tableau-container
-{
-  width:100%;
-  display:flex;
-  flex-direction:column;
+html, body {
+  height: 100%;
+  font-family: 'Glacial Indifference', sans-serif;
+}
+
+/* Tableau styles */
+#tableau-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   padding-bottom: 75px;
 }
 
-h1{
-  color:#f6ae2d;
+h1 {
+  color: #f6ae2d;
   font-family: 'Poppins', sans-serif;
-}
-
-.menu
-{
-  position:relative;
-  background-color:#2b414f;
-  width:18%;
-  height:800px;
-}
-
-.RightBlock {
-  float: left;
-  width: 82%;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
- // padding-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 table {
+  text-align: center;
   border-collapse: collapse;
   width: 100%;
-  font-family: 'Glacial Indifference', sans-serif;
 }
 
-th, td {
-  text-align: center;
-  padding: 8px;
-
-}
-
-th:not(:last-child), td:not(:last-child) {
-   border-right: 2px solid #33658a;
- }
-
-th {
+table thead {
   background-color: #f6ae2d;
-  color:#2B414F;
+  border-bottom: 2px solid #444444;
+  color: #2B414F;
+}
+
+table th, table td {
+  padding: 8px;
+}
+
+table th {
   font-family: 'Glacial Indifference', sans-serif;
 }
 
-.edit-btn, .delete-btn {
-  background-color: #4CAF50;
+table tr:nth-child(even) {
+  background-color: #cdd1db;
+}
+
+.edit-btn, .delete-btn, .add-btn {
+  background-color: #f58f29;
   border: none;
-  color: white;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Glacial Indifference', sans-serif;
+  font-size: 14px;
+  margin: 4px 2px;
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  font-family: 'Glacial Indifference', sans-serif;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 20px;
+  width: 158px;
 }
-.edit-btn {
-  background-color: #f58f29;
+
+.edit-btn:hover, .delete-btn:hover, .add-btn:hover {
+  background-color: #f47d24;
 }
+
 .delete-btn {
   background-color: #f44336;
 }
-.add-btn {
-  background-color: #f58f29;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 17px 2px;
-  cursor: pointer;
-  width:158px;
-  border-radius: 20px;
-  font-family: 'Poppins', sans-serif;
+
+/* Menu styles */
+.menu {
+  position: relative;
+  background-color: #2b414f;
+  width: 18%;
+  height: 100%;
+  float: left;
 }
 
-footer {
-  height: 50px; /* adjust height as needed */
-  background-color: #2B414F;  /*adjust color as needed */
-  font-family: 'Glacial Indifference';
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* Right block styles */
+.RightBlock {
+  width: 82%;
 }
