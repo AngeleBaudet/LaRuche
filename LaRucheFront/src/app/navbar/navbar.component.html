@@ -76,7 +76,7 @@
                 <li class="linkDeco">
                   <img src="assets/navbar/bee-b.png" alt="logo" class="iconesMenu" *ngIf="sourisF==false">
                   <img src="assets/navbar/bee-o.png" alt="logo" class="iconesMenu" *ngIf="sourisF==true">
-                  <a href="#" class="alignIconeWithText">Déconnexion</a>
+                  <a [routerLink]="['connexion']" routerLinkActive="active" class="alignIconeWithText">Déconnexion</a>
                 </li>
               </div>
               </ul>

@@ -1,9 +1,11 @@
 export class User {
+  type: string; 
   id: number;
   login: string;
   password: string;
 
-  constructor(id?: number, login?: string, password?: string) {
+  constructor(type?: string, id?: number, login?: string, password?: string) {
+    this.type = type;
     this.id = id;
     this.login = login;
     this.password = password;
@@ -11,14 +13,30 @@ export class User {
 }
 
 export class Gestionnaire extends User {
-  constructor(id?: number, login?: string, password?: string) {
-    super(id, login, password);
+  constructor(id?: number, login?: string, password?: string, type?: string, ) {
+    super(type, id, login, password);
+    this.type = 'gestionnaire';
   }
 }
 
 export class Recolteur extends User {
-  constructor(id?: number, login?: string, password?: string) {
-    super(id, login, password);
+  constructor(id?: number, login?: string, password?: string,type?: string) {
+    super(type, id, login, password);
+    this.type = 'recolteur';
+  }
+}
+
+export class UserRequest {
+  id: number;
+  login: string;
+  password: string;
+  type : string; 
+
+  constructor(id: number, login: string, password: string, type: string) {
+    this.id = id;
+    this.login = login;
+    this.password = password;
+    this.type = type;
   }
 }
 

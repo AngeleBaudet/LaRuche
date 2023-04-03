@@ -30,14 +30,14 @@
               <td>{{ruche.vulnerabilite}}</td>
               <td>
                 <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
-                <button (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
+                <button *ngIf="allowed()" (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
               </td>
             </tr>
           </tbody>
 
         </table>
       </div>
-          <button (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
+          <button *ngIf="allowed()" (click)="goToAdd()" class="add-btn">Ajouter une ruche</button>
       
     </div>
   </div>
