@@ -1,0 +1,144 @@
+
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Glacial Indifference', sans-serif;
+  }
+
+/* Tableau styles */
+#tableau-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+h1{
+  color:#f6ae2d;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+}
+
+
+tbody {
+    display: flex;
+    max-height: 40em;
+    overflow-y: auto; 
+    align-items: center;  
+  }
+  
+  thead,
+  tbody {
+    display: block;  
+  }
+  
+  tr {
+    display: flex;
+    align-items: center;
+  } 
+  
+  td, th {
+    text-align: center;
+    display: block; /* Needed for IE */
+    width: 25%;
+  } 
+  
+  
+  table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table thead {
+    background-color: #f6ae2d;
+    border-bottom: 2px solid #444444;
+    color: #2B414F;
+  }
+  
+  table th, table td {
+   // border-right: 1px solid #000000;
+    padding: 8px;
+  }
+  
+  table th {
+    font-family: 'Glacial Indifference', sans-serif;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #cdd1db;
+  }
+  
+  
+  table th:first-child, table td:first-child {
+    border-left: none; /* add vertical line to the left of first column */
+  }
+  
+  .edit-btn, .delete-btn {
+    background-color: #f58f29;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-size: 14px;
+    margin: 4px 2px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    width: 158px;
+  }
+  
+  .add-btn {
+    background-color: #f58f29;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-size: 20px;
+    margin: 4px 2px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    width: 28%;
+  }
+  
+  .edit-btn:hover, .add-btn:hover {
+    background-color: #f47d24;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+  }
+  
+  .delete-btn:hover {
+    background-color: #f11a0a;
+  }
+  
+  /* Menu styles */
+  .menu {
+    position: relative;
+    background-color: #2b414f;
+    width: 18%;
+    height: 100%;
+    float: left;
+  }
+  
+  /* Right block styles */
+  .RightBlock {
+    float: left;
+    width: 95%;
+    margin-left: 1%;
+  }
+  

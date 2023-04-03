@@ -79,7 +79,7 @@ export class Production {
     ruche?: Ruche,
     prixKg?: number,
     produit?: Produit,
-    recolteur?: Recolteur
+    recolteur?: Recolteur,
   ) {
     this.id = id;
     this.annee = annee;
@@ -88,6 +88,26 @@ export class Production {
     this.prixKg = prixKg;
     this.produit = produit;
     this.recolteur = recolteur;
+  }
+}
+
+export class ProductionRequest {
+  id: number;
+  stock: number;
+  annee: Date;
+  rucheId: number;
+  produit: Produit;
+  prixKg: number;
+  recolteurId: number;
+
+  constructor(id?:number, stock?: number, annee?: Date, rucheId?: number, produit?: Produit,prixKg?:number,recolteurId?:number){
+    this.id = id;
+    this.stock = stock;
+    this.annee = annee;
+    this.rucheId = rucheId;
+    this.produit = produit;
+    this.prixKg = prixKg;
+    this.recolteurId = recolteurId;
   }
 }
 

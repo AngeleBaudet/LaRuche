@@ -61,7 +61,7 @@
               <li class="linkRecoltes">
                 <img src="assets/navbar/miel-b.png" alt="logo" class="iconesMenu" *ngIf="sourisD==false">
                 <img src="assets/navbar/miel-o.png" alt="logo" class="iconesMenu" *ngIf="sourisD==true">
-                <a href="#" class="alignIconeWithText">Les récoltes</a>
+                <a [routerLink]="['gestionnaire/production']" routerLinkActive="active" class="alignIconeWithText">Mes récoltes</a>
               </li>
             </div>
   
