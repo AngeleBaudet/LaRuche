@@ -17,4 +17,7 @@ public interface IDAORuche extends JpaRepository<Ruche, Integer>{
 	public List<Ruche> findRucheByRecolteur(Integer id);
 
 	public Optional<Ruche> findByIdAndRecolteurId(Integer id,Integer recolteurId);
+	
+	@Query("SELECT r FROM Ruche r WHERE r.vulnerabilite IS NOT NULL")
+	public List<Ruche> findRucheByVulnerabilite();
 }

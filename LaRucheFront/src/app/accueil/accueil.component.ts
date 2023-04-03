@@ -16,32 +16,31 @@ export class AccueilComponent {
 
   private rucheApiPath: string;
   listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>;
+  listRucheNourissage: Array<Ruche> = new Array<Ruche>;
 
 /*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
 
-  constructor(private AccueilService: AccueilHttpService){ }
+  constructor(private accueilService: AccueilHttpService){ }
 
-findRucheNourissage(id:number): Array<Ruche>{
-  listRucheNourissage : Array<Ruche> = this.AccueilService.findRucheByRecolteur(id);
 
-  return listRucheNourissage;
+  rucheNourissage(): void{
+      this.accueilService.findRucheByNourissage().subscribe({
+        next: ruches=>{ 
+          this.listRucheNourissage = ruches;
+          //do something with the ruches
+        }
+      });
+  }
 
-}
-
-findRucheVulnerabilite(id: number): Array<Ruche> {
-  let listRucheVulnerabilite: Array<Ruche> = [];
-
-  this.AccueilService.findRucheByRecolteur(id).subscribe(
-    (ruches: Ruche[]) => {
-      listRucheVulnerabilite = ruches.filter(ruche => ruche.vulnerabilite!= null);
-    },
-    (error: any) => {
-      console.log("Error fetching Ruches: ", error);
+rucheVulnerabilite(): void{
+  this.accueilService.findRucheByVulnerabilite().subscribe({
+    next: ruches=>{ this.listRucheVulnerabilite = ruches
+      //do something with the ruches
     }
-  );
-
-  return listRucheVulnerabilite;
+  });
 }
+
+
 }
 
 
