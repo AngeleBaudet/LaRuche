@@ -37,26 +37,15 @@
                 <a href="#" class="alignIconeWithText">Mon compte</a>
               </li>
             </div>
-  
-            <div class="nav-element" (mouseenter)="sourisC=true" (mouseleave)="sourisC=false">
-              <li class="linkRuche">
-                <ul class="accordion">
-                  <li class="has-sub">
-                    <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu" *ngIf="sourisC==false">
-                    <img src="assets/navbar/ruche-o.png" alt="logo" class="iconesMenu" *ngIf="sourisC==true">
-                    <label for="menu1" class="alignIconeWithText">Mes ruches &#x25BE;</label>
-                    <input id="menu1" type="checkbox" />
-                    <ul class="sub">
-                      <li class="sousMenus"><a [routerLink]="['gestionnaire/ruche']" routerLinkActive="active">Afficher les ruches</a></li>
-                      <li class="sousMenus"><a href="#">Évaluer le nourrissage</a></li>
-                      <li class="sousMenus"><a href="#">Évaluer les populations</a></li>
-                    </ul>
-                  </li>
-                </ul>
-  
+
+            <div class="nav-element" (mouseenter)="sourisB=true" (mouseleave)="sourisB=false">
+              <li class="linkCompte">
+                <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu" *ngIf="sourisC==false">
+                <img src="assets/navbar/ruche-o.png" alt="logo" class="iconesMenu" *ngIf="sourisC==true">
+                <a [routerLink]="['gestionnaire/ruche']" routerLinkActive="active" class="alignIconeWithText">Mes Ruches</a>
               </li>
-            </div>
-  
+            </div>  
+         
             <div class="nav-element" (mouseenter)="sourisD=true" (mouseleave)="sourisD=false">
               <li class="linkRecoltes">
                 <img src="assets/navbar/miel-b.png" alt="logo" class="iconesMenu" *ngIf="sourisD==false">
