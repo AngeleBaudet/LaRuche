@@ -5,16 +5,15 @@ import { Observable } from 'rxjs';
 import { GlobalService } from '../global.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserHttpService {
-
   users: Array<User> = new Array<User>();
 
   private usersApiPath: string;
 
   constructor(private http: HttpClient, globalService: GlobalService) {
-    this.usersApiPath = globalService.apiPath + '/connexion'; //Attention, faudra changer cette url
+    this.usersApiPath = globalService.apiPath + 'user'; 
     this.load();
   }
 

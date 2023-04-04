@@ -1,1 +1,46 @@
-<p>liste-user works!</p>
+<html>
+    <head>
+      <title>Liste des utilisateurs Gestionnaire</title>
+    </head>
+    <body>
+      <div class="wrapper">
+        <div class="RightBlock">
+          
+            <h1>Liste des utilisateurs</h1>
+            <hr size="2" color=#f6ae2d width="100%"><br>
+            <div class="tableau-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Utilisateur ID</th>
+                  <th>Login</th>
+                  <th>Type</th>
+                  <th></th>
+                </tr>
+              </thead>
+    
+              <tbody>
+                <tr *ngFor="let user of listU()">
+                  <td>{{user.id}}</td>
+                  <td>{{user.login}}</td>
+                  <td>{{user.type | titlecase}}</td>
+                  <td>
+                    <button (click)="goToEdit(user.id)" class="edit-btn">Modifier</button>
+                    <button (click)="remove(user.id)" class="delete-btn">Supprimer</button>
+                  </td>
+                </tr>
+              </tbody>
+    
+            </table>
+
+      </div>
+      <button (click)="goToAdd()" class="add-btn">Ajouter un utilisateur</button>
+    </div>
+</div>
+</body>
+      <footer></footer>
+    
+
+    </html>
+    
+    
