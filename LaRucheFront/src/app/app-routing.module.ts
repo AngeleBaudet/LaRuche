@@ -10,6 +10,7 @@ import { UserDetailComponent } from './User/user-detail/user-detail.component';
 import { AuthGuard } from './auth.guard';
 import { ListeUserComponent } from './User/liste-user/liste-user.component';
 
+
 const routes: Routes = [
   {
     path: 'gestionnaire',
@@ -65,6 +66,12 @@ const routes: Routes = [
     component: ProductionDetailComponent,
     canActivate: [AuthGuard],
   },
+
+  {path: 'gestionnaire/utilisateurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+
+  {path: 'gestionnaire/utilisateurs/recolteurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+
+  {path: 'gestionnaire/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],}
 
 ];
 
