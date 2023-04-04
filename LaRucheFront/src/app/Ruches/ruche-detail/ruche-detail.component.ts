@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recolteur, Ruche, RucheRequest, Vulnerabilite } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
+import { UserHttpService } from 'src/app/User/user-http.service';
 
 @Component({
   selector: 'ruche-detail',
@@ -23,19 +24,13 @@ export class RucheDetailComponent {
   ça ne fait que changer l'ordre des nb vs string dans le tableau
   */
 
-  //en attendant les userService 
-  listRecolteur: Array<Recolteur> = new Array<Recolteur>;
-
   
   constructor(private formBuilder: FormBuilder, 
     private rucheService: RucheHttpService, 
     private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
-    private routes: ActivatedRoute) // pour récupérer le param 
+    private routes: ActivatedRoute, // pour récupérer le param 
+    private userService: UserHttpService)
     {
-    
-    //en attendant les userService 
-    this.listRecolteur.push(new Recolteur(1, "Huguette", "azerty"));
-    this.listRecolteur.push(new Recolteur(2, "GeorgeRecolte", "recolteur"));
 
     //création du reactive form (+validation)
     this.rucheForm = this.formBuilder.group({
@@ -93,7 +88,7 @@ export class RucheDetailComponent {
   }
 
   listRecolteurs(){
-    return this.listRecolteur; //this.listRecolteur en attendant d'avoir le userService 
+    return this.userService.findAllRecolteurs();
   }
 
   goToListRuche(){

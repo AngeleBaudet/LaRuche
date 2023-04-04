@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserRequest } from '../model';
+import { Recolteur, User, UserRequest } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GlobalService } from '../global.service';
@@ -9,6 +9,7 @@ import { GlobalService } from '../global.service';
 })
 export class UserHttpService {
   users: Array<User> = new Array<User>();
+  recolteurs: Array<Recolteur> = new Array<Recolteur>();
 
   private usersApiPath: string;
 
@@ -19,6 +20,10 @@ export class UserHttpService {
 
   findAll(): Array<User> {
     return this.users;
+  }
+
+  findAllRecolteurs(): Array<User> {
+    return this.recolteurs;
   }
 
   findById(id: number): Observable<User> {
@@ -51,5 +56,10 @@ export class UserHttpService {
     this.http.get<Array<User>>(this.usersApiPath).subscribe((resp) => {
       this.users = resp;
     });
+    this.http.get<Array<User>>(this.usersApiPath + '/recolteurs').subscribe((resp) => {
+      this.recolteurs = resp;
+    });
   }
+
+
 }
