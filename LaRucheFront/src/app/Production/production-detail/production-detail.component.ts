@@ -16,8 +16,6 @@ prodForm:FormGroup;
 formValue:ProductionRequest=new ProductionRequest();
 
 //en attendant les userService 
-listRecolteur:Array<Recolteur>=new Array<Recolteur>;
-listRuche:Array<Ruche>=new Array <Ruche>;
 
 produit=Object.values(Produit).filter(value => isNaN(Number(value)));
 
@@ -28,14 +26,6 @@ constructor(private formBuilder: FormBuilder,
   private rucheService: RucheHttpService, 
   private userService: UserHttpService) 
   {
-
-    //en attendant les userService 
-    this.listRecolteur.push(new Recolteur(1, "Huguette", "azerty"));
-    this.listRecolteur.push(new Recolteur(2, "GeorgeRecolte", "recolteur"));
-
-    this.listRuche.push(new Ruche(1));
-    this.listRuche.push(new Ruche(2))
-
     this.prodForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
       stock: this.formBuilder.control('', Validators.required),

@@ -24,9 +24,6 @@ export class RucheDetailComponent {
   ça ne fait que changer l'ordre des nb vs string dans le tableau
   */
 
-  //en attendant les userService 
-  listRecolteur: Array<Recolteur> = new Array<Recolteur>;
-
   
   constructor(private formBuilder: FormBuilder, 
     private rucheService: RucheHttpService, 
@@ -34,10 +31,6 @@ export class RucheDetailComponent {
     private routes: ActivatedRoute, // pour récupérer le param 
     private userService: UserHttpService)
     {
-    
-    //en attendant les userService 
-    this.listRecolteur.push(new Recolteur(1, "Huguette", "azerty"));
-    this.listRecolteur.push(new Recolteur(2, "GeorgeRecolte", "recolteur"));
 
     //création du reactive form (+validation)
     this.rucheForm = this.formBuilder.group({
