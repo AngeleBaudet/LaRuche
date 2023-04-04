@@ -1,1 +1,64 @@
-<p>production-detail works!</p>
+<div class="wrapper">
+    <h1><b>Gestion des productions</b></h1>
+    <hr>
+    
+      <form class="form-add" [formGroup]="prodForm" (ngSubmit)="save()">
+
+       
+        <legend *ngIf="!formValue.id else sinon"><b>Ajouter une production</b></legend><br>
+        <ng-template #sinon><legend> <b> Modifier la production n° {{prodForm.get('id').value}} </b></legend></ng-template>
+        
+        <div class="verifs">
+          <span *ngIf="prodForm.get('stock').dirty && prodForm.get('stock')?.hasError('required')" class="text-danger">
+            La quantité est obligatoire.
+          </span>
+          <span *ngIf="prodForm.get('annee').dirty && prodForm.get('annee')?.hasError('required')" class="text-danger">
+            L'année est obligatoire.
+          </span>
+        </div>
+
+        <div class="myForm">
+        
+          <div class="mdp">            
+            <label>Quantité : </label>              
+            <label>Année :</label>     
+            <label>Ruche id :</label>   
+            <label>Prix au kg :</label>
+            <label>Produit :</label> 
+            <label>Récolteur id :</label>       
+          </div>
+
+          <div class="mdp">
+            <input name="stock" type="number" formControlName="stock" [value]="prodForm.get('stock').value">
+            <input name="annee" type="date" formControlName="annee" [value]="prodForm.get('annee').value">
+
+            <select formControlName="rucheId">
+                <option disabled selected value="">Sélectionner une ruche</option>
+                <option *ngFor="let ruche of listRuches()" [value]="ruche.id">Ruche n°{{ruche.id}}</option>              
+              </select>   
+
+            <input name="prixKg" type="number" formControlName="prixKg" [value]="prodForm.get('prixKg').value">
+
+            <select formControlName="produit">
+              <option disabled selected value="">Sélectionner un produit</option>
+              <option *ngFor="let produit of produit" [value]="produit">{{produit}}</option>
+            </select>
+
+            <select formControlName="recolteurId">
+              <option disabled selected value="">Sélectionner un récolteur</option>
+              <option *ngFor="let recolteur of listRecolteurs()" [value]="recolteur.id">Récolteur n°{{recolteur.id}} ({{recolteur.login}})</option>              
+            </select>              
+      
+          </div>
+          
+        
+          <input type="button" class ="btn1" value="Annuler" (click)="goToListProd()">
+          <input type="button" class ="btn2" type="submit" value="Sauvegarder" [disabled]="prodForm.invalid" >
+          
+          
+        </div>
+          
+          
+    </form>
+  </div>
+  
