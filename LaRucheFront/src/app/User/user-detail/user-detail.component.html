@@ -3,7 +3,7 @@
   </head> -->
   <body>
     <div id="content">
-        <h1 *ngIf="!formValue.id else sinon"><b>Gestion des utilisateurs - Ajouter un utilisateur coucou</b></h1><br>
+        <h1 *ngIf="!formValue.id else sinon"><b>Gestion des utilisateurs - Ajouter un utilisateur </b></h1><br>
           <ng-template #sinon><h1><b>Gestion des utilisateurs - Modifier l'utilisateur</b></h1></ng-template>
 
       <hr>
@@ -17,35 +17,28 @@
           <input checked type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="recolteur"> Apiculteur
           <input type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="gestionnaire" > Gestionnaire <br>
           <br>
-          
           <label for="login">Login :</label><br><br>
           <input required name="login" type="text" formControlName="login" [value]="userForm.get('login').value"><br><br>
   
           <div class="mdp">
-
             <div class="mdp1">
               <label for="mdp">Mot de passe :</label>
               <input required name="password" type="password" formControlName="password" >
-              <div *ngIf="userForm.get('password').dirty && userForm.get('password').errors && userForm.get('password').errors['required']" class="alert alert-danger">
-                <div>Password is required</div>
             </div>
-            </div>
-            </div>
-
             <div class="mdp1">
               <label for="mdp">Confirmer le mot de passe :</label>
-              <input class="password" required name="confirmPassword" type="password" formControlName="confirmPassword"><br><br>
-              <div *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['required']" class="alert alert-danger">
-                <div>Confirm Password is required</div>
+              <input class="password" required name="password" type="password" formControlName="confirmPassword"><br><br>
+              <div *ngIf="userForm.get('confirmPassword').errors['confirmPasswordValidator']">
+                Les mots de passe ne correspondent pas
+              </div>
             </div>
-            <div *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['confirmPasswordValidator']" class="alert alert-danger">
-                <div>Password and Confirm Password didn't match.</div>
-            </div>
-             
-            </div>
+          </div>
 
-          <input type="button" class ="btn1" value="Annuler" (click)="goToHome()">
-          <input  *ngIf="!userForm.invalid" type="button" class ="btn2" type="submit" value="Sauvegarder">
+
+
+
+          <input type="button" class ="btn1" value="Annuler" (click)="goToLogin()">
+          <input type="button" class ="btn2" type="submit" value="Sauvegarder" [disabled]="userForm.invalid">
         </form>
   </div>
   

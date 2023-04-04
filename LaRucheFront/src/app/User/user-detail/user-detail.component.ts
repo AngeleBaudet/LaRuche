@@ -26,20 +26,19 @@ export class UserDetailComponent {
     private userService: UserHttpService,
     private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
     private routes: ActivatedRoute // pour récupérer le param
-  ) {}
+  ) {
     //création du reactive form (+validation)
-
-    ngOnInit() {
     this.userForm = this.formBuilder.group(
       {
-        id: [""],
-        login: ["",Validators.required],
-        password: ["",Validators.required],
-        confirmPassword: ["",Validators.required],
-        type: ["",Validators.required],
+        id: this.formBuilder.control(''),
+        login: this.formBuilder.control('', Validators.required),
+        password: this.formBuilder.control('', Validators.required),
+        confirmPassword: this.formBuilder.control('', Validators.required),
+        type: this.formBuilder.control(''),
       },
       { validator: ConfirmPasswordValidator('password', 'confirmPassword') }
     );
+
     this.routes.params.subscribe((params) => {
       if (params['id']) {
         this.edit(params['id']);
@@ -64,7 +63,6 @@ export class UserDetailComponent {
       this.router.navigate(['gestionnaire/utilisateurs']);
       this.submitted = true;
     }
-    this.submitted = true
     this.cancel();
   }
 
@@ -88,14 +86,12 @@ export class UserDetailComponent {
           Validators.required
         ),
         password: this.formBuilder.control('', Validators.required),
-        confirmPassword: this.formBuilder.control('', Validators.required),
         type: this.formBuilder.control(this.formValue.type),
-      },
-      { validator: ConfirmPasswordValidator('password', 'confirmPassword') });
+      });
     });
   }
 
-  goToHome() {
-    this.router.navigate(['gestionnaire']);
+  goToLogin() {
+    this.router.navigate(['connexion']);
   }
 }
