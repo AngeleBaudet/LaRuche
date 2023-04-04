@@ -6,6 +6,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ListeProductionComponent } from './Production/liste-production/liste-production.component';
 import { ProductionDetailComponent } from './Production/production-detail/production-detail.component';
+import { UserDetailComponent } from './User/user-detail/user-detail.component';
 import { AuthGuard } from './auth.guard';
 import { ListeUserComponent } from './User/liste-user/liste-user.component';
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   
   { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
   { path: 'connexion', component: ConnexionComponent },
+  { path: 'gestionnaire/users/usersChange/:id', component:UserDetailComponent}
   {
     path: 'gestionnaire/production',
     component: ListeProductionComponent,
@@ -53,6 +55,7 @@ const routes: Routes = [
     component: ListeUserComponent,
     //canActivate: [AuthGuard],
   },
+  { path: 'gestionnaire/users/usersChange', component:UserDetailComponent},
 ];
 
 @NgModule({
