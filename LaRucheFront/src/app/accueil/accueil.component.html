@@ -22,7 +22,7 @@
 
 
 						<div class="right">
-							<button routerLink="gestionnaire/ruche">Voir mes vulnérabilités</button>
+							<button (click)="goToRucheVulnerables()">Voir mes vulnérabilités</button>
 						</div>
 					</div>
 					<div class="bot">
@@ -37,7 +37,7 @@
 						</div>
 
 						<div class="right">
-							<button routerLink="gestionnaire/ruche">Voir mes ruches</button>
+							<button (click)="goToRuche()">Voir mes ruches</button>
 						</div>
 					</div>
 				</div>
@@ -54,14 +54,14 @@
 				<a routerLink="gestionnaire/ruche/ma-ruche" class="img_box">
 					<img src="/assets/home_gestionnaire/miel-b.png">
 				</a>
-				<button routerLink="gestionnaire/ruche/ma-ruche" id="button_bot">Voir mes ruches</button>
+				<button (click)="goToRuche()" id="button_bot">Voir mes ruches</button>
 			</div>
 
 			<div class="box-container">
 				<a routerLink="gestionnaire/ruche/ma-production" class="img_box">
 					<img src="/assets/home_gestionnaire/hive-b.png">
 				</a>
-				<button routerLink="gestionnaire/ruche/ma-production" id="button_bot">Voir mes productions</button>
+				<button (click)="goToProduction()" id="button_bot">Voir mes productions</button>
 
 			</div>
 
@@ -70,7 +70,7 @@
 
 					<img src="/assets/home_gestionnaire/apiculteur-b.png">
 				</a>
-				<button routerLink="gestionnaire/ruche/users" id="button_bot">Gérer les utilisateurs</button>
+				<button (click)="goToUsers()" id="button_bot">Gérer les utilisateurs</button>
 			</div>
 
 

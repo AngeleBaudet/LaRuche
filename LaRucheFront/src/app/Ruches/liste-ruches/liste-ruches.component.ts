@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ruche } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
+import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
 
 @Component({
   selector: 'liste-ruches',
@@ -13,13 +14,36 @@ export class ListeRuchesComponent {
 
   connectedType:string;
 
-  constructor(private listeRuchesService:RucheHttpService, private router: Router, private connexionService: ConnexionHttpService){
+  vuln: boolean =false;
+
+  constructor(private listeRuchesService:RucheHttpService, 
+    private router: Router, 
+    private connexionService: ConnexionHttpService,
+    private route: ActivatedRoute
+    ){
     this.connectedType = this.connexionService.connectedUser.type;
     console.log(this.allowed());
     console.log(this.connexionService.connectedUser.type)
+
+    this.route.params.subscribe(params => {
+      this.vuln  = params['vuln'];
+
+    })
   }
 
   listR():Array<Ruche> {
+    let listRuches: Array<Ruche> = new Array<Ruche>();
+    let listAll: Array<Ruche> = this.listeRuchesService.findAll();
+    if (this.vuln){
+      listAll.forEach(ruche => {
+        if (ruche.vulnerabilite){
+          listRuches.push(ruche);  
+        }
+       // this.accueilService.mesRuchesVulnerables = false; 
+
+        })
+      return listRuches;
+    }
     return this.listeRuchesService.findAll();
   }
 

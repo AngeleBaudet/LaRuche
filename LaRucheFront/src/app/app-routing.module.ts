@@ -15,12 +15,6 @@ const routes: Routes = [
     component: AccueilComponent,
     //canActivate: [AuthGuard],
   },
-  { path: 'accueil', component: AccueilComponent, pathMatch: 'full' },
-  {
-    path: 'gestionnaire/ruche',
-    component: ListeRuchesComponent,
-    //canActivate: [AuthGuard],
-  },
   {
     path: 'gestionnaire/ruche/ma-ruche',
     component: RucheDetailComponent,
@@ -31,6 +25,12 @@ const routes: Routes = [
     component: RucheDetailComponent,
     //canActivate: [AuthGuard],
   },
+    path: 'gestionnaire/ruche',
+    component: ListeRuchesComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+  { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
   { path: 'connexion', component: ConnexionComponent },
   {
     path: 'gestionnaire/production',
