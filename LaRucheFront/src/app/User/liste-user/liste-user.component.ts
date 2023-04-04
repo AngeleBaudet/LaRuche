@@ -18,16 +18,19 @@ export class ListeUserComponent {
     return this.listeUserService.findAll();
   }
 
-  //Ajouter les bonnes joutes pour modifier et tout !
   goToAdd() {
-    this.router.navigate(['gestionnaire']);
+    this.router.navigate(['gestionnaire/utilisateurs/mon-utilisateur']);
   }
 
   goToEdit(id: number) {
-    this.router.navigate(['gestionnaire' + id]);
+    this.router.navigate([
+      'gestionnaire/utilisateurs/mon-utilisateur/:id' + id,
+    ]);
   }
 
   remove(id: number): void {
+    console.log('Test');
     this.listeUserService.remove(id);
+    console.log('Test2');
   }
 }
