@@ -13,7 +13,7 @@ export class UserHttpService {
   private usersApiPath: string;
 
   constructor(private http: HttpClient, globalService: GlobalService) {
-    this.usersApiPath = globalService.apiPath + 'user'; 
+    this.usersApiPath = globalService.apiPath + 'user'; //Attention, faudra changer cette url
     this.load();
   }
 
