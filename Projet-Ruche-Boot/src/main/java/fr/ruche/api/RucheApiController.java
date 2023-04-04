@@ -139,4 +139,14 @@ public class RucheApiController {
 			return this.daoRuche.findRucheByVulnerabilite();
 		
 		}
+		
+		@GetMapping("/vulnerabilite/{id}")
+		@JsonView(Views.Ruche.class)
+		public List<Ruche> findRucheByRecolteurIdByVulnerabilite(@PathVariable int id){
+			
+			return this.daoRuche.findRucheByRecolteurIdByVulnerabilite(id);
+		
+		}
+		
+		
 }

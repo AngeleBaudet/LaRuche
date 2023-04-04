@@ -16,7 +16,7 @@ const routes: Routes = [
     component: AccueilComponent,
     canActivate: [AuthGuard],
   },
-  
+
   {
     path: 'gestionnaire/ruche',
     component: ListeRuchesComponent,
@@ -33,22 +33,28 @@ const routes: Routes = [
     component: RucheDetailComponent,
     canActivate: [AuthGuard],
   },
-  
+
   { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
 
+  { path: 'gestionnaire/ruche/:nourrir', component: ListeRuchesComponent },
 
   { path: 'connexion', component: ConnexionComponent },
 
-  
   {
     path: 'gestionnaire/utilisateurs',
     component: ListeUserComponent,
     canActivate: [AuthGuard],
   },
-  
-  { path: 'gestionnaire/utilisateurs/mon-utilisateur', component:UserDetailComponent},
 
-  { path: 'gestionnaire/utilisateurs/mon-utilisateur/:id', component:UserDetailComponent},
+  {
+    path: 'gestionnaire/utilisateurs/mon-utilisateur',
+    component: UserDetailComponent,
+  },
+
+  {
+    path: 'gestionnaire/utilisateurs/mon-utilisateur/:id',
+    component: UserDetailComponent,
+  },
 
   {
     path: 'gestionnaire/production',
@@ -65,7 +71,6 @@ const routes: Routes = [
     component: ProductionDetailComponent,
     canActivate: [AuthGuard],
   },
-
 ];
 
 @NgModule({
