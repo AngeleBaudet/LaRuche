@@ -43,12 +43,12 @@ export class ListeUserComponent {
   }
 
   goToAdd() {
-    this.router.navigate(['gestionnaire/utilisateurs/mon-utilisateur']);
+    this.router.navigate(['unbeelievable/utilisateurs/mon-utilisateur']);
   }
 
   goToEdit(id: number) {
     this.router.navigate([
-      'gestionnaire/utilisateurs/mon-utilisateur/' + id,
+      'unbeelievable/utilisateurs/mon-utilisateur/' + id,
     ]);
   }
 

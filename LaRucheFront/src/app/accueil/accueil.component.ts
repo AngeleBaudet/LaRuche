@@ -51,19 +51,25 @@ export class AccueilComponent {
     });
   }
 
+  //boutons au niveau des alertes
   goToRucheN() {
-    this.router.navigate(['gestionnaire/ruche/nourrir']);
+    this.router.navigate(['unbeelievable/ruche/nourrir']);
   }
 
   goToRucheVulnerables() {
-    this.router.navigate(['gestionnaire/ruche/true']);
+    this.router.navigate(['unbeelievable/ruche/true']);
+  }
+
+  //Boutons en bas 
+  goToRuche() {
+    this.router.navigate(['unbeelievable/ruche']);
   }
 
   goToProduction() {
-    this.router.navigate(['gestionnaire/production']);
+    this.router.navigate(['unbeelievable/production']);
   }
 
   goToUsers() {
-    this.router.navigate([ 'gestionnaire/utilisateurs']);
+    this.router.navigate([ 'unbeelievable/utilisateurs']);
   }
 }

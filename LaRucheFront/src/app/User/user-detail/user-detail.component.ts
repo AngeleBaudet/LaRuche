@@ -58,10 +58,10 @@ export class UserDetailComponent {
 
     if (this.formValue.id) {
       this.userService.update(this.formValue);
-      this.router.navigate(['gestionnaire/utilisateurs']);
+      this.router.navigate(['unbeelievable/utilisateurs']);
     } else {
       this.userService.create(this.formValue);
-      this.router.navigate(['gestionnaire/utilisateurs']);
+      this.router.navigate(['unbeelievable/utilisateurs']);
       this.submitted = true;
     }
     this.submitted = true
@@ -96,6 +96,6 @@ export class UserDetailComponent {
   }
 
   goToHome() {
-    this.router.navigate(['gestionnaire']);
+    this.router.navigate(['unbeelievable']);
   }
 }

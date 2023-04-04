@@ -52,10 +52,10 @@ constructor(private formBuilder: FormBuilder,
     }
     if(this.formValue.id){
       this.productionService.update(this.formValue);
-      this.router.navigate(['gestionnaire/production'])
+      this.router.navigate(['unbeelievable/production'])
     } else {
       this.productionService.create(this.formValue);
-      this.router.navigate(['gestionnaire/production'])
+      this.router.navigate(['unbeelievable/production'])
     }
     this.cancel();
   }
@@ -91,6 +91,6 @@ constructor(private formBuilder: FormBuilder,
   }
 
   goToListProd(){
-    this.router.navigate(['gestionnaire/production']);
+    this.router.navigate(['unbeelievable/production']);
   }
 }

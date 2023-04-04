@@ -60,10 +60,10 @@ export class RucheDetailComponent {
     
     if(this.formValue.id) {      
       this.rucheService.update(this.formValue);
-      this.router.navigate([ 'gestionnaire/ruche'])
+      this.router.navigate([ 'unbeelievable/ruche'])
     } else {
       this.rucheService.create(this.formValue);
-      this.router.navigate([ 'gestionnaire/ruche'])
+      this.router.navigate([ 'unbeelievable/ruche'])
     }
     this.cancel();
   }
@@ -92,7 +92,7 @@ export class RucheDetailComponent {
   }
 
   goToListRuche(){
-    this.router.navigate([ 'gestionnaire/ruche']);
+    this.router.navigate([ 'unbeelievable/ruche']);
   }
 
 
