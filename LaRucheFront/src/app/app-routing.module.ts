@@ -16,6 +16,13 @@ const routes: Routes = [
     component: AccueilComponent,
     //canActivate: [AuthGuard],
   },
+  
+  {
+    path: 'gestionnaire/ruche',
+    component: ListeRuchesComponent,
+    //canActivate: [AuthGuard],
+  },
+
   {
     path: 'gestionnaire/ruche/ma-ruche',
     component: RucheDetailComponent,
@@ -26,15 +33,23 @@ const routes: Routes = [
     component: RucheDetailComponent,
     //canActivate: [AuthGuard],
   },
+  
+  { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
+
+
+  { path: 'connexion', component: ConnexionComponent },
+
+  
   {
-    path: 'gestionnaire/ruche',
-    component: ListeRuchesComponent,
+    path: 'gestionnaire/utilisateurs',
+    component: ListeUserComponent,
     //canActivate: [AuthGuard],
   },
   
-  { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
-  { path: 'connexion', component: ConnexionComponent },
-  { path: 'gestionnaire/users/usersChange/:id', component:UserDetailComponent}
+  { path: 'gestionnaire/utilisateurs/mon-utilisateur', component:UserDetailComponent},
+
+  { path: 'gestionnaire/utilisateurs/mon-utilisateur/:id', component:UserDetailComponent},
+
   {
     path: 'gestionnaire/production',
     component: ListeProductionComponent,
@@ -50,12 +65,7 @@ const routes: Routes = [
     component: ProductionDetailComponent,
     //canActivate: [AuthGuard],
   },
-  {
-    path: 'gestionnaire/utilisateurs',
-    component: ListeUserComponent,
-    //canActivate: [AuthGuard],
-  },
-  { path: 'gestionnaire/users/usersChange', component:UserDetailComponent},
+
 ];
 
 @NgModule({

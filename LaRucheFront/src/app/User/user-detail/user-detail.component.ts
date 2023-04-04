@@ -51,12 +51,12 @@ submit(){
  
   if(this.formValue.id) {      
     this.userService.update(this.formValue);
-    this.router.navigate([ 'gestionnaire'])
+    this.router.navigate([ 'gestionnaire/utilisateurs'])
   } else {
     console.log(this.formValue)
     console.log("Salut")
     this.userService.create(this.formValue);
-    this.router.navigate([ 'gestionnaire'])
+    this.router.navigate([ 'gestionnaire/utilisateurs'])
     console.log(this.formValue)
   }
   this.cancel();

@@ -39,7 +39,7 @@ export class ConnexionComponent {
       next: (user) => {
         if (user) {
           this.connexionService.connectedUser = user;
-          this.router.navigateByUrl('/accueil');
+          this.router.navigateByUrl('/gestionnaire');
           console.log(this.connexionService.connectedUser.type)
         } else {
           console.log('not an existing user');
