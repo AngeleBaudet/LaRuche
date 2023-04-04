@@ -73,7 +73,8 @@ constructor(private formBuilder: FormBuilder,
   edit(id:number):void {
     this.productionService.findById(id).subscribe(resp => {
       this.formValue=new ProductionRequest(resp.id,resp.stock,resp.annee,resp.ruche.id,resp.prixKg,resp.produit,resp.recolteur.id);
-   
+      console.log(this.formValue);
+      console.log(resp);
       this.prodForm=this.formBuilder.group({
         id:this.formBuilder.control(this.formValue.id),
         stock:this.formBuilder.control(this.formValue.stock, Validators.required),

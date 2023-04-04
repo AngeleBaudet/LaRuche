@@ -8,9 +8,10 @@ import { ListeProductionComponent } from './Production/liste-production/liste-pr
 import { ProductionDetailComponent } from './Production/production-detail/production-detail.component';
 
 const routes: Routes = [
-  { path: 'gestionnaire', component: AccueilComponent },
-  { path: 'accueil', component: AccueilComponent, pathMatch: 'full' },
+  { path: 'gestionnaire', component: AccueilComponent, pathMatch: 'full'},
+//  { path: 'accueil', component: AccueilComponent, pathMatch: 'full' },
   { path: 'gestionnaire/ruche', component: ListeRuchesComponent },
+  { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
   { path: 'gestionnaire/ruche/ma-ruche', component: RucheDetailComponent },
   { path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent },
   { path: 'connexion', component: ConnexionComponent },

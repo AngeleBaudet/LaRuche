@@ -5,6 +5,7 @@ import { Gestionnaire, Ruche } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'accueil',
@@ -18,7 +19,7 @@ export class AccueilComponent {
 
   /*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
 
-  constructor(private accueilService: AccueilHttpService) {}
+  constructor(private accueilService: AccueilHttpService, private router: Router) {}
 
 
   ngOnInit() {
@@ -48,5 +49,21 @@ export class AccueilComponent {
     });
     console.log(this.listRucheVulnerabilite.length);
     
+  }
+
+  goToRuche() {
+    this.router.navigate([ 'gestionnaire/ruche']);
+  }
+
+  goToRucheVulnerables() {
+    this.router.navigate([ 'gestionnaire/ruche/true']);
+  }
+
+  goToProduction() {
+    this.router.navigate([ 'gestionnaire/production']);
+  }
+
+  goToUsers() {
+    this.router.navigate([ 'gestionnaire/user']);
   }
 }

@@ -80,7 +80,7 @@ export class RucheDetailComponent {
   edit(id: number): void {
     this.rucheService.findById(id).subscribe(resp => {
       this.formValue = new RucheRequest(resp.id, resp.cadre,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-
+      
       this.rucheForm = this.formBuilder.group({
 
         id: this.formBuilder.control(this.formValue.id),

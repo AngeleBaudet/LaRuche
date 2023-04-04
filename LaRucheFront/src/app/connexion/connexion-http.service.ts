@@ -11,7 +11,7 @@ export class ConnexionHttpService {
   //Sert a rien
   users: Array<User> = new Array<User>();
 
-  connectedUser: User;
+  connectedUser: User = new User("gestionnaire",1,"ges1","ges1");
 
   private usersApiPath: string;
 
