@@ -11,14 +11,19 @@
 				<div class="message_content">
 					<div class="top">
 						<div class="left">
-							<ng-container *ngIf=" listRucheVulnerabilite.length > 0; else noVulnerabilite">
-								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
-									{{listRucheVulnerabilite.length}} vulnérabilités en cours</p>
+							<ng-container *ngIf="listRucheVulnerabilite.length > 0; else noVulnerabilite">
+							  <p>
+								<img src="/assets/home_gestionnaire/icone-danger.png" class="icon">
+								Vous avez {{listRucheVulnerabilite.length}} 
+								<ng-container *ngIf="listRucheVulnerabilite.length === 1">vulnérabilité</ng-container>
+								<ng-container *ngIf="listRucheVulnerabilite.length > 1">vulnérabilités</ng-container>
+								en cours
+							  </p>
 							</ng-container>
 							<ng-template #noVulnerabilite>
-								<p>Aucune vulnérabilité</p>
+							  <p>Aucune vulnérabilité</p>
 							</ng-template>
-						</div>
+						  </div>
 
 
 						<div class="right">
