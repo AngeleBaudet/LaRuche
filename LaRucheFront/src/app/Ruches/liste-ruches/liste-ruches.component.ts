@@ -44,7 +44,8 @@ export class ListeRuchesComponent {
         // this.accueilService.mesRuchesVulnerables = false;
       });
       return listRuches;
-    } else if (this.nourissage === 'nourrir') {
+    } else if (this.nourissage == 'nourrir') { //a creuser
+      console.log(this.accueilService.listRucheNourissage);
       return this.accueilService.listRucheNourissage;
     }
     return this.listeRuchesService.findAll();
