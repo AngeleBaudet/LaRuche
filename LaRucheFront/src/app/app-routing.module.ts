@@ -6,18 +6,52 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ListeProductionComponent } from './Production/liste-production/liste-production.component';
 import { ProductionDetailComponent } from './Production/production-detail/production-detail.component';
+import { AuthGuard } from './auth.guard';
+import { ListeUserComponent } from './User/liste-user/liste-user.component';
 
 const routes: Routes = [
-  { path: 'gestionnaire', component: AccueilComponent },
+  {
+    path: 'gestionnaire',
+    component: AccueilComponent,
+    //canActivate: [AuthGuard],
+  },
   { path: 'accueil', component: AccueilComponent, pathMatch: 'full' },
-  { path: 'gestionnaire/ruche', component: ListeRuchesComponent },
-  { path: 'gestionnaire/ruche/ma-ruche', component: RucheDetailComponent },
-  { path: 'gestionnaire/ruche/ma-ruche/:id', component: RucheDetailComponent },
+  {
+    path: 'gestionnaire/ruche',
+    component: ListeRuchesComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'gestionnaire/ruche/ma-ruche',
+    component: RucheDetailComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'gestionnaire/ruche/ma-ruche/:id',
+    component: RucheDetailComponent,
+    //canActivate: [AuthGuard],
+  },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'gestionnaire/production', component:ListeProductionComponent},
-  { path: 'gestionnaire/production/ma-production', component:ProductionDetailComponent},
-  { path: 'gestionnaire/production/ma-production/:id', component:ProductionDetailComponent}
-
+  {
+    path: 'gestionnaire/production',
+    component: ListeProductionComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'gestionnaire/production/ma-production',
+    component: ProductionDetailComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'gestionnaire/production/ma-production/:id',
+    component: ProductionDetailComponent,
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'gestionnaire/utilisateurs',
+    component: ListeUserComponent,
+    //canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
