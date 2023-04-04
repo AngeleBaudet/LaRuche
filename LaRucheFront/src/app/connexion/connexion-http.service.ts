@@ -44,5 +44,12 @@ export class ConnexionHttpService {
     });
   }
 
+  allowed():boolean{
+    if (this.connectedUser.type === 'gestionnaire'){
+      return true;
+    }
+    return false;
+  }
+
   
 }

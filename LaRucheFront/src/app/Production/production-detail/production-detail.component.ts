@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Production, ProductionRequest, Produit, Recolteur, Ruche } from 'src/app/model';
+import { Production, ProductionRequest, Produit, Recolteur, Ruche, User } from 'src/app/model';
 import { ProductionHttpService } from '../production-http.service';
 import { RucheHttpService } from 'src/app/Ruches/ruche-http.service';
 import { UserHttpService } from 'src/app/User/user-http.service';
+import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 
 @Component({
   selector: 'app-production-detail',
@@ -24,7 +25,8 @@ constructor(private formBuilder: FormBuilder,
   private router: Router,
   private routes: ActivatedRoute, 
   private rucheService: RucheHttpService, 
-  private userService: UserHttpService) 
+  private userService: UserHttpService,
+  private connexionService: ConnexionHttpService) 
   {
     this.prodForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
@@ -87,7 +89,10 @@ constructor(private formBuilder: FormBuilder,
   }
 
   listRecolteurs(){
-    return this.userService.findAllRecolteurs();
+    if (this.connexionService.allowed()){
+      return this.userService.findAllRecolteurs();
+    }
+    return new Array<User>(this.connexionService.connectedUser)
   }
 
   goToListProd(){
