@@ -8,59 +8,62 @@ import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
 @Component({
   selector: 'liste-ruches',
   templateUrl: './liste-ruches.component.html',
-  styleUrls: ['./liste-ruches.component.scss']
+  styleUrls: ['./liste-ruches.component.scss'],
 })
 export class ListeRuchesComponent {
+  connectedType: string;
 
-  connectedType:string;
+  vuln: boolean = false;
+  nourissage: string = '';
 
-  vuln: boolean =false;
-
-  constructor(private listeRuchesService:RucheHttpService, 
-    private router: Router, 
+  constructor(
+    private listeRuchesService: RucheHttpService,
+    private router: Router,
     private connexionService: ConnexionHttpService,
-    private route: ActivatedRoute
-    ){
+    private route: ActivatedRoute,
+    private accueilService: AccueilHttpService
+  ) {
     this.connectedType = this.connexionService.connectedUser.type;
     console.log(this.allowed());
-    console.log(this.connexionService.connectedUser.type)
+    console.log(this.connexionService.connectedUser.type);
 
-    this.route.params.subscribe(params => {
-      this.vuln  = params['vuln'];
-
-    })
+    this.route.params.subscribe((params) => {
+      this.vuln = params['vuln'];
+      this.nourissage = params['nourrir'];
+    });
   }
 
-  listR():Array<Ruche> {
+  listR(): Array<Ruche> {
     let listRuches: Array<Ruche> = new Array<Ruche>();
     let listAll: Array<Ruche> = this.listeRuchesService.findAll();
-    if (this.vuln){
-      listAll.forEach(ruche => {
-        if (ruche.vulnerabilite){
-          listRuches.push(ruche);  
+    if (this.vuln) {
+      listAll.forEach((ruche) => {
+        if (ruche.vulnerabilite) {
+          listRuches.push(ruche);
         }
-       // this.accueilService.mesRuchesVulnerables = false; 
-
-        })
+        // this.accueilService.mesRuchesVulnerables = false;
+      });
       return listRuches;
+    } else if (this.nourissage === 'nourrir') {
+      return this.accueilService.listRucheNourissage;
     }
     return this.listeRuchesService.findAll();
   }
 
   goToAdd() {
-    this.router.navigate([ 'gestionnaire/ruche/ma-ruche']);
+    this.router.navigate(['gestionnaire/ruche/ma-ruche']);
   }
 
-  goToEdit(id: number){
-    this.router.navigate([ 'gestionnaire/ruche/ma-ruche/'+id]);
+  goToEdit(id: number) {
+    this.router.navigate(['gestionnaire/ruche/ma-ruche/' + id]);
   }
 
-  remove(id: number) : void {
+  remove(id: number): void {
     this.listeRuchesService.remove(id);
   }
 
-  allowed():boolean{
-    if (this.connexionService.connectedUser.type === 'gestionnaire'){
+  allowed(): boolean {
+    if (this.connexionService.connectedUser.type === 'gestionnaire') {
       return true;
     }
     return false;

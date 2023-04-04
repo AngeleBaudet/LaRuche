@@ -19,51 +19,51 @@ export class AccueilComponent {
 
   /*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
 
-  constructor(private accueilService: AccueilHttpService, private router: Router) {}
-
+  constructor(
+    private accueilService: AccueilHttpService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.rucheNourissage();
     this.rucheVulnerabilite();
   }
-
-
-  rucheNourissage(): void{
+  /* 
+  rucheNourissage(): void {
     this.accueilService.findRucheByNourissage().subscribe({
       next: (ruches) => {
         this.listRucheNourissage = ruches;
         //do something with the ruches
-        
-      }
-     
+      },
     });
-    console.log(this.listRucheNourissage.length);
-} 
+  } */
+
+  rucheNourissage(): void {
+    this.listRucheNourissage = this.accueilService.listRucheNourissage;
+  }
 
   rucheVulnerabilite(): void {
     this.accueilService.findRucheByVulnerabilite().subscribe({
-      next: ruches=>{ this.listRucheVulnerabilite = ruches
+      next: (ruches) => {
+        this.listRucheVulnerabilite = ruches;
         //do something with the ruches
-      }
-      
+      },
     });
-    console.log(this.listRucheVulnerabilite.length);
-    
   }
 
-  goToRuche() {
-    this.router.navigate([ 'gestionnaire/ruche']);
+  goToRucheN() {
+    this.router.navigate(['gestionnaire/ruche/nourrir']);
   }
 
   goToRucheVulnerables() {
-    this.router.navigate([ 'gestionnaire/ruche/true']);
+    this.router.navigate(['gestionnaire/ruche/true']);
   }
 
   goToProduction() {
-    this.router.navigate([ 'gestionnaire/production']);
+    this.router.navigate(['gestionnaire/production']);
   }
 
   goToUsers() {
-    this.router.navigate([ 'gestionnaire/user']);
+    this.router.navigate(['gestionnaire/user']);
   }
 }
