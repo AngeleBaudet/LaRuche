@@ -52,11 +52,11 @@ export class ListeRuchesComponent {
   }
 
   goToAdd() {
-    this.router.navigate(['gestionnaire/ruche/ma-ruche']);
+    this.router.navigate(['unbeelievable/ruche/ma-ruche']);
   }
 
   goToEdit(id: number) {
-    this.router.navigate(['gestionnaire/ruche/ma-ruche/' + id]);
+    this.router.navigate(['unbeelievable/ruche/ma-ruche/' + id]);
   }
 
   remove(id: number): void {

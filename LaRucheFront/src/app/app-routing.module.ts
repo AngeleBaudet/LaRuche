@@ -13,71 +13,71 @@ import { ListeUserComponent } from './User/liste-user/liste-user.component';
 
 const routes: Routes = [
   {
-    path: 'gestionnaire',
+    path: 'unbeelievable',
     component: AccueilComponent,
     canActivate: [AuthGuard],
   },
 
   {
-    path: 'gestionnaire/ruche',
+    path: 'unbeelievable/ruche',
     component: ListeRuchesComponent,
     canActivate: [AuthGuard],
   },
 
   {
-    path: 'gestionnaire/ruche/ma-ruche',
+    path: 'unbeelievable/ruche/ma-ruche',
     component: RucheDetailComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'gestionnaire/ruche/ma-ruche/:id',
+    path: 'unbeelievable/ruche/ma-ruche/:id',
     component: RucheDetailComponent,
     canActivate: [AuthGuard],
   },
 
-  { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
+  { path: 'unbeelievable/ruche/:vuln', component: ListeRuchesComponent },
 
-  { path: 'gestionnaire/ruche/:nourrir', component: ListeRuchesComponent },
+  { path: 'unbeelievable/ruche/:nourrir', component: ListeRuchesComponent },
 
   { path: 'connexion', component: ConnexionComponent },
 
   {
-    path: 'gestionnaire/utilisateurs',
+    path: 'unbeelievable/utilisateurs',
     component: ListeUserComponent,
     canActivate: [AuthGuard],
   },
 
   {
-    path: 'gestionnaire/utilisateurs/mon-utilisateur',
+    path: 'unbeelievable/utilisateurs/mon-utilisateur',
     component: UserDetailComponent,
   },
 
   {
-    path: 'gestionnaire/utilisateurs/mon-utilisateur/:id',
+    path: 'unbeelievable/utilisateurs/mon-utilisateur/:id',
     component: UserDetailComponent,
   },
 
   {
-    path: 'gestionnaire/production',
+    path: 'unbeelievable/production',
     component: ListeProductionComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'gestionnaire/production/ma-production',
+    path: 'unbeelievable/production/ma-production',
     component: ProductionDetailComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'gestionnaire/production/ma-production/:id',
+    path: 'unbeelievable/production/ma-production/:id',
     component: ProductionDetailComponent,
     canActivate: [AuthGuard],
   },
 
-  {path: 'gestionnaire/utilisateurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+  {path: 'unbeelievable/utilisateurs', component:ListeUserComponent,canActivate: [AuthGuard],},
 
-  {path: 'gestionnaire/utilisateurs/recolteurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+  {path: 'unbeelievable/utilisateurs/recolteurs', component:ListeUserComponent,canActivate: [AuthGuard],},
 
-  {path: 'gestionnaire/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],}
+  {path: 'unbeelievable/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],}
 
 ];
 

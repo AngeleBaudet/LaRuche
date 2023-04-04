@@ -18,11 +18,11 @@ export class ListeProductionComponent {
   }
 
   goToAdd() {
-    this.router.navigate([ 'gestionnaire/production/ma-production']);
+    this.router.navigate([ 'unbeelievable/production/ma-production']);
   }
 
   goToEdit(id: number){
-    this.router.navigate([ 'gestionnaire/production/ma-production/'+id]);
+    this.router.navigate([ 'unbeelievable/production/ma-production/'+id]);
   }
 
   remove(id: number) : void {
