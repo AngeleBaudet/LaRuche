@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Production, ProductionRequest, Produit, Recolteur, Ruche } from 'src/app/model';
 import { ProductionHttpService } from '../production-http.service';
+import { RucheHttpService } from 'src/app/Ruches/ruche-http.service';
+import { UserHttpService } from 'src/app/User/user-http.service';
 
 @Component({
   selector: 'app-production-detail',
@@ -22,7 +24,9 @@ produit=Object.values(Produit).filter(value => isNaN(Number(value)));
 constructor(private formBuilder: FormBuilder, 
   private productionService: ProductionHttpService, 
   private router: Router,
-  private routes: ActivatedRoute) 
+  private routes: ActivatedRoute, 
+  private rucheService: RucheHttpService, 
+  private userService: UserHttpService) 
   {
 
     //en attendant les userService 
@@ -89,11 +93,11 @@ constructor(private formBuilder: FormBuilder,
   }
 
   listRuches(){
-    return this.listRuche;
+    return this.rucheService.findAll();
   }
 
   listRecolteurs(){
-    return this.listRecolteur;
+    return this.userService.findAllRecolteurs();
   }
 
   goToListProd(){
