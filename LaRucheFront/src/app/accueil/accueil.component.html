@@ -2,77 +2,79 @@
 
 <body>
 	<main>
-<div class="body_page">
+
 
 		<div class="home_message_top">
 
-		<div class="home_box_message">
-			<h2>Bienvenue sur votre application un-bee-livable !</h2>
-							<div class="message_content">
-								<div class="top">
-									<div class="left">
-										<ng-container *ngIf=" listRucheVulnerabilite.length > 0; else noVulnerabilite">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheVulnerabilite.length}} vulnérabilités en cours</p>
-										</ng-container>
-										<ng-template #noVulnerabilite>
-										  <p>Aucune vulnérabilité</p>
-										</ng-template>
-									</div>	
+			<div class="home_box_message">
+				<h2>Bienvenue sur votre application un-bee-livable !</h2>
+				<div class="message_content">
+					<div class="top">
+						<div class="left">
+							<ng-container *ngIf=" listRucheVulnerabilite.length > 0; else noVulnerabilite">
+								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
+									{{listRucheVulnerabilite.length}} vulnérabilités en cours</p>
+							</ng-container>
+							<ng-template #noVulnerabilite>
+								<p>Aucune vulnérabilité</p>
+							</ng-template>
+						</div>
 
 
-									<div class="right">
-											<button routerLink="gestionnaire/ruche">Voir mes vulnérabilités</button>
-									</div>
-								</div>
-								<div class="bot">
-									<div class="left">
-										<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
-										  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez {{listRucheNourissage.length}} ruches à nourrir</p>
-										</ng-container>
-										<ng-template #noNourissage>
-										  <p>Toutes vos ruches sont nourries</p>
-										</ng-template>
-									</div>
+						<div class="right">
+							<button routerLink="gestionnaire/ruche">Voir mes vulnérabilités</button>
+						</div>
+					</div>
+					<div class="bot">
+						<div class="left">
+							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
+								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
+									{{listRucheNourissage.length}} ruches à nourrir</p>
+							</ng-container>
+							<ng-template #noNourissage>
+								<p>Toutes vos ruches sont nourries</p>
+							</ng-template>
+						</div>
 
-									<div class="right">
-										<button routerLink="gestionnaire/ruche">Voir mes ruches</button>
-									</div>
-								</div>
-							</div>
+						<div class="right">
+							<button routerLink="gestionnaire/ruche">Voir mes ruches</button>
 						</div>
 					</div>
 				</div>
-			
+			</div>
+		</div>
 
 
 
-			<div class="home_button_bot">
 
-				<div class="box-container">
-					<a routerLink="gestionnaire/ruche/ma-ruche" class="img_box">
-						<img src="/assets/home_gestionnaire/miel-b.png">
-					</a>
-					<button routerLink="gestionnaire/ruche/ma-ruche" id="button_bot">Voir mes ruches</button>
-				</div>
 
-				<div class="box-container">
-					<a routerLink="gestionnaire/ruche/ma-production" class="img_box">
-						<img src="/assets/home_gestionnaire/hive-b.png">
-					</a>
-					<button routerLink="gestionnaire/ruche/ma-production" id="button_bot">Voir mes productions</button>
+		<div class="home_button_bot">
 
-				</div>
+			<div class="box-container">
+				<a routerLink="gestionnaire/ruche/ma-ruche" class="img_box">
+					<img src="/assets/home_gestionnaire/miel-b.png">
+				</a>
+				<button routerLink="gestionnaire/ruche/ma-ruche" id="button_bot">Voir mes ruches</button>
+			</div>
 
-				<div class="box-container">
-					<a routerLink="gestionnaire/ruche/users" class="img_box">
-
-						<img src="/assets/home_gestionnaire/apiculteur-b.png">
-					</a>
-					<button routerLink="gestionnaire/ruche/users" id="button_bot">Gérer les utilisateurs</button>
-				</div>
-
+			<div class="box-container">
+				<a routerLink="gestionnaire/ruche/ma-production" class="img_box">
+					<img src="/assets/home_gestionnaire/hive-b.png">
+				</a>
+				<button routerLink="gestionnaire/ruche/ma-production" id="button_bot">Voir mes productions</button>
 
 			</div>
+
+			<div class="box-container">
+				<a routerLink="gestionnaire/ruche/users" class="img_box">
+
+					<img src="/assets/home_gestionnaire/apiculteur-b.png">
+				</a>
+				<button routerLink="gestionnaire/ruche/users" id="button_bot">Gérer les utilisateurs</button>
+			</div>
+
+
+		</div>
 	</main>
 </body>
 
