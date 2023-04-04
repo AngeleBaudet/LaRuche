@@ -69,7 +69,7 @@ export class RucheHttpService {
       this.http
         .get<Array<Ruche>>(
           this.rucheApiPath +
-            'by-recolteur-id/' +
+            '/by-recolteur-id/' +
             this.connexionService.connectedUser.id
         )
         .subscribe((resp) => (this.rucheByRecolteur = resp));
