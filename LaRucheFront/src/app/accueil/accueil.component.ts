@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import { Router } from '@angular/router';
+import { ConnexionHttpService } from '../connexion/connexion-http.service';
 
 @Component({
   selector: 'accueil',
@@ -21,7 +22,8 @@ export class AccueilComponent {
 
   constructor(
     private accueilService: AccueilHttpService,
-    private router: Router
+    private router: Router,
+    private connexionService: ConnexionHttpService
   ) {}
 
   ngOnInit() {
@@ -71,5 +73,9 @@ export class AccueilComponent {
 
   goToUsers() {
     this.router.navigate([ 'unbeelievable/utilisateurs']);
+  }
+
+  allowed():boolean{
+    return this.connexionService.allowed();
   }
 }
