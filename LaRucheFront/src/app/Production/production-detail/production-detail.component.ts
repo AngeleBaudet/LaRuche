@@ -36,10 +36,10 @@ constructor(private formBuilder: FormBuilder,
       id: this.formBuilder.control(''),
       stock: this.formBuilder.control('', Validators.required),
       annee: this.formBuilder.control('', Validators.required),
-      ruche: this.formBuilder.control('', Validators.required),
+      rucheId: this.formBuilder.control('', Validators.required),
       prixKg: this.formBuilder.control('', Validators.required),
       produit: this.formBuilder.control('', Validators.required),
-      recolteur: this.formBuilder.control('', Validators.required)
+      recolteurId: this.formBuilder.control('', Validators.required)
     })
      
     this.routes.params.subscribe(params => {
@@ -72,17 +72,18 @@ constructor(private formBuilder: FormBuilder,
 
   edit(id:number):void {
     this.productionService.findById(id).subscribe(resp => {
-      this.formValue=new ProductionRequest(resp.id,resp.stock,resp.annee,resp.ruche.id,resp.prixKg,resp.produit,resp.recolteur.id);
+      this.formValue=new ProductionRequest(resp.id,resp.stock,resp.annee,resp.ruche.id,resp.produit,resp.prixKg,resp.recolteur.id);
+
       console.log(this.formValue);
       console.log(resp);
       this.prodForm=this.formBuilder.group({
         id:this.formBuilder.control(this.formValue.id),
         stock:this.formBuilder.control(this.formValue.stock, Validators.required),
         annee:this.formBuilder.control(this.formValue.annee, Validators.required),
-        ruche:this.formBuilder.control(this.formValue.rucheId, Validators.required),
+        rucheId:this.formBuilder.control(this.formValue.rucheId, Validators.required),
         prixKg:this.formBuilder.control(this.formValue.prixKg, Validators.required),
         produit:this.formBuilder.control(this.formValue.produit, Validators.required),
-        recolteur:this.formBuilder.control(this.formValue.recolteurId, Validators.required),
+        recolteurId:this.formBuilder.control(this.formValue.recolteurId, Validators.required),
       });
     });
   }
