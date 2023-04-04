@@ -28,7 +28,7 @@
             <div class="mdp1">
               <label for="mdp">Confirmer le mot de passe :</label>
               <input class="password" required name="password" type="password" formControlName="confirmPassword"><br><br>
-              <div *ngIf="userForm.get('confirmPassword').hasError('passwordsNotMatch')">
+              <div *ngIf="userForm.get('confirmPassword').errors['confirmPasswordValidator']">
                 Les mots de passe ne correspondent pas
               </div>
             </div>
