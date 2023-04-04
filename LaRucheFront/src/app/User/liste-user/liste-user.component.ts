@@ -24,7 +24,7 @@ export class ListeUserComponent {
 
   goToEdit(id: number) {
     this.router.navigate([
-      'gestionnaire/utilisateurs/mon-utilisateur/:id' + id,
+      'gestionnaire/utilisateurs/mon-utilisateur/' + id,
     ]);
   }
 
