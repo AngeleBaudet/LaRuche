@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { User } from 'src/app/model';
 import { UserHttpService } from '../user-http.service';
 
@@ -9,12 +9,36 @@ import { UserHttpService } from '../user-http.service';
   styleUrls: ['./liste-user.component.scss'],
 })
 export class ListeUserComponent {
+  
+  type: string = null;
+
   constructor(
     private listeUserService: UserHttpService,
-    private router: Router
-  ) {}
+    private router: Router, 
+    private route: ActivatedRoute
+  ) {
+
+    this.route.url.subscribe(urls => {
+      let last: UrlSegment = urls[urls.length-1];
+      
+      if(last.path == 'recolteurs') {
+        this.type = "recolteur";
+      } else if(last.path == 'clients') {
+        this.type = "client";
+      } else {
+        this.type = null;
+      }
+
+    });
+  
+  }
 
   listU(): Array<User> {
+    if(this.type) {
+      return this.listeUserService.findAll().filter(u => u.type == this.type);
+    }
+
+
     return this.listeUserService.findAll();
   }
 

@@ -64,6 +64,6 @@ export class AccueilComponent {
   }
 
   goToUsers() {
-    this.router.navigate(['gestionnaire/user']);
+    this.router.navigate([ 'gestionnaire/utilisateurs']);
   }
 }
