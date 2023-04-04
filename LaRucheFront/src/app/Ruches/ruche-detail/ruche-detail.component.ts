@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recolteur, Ruche, RucheRequest, Vulnerabilite } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
+import { UserHttpService } from 'src/app/User/user-http.service';
 
 @Component({
   selector: 'ruche-detail',
@@ -30,7 +31,8 @@ export class RucheDetailComponent {
   constructor(private formBuilder: FormBuilder, 
     private rucheService: RucheHttpService, 
     private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
-    private routes: ActivatedRoute) // pour récupérer le param 
+    private routes: ActivatedRoute, // pour récupérer le param 
+    private userService: UserHttpService)
     {
     
     //en attendant les userService 
@@ -93,7 +95,7 @@ export class RucheDetailComponent {
   }
 
   listRecolteurs(){
-    return this.listRecolteur; //this.listRecolteur en attendant d'avoir le userService 
+    return this.userService.findAllRecolteurs();
   }
 
   goToListRuche(){
