@@ -15,24 +15,24 @@ const routes: Routes = [
   {
     path: 'gestionnaire',
     component: AccueilComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'gestionnaire/ruche',
     component: ListeRuchesComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'gestionnaire/ruche/ma-ruche',
     component: RucheDetailComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
   {
     path: 'gestionnaire/ruche/ma-ruche/:id',
     component: RucheDetailComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
 
   { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
   {
     path: 'gestionnaire/utilisateurs',
     component: ListeUserComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
 
   {
@@ -60,17 +60,17 @@ const routes: Routes = [
   {
     path: 'gestionnaire/production',
     component: ListeProductionComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
   {
     path: 'gestionnaire/production/ma-production',
     component: ProductionDetailComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
   {
     path: 'gestionnaire/production/ma-production/:id',
     component: ProductionDetailComponent,
-/*     canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
   },
 
   {path: 'gestionnaire/utilisateurs', component:ListeUserComponent,canActivate: [AuthGuard],},
