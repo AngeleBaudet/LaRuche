@@ -25,11 +25,12 @@ const routes: Routes = [
     component: RucheDetailComponent,
     //canActivate: [AuthGuard],
   },
+  {
     path: 'gestionnaire/ruche',
     component: ListeRuchesComponent,
     //canActivate: [AuthGuard],
   },
-  {
+  
   { path: 'gestionnaire/ruche/:vuln', component: ListeRuchesComponent },
   { path: 'connexion', component: ConnexionComponent },
   {
