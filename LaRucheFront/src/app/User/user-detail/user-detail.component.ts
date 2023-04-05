@@ -69,10 +69,10 @@ export class UserDetailComponent {
 
     if (this.formValue.id) {
       this.userService.update(this.formValue);
-      this.router.navigate(['unbeelievable/utilisateurs']);
+      this.router.navigate(['unbeelievable']);
     } else {
       this.userService.create(this.formValue);
-      this.router.navigate(['unbeelievable/utilisateurs']);
+      this.router.navigate(['unbeelievable']);
       this.submitted = true;
     }
     this.submitted = true
