@@ -15,30 +15,28 @@ html, body {
 }
 
 
-  #page{
-    display: flex;
-    flex-wrap: nowrap;
-    height: 1080px;
-    
-    
-  }
+#page {
+  display: flex;
+  flex-wrap: nowrap;
+  /* height: 1080px; */
+  padding-bottom: 50px; /* Add the height of the footer as padding to the bottom */
+}
 
-  #router {
-    flex-grow: 1;
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
-    background-color: #EDE8EC ;
-    
-  }
-
-  .router{
-    flex-grow: 1;
-  }
+#router {
+  flex-grow: 1;
+  background-color: #EDE8EC ;
+  min-height: calc(100vh - 100px); /* Subtract the height of the footer from the viewport height */
+  overflow-y: auto;
   
-  #footer {
-    flex-shrink: 0;
-  }
+}
+
+.router {
+  flex-grow: 1;
+}
+
+#footer {
+  flex-shrink: 0;
+}
   
   #navbar {
     flex-shrink: 0;
