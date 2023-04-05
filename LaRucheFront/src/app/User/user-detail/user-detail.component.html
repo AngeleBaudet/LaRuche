@@ -35,7 +35,7 @@
 
             <div class="mdp1">
               <label for="mdp">Confirmer le mot de passe :</label>
-              <input class="password" required name="confirmPassword" type="password" formControlName="confirmPassword"><br><br>
+              <input class="password" required name="confirmPassword" type="password" formControlName="confirmPassword">
               <div *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['required']" class="alert alert-danger">
                 <div class="error">Veuillez confirmer un mot de passe</div>
             </div>
