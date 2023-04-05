@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Ruche } from 'src/app/model';
+import { Ruche, RucheRequest } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
@@ -63,10 +63,29 @@ export class ListeRuchesComponent {
     this.listeRuchesService.remove(id);
   }
 
+  Division(id:number){
+    let rucheMere: RucheRequest;
+    let rucheFille: RucheRequest;
+    this.listeRuchesService.findById(id).subscribe(resp => {
+      rucheMere = new RucheRequest(resp.id, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
+      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
+
+      this.listeRuchesService.create(rucheFille);
+    
+      this.listeRuchesService.update(rucheMere);
+
+      console.log(resp);
+      console.log(rucheFille);
+      console.log(rucheMere);
+
+    })
+  }
+
   allowed(): boolean {
     if (this.connexionService.connectedUser.type === 'gestionnaire') {
       return true;
     }
     return false;
   }
+
 }

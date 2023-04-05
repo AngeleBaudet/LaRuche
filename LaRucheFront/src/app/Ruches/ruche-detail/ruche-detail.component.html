@@ -17,12 +17,15 @@
             <span *ngIf="rucheForm.get('cadre').dirty && rucheForm.get('cadre')?.hasError('required')" class="text-danger">
               Le nombre de cadres est obligatoire.
             </span>
+            <span *ngIf="rucheForm.get('cadre').dirty && rucheForm.get('cadre')?.hasError('min')" class="text-danger">
+              Il faut au minimum 3 cadres.
+            </span>
           </div>
 
           <div class="myForm">
           
             <div class="mdp">            
-              <label >Nombre de cadres : </label>              
+              <label >Nombre de cadres (couvains) : </label>              
               <label >Vulnérabilité :</label>     
               <label >Récolteur :</label>         
             </div>
