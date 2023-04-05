@@ -13,8 +13,9 @@ import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
 export class ListeRuchesComponent {
   connectedType: string;
   listAll: Array<Ruche> = this.listeRuchesService.findAll();
-  vuln: boolean = false;
+  tri: string;
   nourissage: string = '';
+  listRucheNourissage: Array<Ruche> = new Array<Ruche>();
 
   constructor(
     private listeRuchesService: RucheHttpService,
@@ -23,31 +24,41 @@ export class ListeRuchesComponent {
     private route: ActivatedRoute,
     private accueilService: AccueilHttpService
   ) {
+
     this.connectedType = this.connexionService.connectedUser.type;
-    console.log(this.listR().length);
-    console.log(this.connexionService.connectedUser.type);
     this.listeRuchesService.load()
 
     this.route.params.subscribe((params) => {
-      this.vuln = params['vuln'];
-      this.nourissage = params['nourrir'];
+      console.log(params)
+      this.tri = params['tri'];
     });
   }
 
   listR(): Array<Ruche> {
     let listRuches: Array<Ruche> = new Array<Ruche>();
-    if (this.vuln) {
+    if (this.tri === 'vulnerabilite') {
       this.listAll.forEach((ruche) => {
         if (ruche.vulnerabilite) {
           listRuches.push(ruche);
         }
       });
       return listRuches;
-    } else if (this.nourissage == 'nourrir') { //a creuser
-      console.log(this.accueilService.listRucheNourissage);
-      return this.accueilService.listRucheNourissage;
+    } else if (this.tri == 'nourrissage') { //a creuser
+      console.log('coucou')
+        console.log(this.listRucheNourissage.length)
+        return this.listRucheNourissage;
     }
     return this.listeRuchesService.findAll();
+  }
+
+  rucheNourissage(): void {
+    this.accueilService.findRucheByNourissage().subscribe({
+      next: (ruches) => {
+        this.listRucheNourissage = ruches;
+        console.log(this.listRucheNourissage.length)
+        //do something with the ruches
+      },
+    });
   }
 
   goToAdd() {

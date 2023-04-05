@@ -11,7 +11,7 @@ import { ConnexionHttpService } from '../connexion/connexion-http.service';
 })
 export class AccueilHttpService {
   private rucheApiPath: string;
-  listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
+ // listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
 
   listRucheNourissage: Array<Ruche> = new Array<Ruche>();
 
@@ -22,7 +22,7 @@ export class AccueilHttpService {
     private connexionService: ConnexionHttpService
   ) {
     this.rucheApiPath = globalService.apiPath + 'ruche';
-    this.load();
+   // this.load();
   }
 
   findRucheByVulnerabilite() {
@@ -36,10 +36,10 @@ export class AccueilHttpService {
       return this.http.get<Array<Ruche>>(this.rucheApiPath + '/vulnerabilite');
   }
 
-/*     findRucheByNourissage() {
+     findRucheByNourissage() {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
-  } */
-
+  } 
+/*
   findRucheByNourissage() {
     return this.listRucheNourissage;
   }
@@ -50,5 +50,5 @@ export class AccueilHttpService {
       .subscribe((resp) => {
         this.listRucheNourissage = resp;
       });
-  }
+  }*/
 }
