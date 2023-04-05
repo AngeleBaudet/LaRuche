@@ -37,7 +37,7 @@
           </tbody>
         </table>
     </div>
-          <button (click)="goToAdd()" class="add-btn">Ajouter une production</button>
+          <button *ngIf="afficher()" (click)="goToAdd()" class="add-btn">Ajouter une production</button>
       </div>
     </div>
   <footer></footer>

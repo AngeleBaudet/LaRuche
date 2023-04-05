@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Production } from 'src/app/model';
+import { Production, Ruche } from 'src/app/model';
+import { RucheHttpService } from 'src/app/Ruches/ruche-http.service';
 import { ProductionHttpService } from '../production-http.service';
 
 @Component({
@@ -10,8 +11,10 @@ import { ProductionHttpService } from '../production-http.service';
 })
 export class ListeProductionComponent {
 
-  constructor(private listeProductionsService:ProductionHttpService, private router: Router, private productionService: ProductionHttpService){
-    this.productionService.load()
+  constructor(private listeProductionsService:ProductionHttpService, 
+    private router: Router, 
+    private listeRuchesService:RucheHttpService){
+    this.listeProductionsService.load()
   }
 
   listP():Array<Production> {
@@ -28,5 +31,17 @@ export class ListeProductionComponent {
 
   remove(id: number) : void {
     this.listeProductionsService.remove(id);
+  }
+
+  listR(): Array<Ruche> {
+    return this.listeRuchesService.findAll();
+  }
+
+  afficher() : boolean {
+    if (this.listR().length === 0){
+      return false;
+    } else {
+      return true;
+    }
   }
 }

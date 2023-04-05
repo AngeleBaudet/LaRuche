@@ -12,7 +12,7 @@ import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
 })
 export class ListeRuchesComponent {
   connectedType: string;
-
+  listAll: Array<Ruche> = this.listeRuchesService.findAll();
   vuln: boolean = false;
   nourissage: string = '';
 
@@ -24,9 +24,10 @@ export class ListeRuchesComponent {
     private accueilService: AccueilHttpService
   ) {
     this.connectedType = this.connexionService.connectedUser.type;
-    console.log(this.allowed());
+    console.log(this.listR().length);
     console.log(this.connexionService.connectedUser.type);
-    this.listeRuchesService.load();
+    this.listeRuchesService.load()
+
     this.route.params.subscribe((params) => {
       this.vuln = params['vuln'];
       this.nourissage = params['nourrir'];
@@ -35,13 +36,11 @@ export class ListeRuchesComponent {
 
   listR(): Array<Ruche> {
     let listRuches: Array<Ruche> = new Array<Ruche>();
-    let listAll: Array<Ruche> = this.listeRuchesService.findAll();
     if (this.vuln) {
-      listAll.forEach((ruche) => {
+      this.listAll.forEach((ruche) => {
         if (ruche.vulnerabilite) {
           listRuches.push(ruche);
         }
-        // this.accueilService.mesRuchesVulnerables = false;
       });
       return listRuches;
     } else if (this.nourissage == 'nourrir') { //a creuser

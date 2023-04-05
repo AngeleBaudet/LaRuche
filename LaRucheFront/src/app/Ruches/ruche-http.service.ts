@@ -75,4 +75,5 @@ export class RucheHttpService {
         .subscribe((resp) => (this.rucheByRecolteur = resp));
     }
   }
+
 }
