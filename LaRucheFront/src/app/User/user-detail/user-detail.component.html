@@ -1,13 +1,13 @@
   <body>
     
-        <h1 *ngIf="!formValue.id else sinon"><b>Gestion des utilisateurs - Ajouter un utilisateur</b></h1><br>
-          <ng-template #sinon><h1><b>Gestion des utilisateurs - Modifier l'utilisateur</b></h1></ng-template>
+        <h1 *ngIf="!formValue.id else sinon">Gestion des utilisateurs - Ajouter un utilisateur</h1><br>
+          <ng-template #sinon><h1>Gestion des utilisateurs - Modifier l'utilisateur</h1></ng-template><br>
 
       <hr>
       <div class="wrapper">
         <form class="form-add" [formGroup]="userForm" (ngSubmit)="submit()">
-            <legend *ngIf="!formValue.id else sinon"><b>Ajouter un utilisateur </b></legend><br>
-            <ng-template #sinon><legend> <b>Modifier l'utilisateur</b></legend></ng-template>
+            <legend *ngIf="!formValue.id else sinon">Ajouter un utilisateur </legend><br>
+            <ng-template #sinon><legend> Modifier l'utilisateur</legend></ng-template>
             
           <label for="typecompte">Type Compte :</label>
   
@@ -18,7 +18,7 @@
          <div class = "login">
           <label for="login">Login :</label>
           <input required name="login" type="text" formControlName="login" [value]="userForm.get('login').value">
-          <div *ngIf="userForm.get('login').dirty && userForm.get('login').errors['required']" class="alert alert-danger">
+          <div *ngIf="userForm.get('login').dirty && userForm.get('login').errors && userForm.get('login').errors['required']" class="alert alert-danger">
             <div class="error">Vous devez renseigner un login</div>
         </div>
       </div> 
