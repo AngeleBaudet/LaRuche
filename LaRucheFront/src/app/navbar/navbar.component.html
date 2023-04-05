@@ -12,7 +12,9 @@
   
   
           <div class="logo-container">
-            <img id="logo" src="assets/navbar/logo-ss.png" alt="logo">
+            <a [routerLink]="['unbeelievable']" routerLinkActive="active">
+              <img id="logo" src="assets/navbar/logo-ss.png" alt="logo">
+            </a>
           </div>
   
   
@@ -24,59 +26,62 @@
             <ul>
            <div class="nav-element" (mouseenter)="sourisA=true" (mouseleave)="sourisA=false">
               <li class="linkAccueil">
+                <a [routerLink]="['unbeelievable']" routerLinkActive="active" class="alignIconeWithText">
                 <img src="assets/navbar/home-b.png" alt="logo" class="iconesMenu" *ngIf="sourisA==false">
                 <img src="assets/navbar/home-o.png" alt="logo" class="iconesMenu" *ngIf="sourisA==true">
-                <a [routerLink]="['unbeelievable']" routerLinkActive="active" class="alignIconeWithText">Accueil</a>
+                Accueil</a>
               </li>
             </div>
   
             <div class="nav-element" (mouseenter)="sourisB=true" (mouseleave)="sourisB=false">
               <li class="linkCompte">
+                <a [routerLink]="['unbeelievable/utilisateurs/mon-utilisateur/'+idConnected]" routerLinkActive="active" class="alignIconeWithText">
                 <img src="assets/navbar/compte-b.png" alt="logo" class="iconesMenu" *ngIf="sourisB==false">
                 <img src="assets/navbar/compte-o.png" alt="logo" class="iconesMenu" *ngIf="sourisB==true">
-                <a [routerLink]="['unbeelievable/utilisateurs/mon-utilisateur/'+idConnected]" routerLinkActive="active" class="alignIconeWithText">Mon compte</a>
+                Mon compte</a>
               </li>
             </div>
 
             <div class="nav-element" (mouseenter)="sourisC=true" (mouseleave)="sourisC=false">
               <li class="linkCompte">
+                <a [routerLink]="['unbeelievable/ruche']" routerLinkActive="active" class="alignIconeWithText">
                 <img src="assets/navbar/ruche-b.png" alt="logo" class="iconesMenu" *ngIf="sourisC==false">
                 <img src="assets/navbar/ruche-o.png" alt="logo" class="iconesMenu" *ngIf="sourisC==true">
-                <a [routerLink]="['unbeelievable/ruche']" routerLinkActive="active" class="alignIconeWithText">Mes Ruches</a>
+                Mes Ruches</a>
               </li>
             </div>  
          
             <div class="nav-element" (mouseenter)="sourisD=true" (mouseleave)="sourisD=false">
               <li class="linkRecoltes">
+                <a [routerLink]="['unbeelievable/production']" routerLinkActive="active" class="alignIconeWithText">
                 <img src="assets/navbar/miel-b.png" alt="logo" class="iconesMenu" *ngIf="sourisD==false">
                 <img src="assets/navbar/miel-o.png" alt="logo" class="iconesMenu" *ngIf="sourisD==true">
-                <a [routerLink]="['unbeelievable/production']" routerLinkActive="active" class="alignIconeWithText">Mes récoltes</a>
+                Mes récoltes</a>
               </li>
             </div>
   
             <div *ngIf="allowed()" class="nav-element" (mouseenter)="sourisE=true" (mouseleave)="sourisE=false">
               <li class="linkUtilisateurs">
-  
                 <ul class="accordion">
-  
                   <li class="has-sub">
-                    <img src="assets/navbar/api-b.png" alt="logo" class="iconesMenu" *ngIf="sourisE==false">
-                    <img src="assets/navbar/api-o.png" alt="logo" class="iconesMenu" *ngIf="sourisE==true">
+                    <img src="assets/navbar/api-b.png" alt="logo" class="iconesMenu" *ngIf="sourisE==false" (click)="menu2.checked = !menu2.checked">
+                    <img src="assets/navbar/api-o.png" alt="logo" class="iconesMenu" *ngIf="sourisE==true" (click)="menu2.checked = !menu2.checked">
                     <label for="menu2" class="alignIconeWithText">Gestion des utilisateurs &#x25BE;</label>
-                    <input id="menu2" type="checkbox" />
+                    <input id="menu2" type="checkbox" #menu2 />
                     <ul class="sub">
                       <li class="sousMenus"><a [routerLink]="['unbeelievable/utilisateurs/recolteurs']" routerLinkActive="active">Récolteurs</a></li>
                       <li class="sousMenus"><a [routerLink]="['unbeelievable/utilisateurs/clients']" routerLinkActive="active">Clients</a></li>
                     </ul>
-                    </li>
-                  </ul>
-                </li>
-  </div>
+                  </li>
+                </ul>
+              </li>
+            </div>
   <div class="nav-element" (mouseenter)="sourisF=true" (mouseleave)="sourisF=false">  
                 <li class="linkDeco">
+                  <a (click)="deconnexion()" [routerLink]="['connexion']" routerLinkActive="active" class="alignIconeWithText">
                   <img src="assets/navbar/bee-b.png" alt="logo" class="iconesMenu" *ngIf="sourisF==false">
                   <img src="assets/navbar/bee-o.png" alt="logo" class="iconesMenu" *ngIf="sourisF==true">
-                  <a (click)="deconnexion()" [routerLink]="['connexion']" routerLinkActive="active" class="alignIconeWithText">Déconnexion</a>
+                  Déconnexion</a>
                 </li>
               </div>
               </ul>

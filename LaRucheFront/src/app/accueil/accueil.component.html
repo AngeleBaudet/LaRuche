@@ -12,22 +12,25 @@
 					<div class="top">
 						<div class="left">
 							<ng-container *ngIf="listRucheVulnerabilite.length > 0; else noVulnerabilite">
-							  <p>
-								<img src="/assets/home_gestionnaire/icone-danger.png" class="icon">
+							  <p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">
 								Vous avez {{listRucheVulnerabilite.length}} 
 								<ng-container *ngIf="listRucheVulnerabilite.length === 1">vulnérabilité</ng-container>
 								<ng-container *ngIf="listRucheVulnerabilite.length > 1">vulnérabilités</ng-container>
-								en cours
-							  </p>
+								en cours</p>
 							</ng-container>
 							<ng-template #noVulnerabilite>
-							  <p>Aucune vulnérabilité</p>
+							  <p>Aucune ruche avec une vulnérabilité</p>
 							</ng-template>
 						  </div>
 
 
 						<div class="right">
+							<ng-container *ngIf="listRucheVulnerabilite.length > 0; else noVulnerabiliteButton">
 							<button (click)="goToRucheVulnerables()">Voir mes vulnérabilités</button>
+							</ng-container>
+							<ng-template #noVulnerabiliteButton>
+								<button (click)="goToRuche()">Voir mes ruches</button>
+							</ng-template>
 						</div>
 					</div>
 					
@@ -46,10 +49,15 @@
 						</div>
 
 						<div class="right">
-							<button (click)="goToRucheN()">Voir 
-								<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
+							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissageButton">
+								<button (click)="goToRucheN()">Voir 
+									<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
 									<ng-container *ngIf="listRucheNourissage.length > 1">mes ruches</ng-container>
 									à nourrir</button>
+							</ng-container>
+							<ng-template #noNourissageButton>
+								<button (click)="goToRuche()">Voir mes ruches</button>
+							</ng-template>
 						</div>
 					</div>	
 
@@ -87,7 +95,7 @@
 		<div class="home_button_bot">
 
 			<div class="box-container">
-				<a (click)="goToRucheN()" class="img_box">
+				<a (click)="goToRuche()" class="img_box">
 					<img src="/assets/home_gestionnaire/miel-b.png">
 				</a>
 				<button (click)="goToRuche()" id="button_bot">Voir mes ruches</button>
@@ -100,8 +108,8 @@
 				<button (click)="goToProduction()" id="button_bot">Voir mes productions</button>
 
 			</div>
-
-			<div class="box-container">
+			
+			<div *ngIf="allowed()" class="box-container">
 				<a (click)="goToUsers()" class="img_box">
 
 					<img src="/assets/home_gestionnaire/apiculteur-b.png">
