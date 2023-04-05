@@ -30,7 +30,7 @@ export class AccueilComponent {
     this.rucheNourissage();
     this.rucheVulnerabilite();
   }
-  /* 
+  
   rucheNourissage(): void {
     this.accueilService.findRucheByNourissage().subscribe({
       next: (ruches) => {
@@ -38,11 +38,12 @@ export class AccueilComponent {
         //do something with the ruches
       },
     });
-  } */
+  } 
 
+  /*
   rucheNourissage(): void {
     this.listRucheNourissage = this.accueilService.listRucheNourissage;
-  }
+  }*/
 
   rucheVulnerabilite(): void {
     this.accueilService.findRucheByVulnerabilite().subscribe({
@@ -55,11 +56,11 @@ export class AccueilComponent {
 
   //boutons au niveau des alertes
   goToRucheN() {
-    this.router.navigate(['unbeelievable/ruche/nourrir']);
+    this.router.navigate(['unbeelievable/ruche/nourrissage']);
   }
 
   goToRucheVulnerables() {
-    this.router.navigate(['unbeelievable/ruche/true']);
+    this.router.navigate(['unbeelievable/ruche/vulnerabilite']);
   }
 
   //Boutons en bas 

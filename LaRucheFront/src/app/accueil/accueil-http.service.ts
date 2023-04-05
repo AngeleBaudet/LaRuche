@@ -11,7 +11,7 @@ import { ConnexionHttpService } from '../connexion/connexion-http.service';
 })
 export class AccueilHttpService {
   private rucheApiPath: string;
-  listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
+ // listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
 
   listRucheNourissage: Array<Ruche> = new Array<Ruche>();
 
@@ -36,15 +36,15 @@ export class AccueilHttpService {
       return this.http.get<Array<Ruche>>(this.rucheApiPath + '/vulnerabilite');
   }
 
-/*     findRucheByNourissage() {
+     findRucheByNourissage() {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
-  } */
+  } 
 
-  findRucheByNourissage() {
+  findRucheByNourissageBis() {
     return this.listRucheNourissage;
   }
 
-  private load(): void {
+  load(): void {
     this.http
       .get<Array<Ruche>>(this.rucheApiPath + '/nourrissage')
       .subscribe((resp) => {

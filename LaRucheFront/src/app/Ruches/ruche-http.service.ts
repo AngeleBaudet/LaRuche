@@ -38,12 +38,6 @@ export class RucheHttpService {
     });
   }
 
-  /*exemple requete correcte : {
-    "cadre": 5,
-    "limite": false,
-    "vulnerabilite": "Pesticides",
-    "recolteurId": 1
-  }*/
 
   update(ruche: RucheRequest): void {
     this.http
