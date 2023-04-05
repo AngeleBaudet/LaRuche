@@ -129,6 +129,9 @@ button {
   margin : 10%;
   width : 30%;
   padding: 7%;
+  cursor: pointer;
+  margin-bottom: 10px;
+
 }
 
 .img_box img {
@@ -141,6 +144,11 @@ button {
 #button_top {
   width : 10%;
   padding: 2% 7%;
+}
+@media only screen and (max-width: 768px) {
+  button {
+    font-size: 12px;
+  }
 }
 
 .wrapper {
@@ -161,3 +169,4 @@ footer {
   justify-content:center;
   align-items:center;
 }
+
