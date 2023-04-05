@@ -22,7 +22,7 @@ export class AccueilHttpService {
     private connexionService: ConnexionHttpService
   ) {
     this.rucheApiPath = globalService.apiPath + 'ruche';
-   // this.load();
+    this.load();
   }
 
   findRucheByVulnerabilite() {
@@ -39,16 +39,16 @@ export class AccueilHttpService {
      findRucheByNourissage() {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
   } 
-/*
-  findRucheByNourissage() {
+
+  findRucheByNourissageBis() {
     return this.listRucheNourissage;
   }
 
-  private load(): void {
+  load(): void {
     this.http
       .get<Array<Ruche>>(this.rucheApiPath + '/nourrissage')
       .subscribe((resp) => {
         this.listRucheNourissage = resp;
       });
-  }*/
+  }
 }

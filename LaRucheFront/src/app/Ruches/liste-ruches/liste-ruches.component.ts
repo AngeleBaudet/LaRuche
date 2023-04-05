@@ -43,22 +43,12 @@ export class ListeRuchesComponent {
         }
       });
       return listRuches;
-    } else if (this.tri == 'nourrissage') { //a creuser
+    } else if (this.tri == 'nourrissage') {
       console.log('coucou')
         console.log(this.listRucheNourissage.length)
-        return this.listRucheNourissage;
+        return this.accueilService.findRucheByNourissageBis()
     }
     return this.listeRuchesService.findAll();
-  }
-
-  rucheNourissage(): void {
-    this.accueilService.findRucheByNourissage().subscribe({
-      next: (ruches) => {
-        this.listRucheNourissage = ruches;
-        console.log(this.listRucheNourissage.length)
-        //do something with the ruches
-      },
-    });
   }
 
   goToAdd() {
