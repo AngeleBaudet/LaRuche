@@ -61,7 +61,7 @@ export class RucheHttpService {
       });
   }
 
-  private load(): void {
+  load(): void {
     this.http.get<Array<Ruche>>(this.rucheApiPath).subscribe((resp) => {
       this.ruches = resp;
     });
