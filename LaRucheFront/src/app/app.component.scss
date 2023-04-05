@@ -9,12 +9,18 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
-  }
+    overflow-x: hidden;
+    overflow-block:auto;
+ 
+}
+
 
   #page{
     display: flex;
     flex-wrap: nowrap;
     height: 1080px;
+    
+    
   }
 
   #router {
@@ -36,7 +42,7 @@ html, body {
   
   #navbar {
     flex-shrink: 0;
-    width: 20%;
+    width: 13%;
     order:-1;
     background-color:#2b414f;
   }
