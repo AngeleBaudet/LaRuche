@@ -10,8 +10,7 @@ import fr.ruche.model.Ruche;
 
 public interface IDAORuche extends JpaRepository<Ruche, Integer>{
 
-//	@Query("SELECT r from Ruche r join fetch r.productions p where p.produit in ('Miel','Pollen') Group by r having Sum(p.stock)<=12")
-	
+//	@Query("SELECT r from Ruche r join fetch r.productions p where p.produit in ('Miel','Pollen') Group by r having Sum(p.stock)<=12")	
 	@Query("SELECT r, SUM(COALESCE(p.stock, 0)) FROM Ruche r LEFT JOIN r.productions p WHERE p.produit IN ('Miel', 'Pollen') OR p.id IS NULL GROUP BY r HAVING SUM(COALESCE(p.stock, 0)) <= 12")
 	public List<Ruche> findRucheByNourissage();
 	
