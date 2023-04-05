@@ -30,7 +30,6 @@ export class ListeUserComponent {
       }
 
     });
-  
   }
 
   listU(): Array<User> {
