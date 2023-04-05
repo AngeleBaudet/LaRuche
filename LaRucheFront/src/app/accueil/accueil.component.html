@@ -1,7 +1,7 @@
 <html>
 
-<body>
-	<main>
+<body class="page-padding-bottom">
+	<main  >
 
 
 		<div class="home_message_top">
@@ -58,22 +58,22 @@
 		<div class="home_button_bot">
 
 			<div class="box-container">
-				<a routerLink="unbeelievable/ruche/ma-ruche" class="img_box">
+				<a (click)="goToRucheN()" class="img_box">
 					<img src="/assets/home_gestionnaire/miel-b.png">
 				</a>
 				<button (click)="goToRuche()" id="button_bot">Voir mes ruches</button>
 			</div>
 
 			<div class="box-container">
-				<a routerLink="unbeelievable/ruche/ma-production" class="img_box">
+				<a (click)="goToProduction()" class="img_box">
 					<img src="/assets/home_gestionnaire/hive-b.png">
 				</a>
 				<button (click)="goToProduction()" id="button_bot">Voir mes productions</button>
 
 			</div>
 
-			<div *ngIf="allowed()" class="box-container">
-				<a routerLink="unbeelievable/ruche/users" class="img_box">
+			<div class="box-container">
+				<a (click)="goToUsers()" class="img_box">
 
 					<img src="/assets/home_gestionnaire/apiculteur-b.png">
 				</a>
