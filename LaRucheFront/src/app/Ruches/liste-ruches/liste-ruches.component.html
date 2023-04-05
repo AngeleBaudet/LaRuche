@@ -14,7 +14,7 @@
             <tr>
               <th width="10%">Alerte</th>
               <th>Ruche id</th>
-              <th>Nombre de cadres</th>
+              <th>Nombre de cadres (couvains)</th>
               <th>Récolteur id</th>
               <th>Vulnérabilité</th>
               <th></th>
@@ -31,6 +31,7 @@
               <td>
                 <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
                 <button *ngIf="allowed()" (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
+                <button *ngIf="ruche.cadre > 5" (click)="Division(ruche.id)" class="divise-btn">Diviser</button>
               </td>
             </tr>
           </tbody>

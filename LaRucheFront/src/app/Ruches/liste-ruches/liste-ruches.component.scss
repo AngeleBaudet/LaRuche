@@ -80,7 +80,7 @@ table th:first-child, table td:first-child {
   border-left: none; /* add vertical line to the left of first column */
 }
 
-.edit-btn, .delete-btn {
+.edit-btn, .delete-btn, .divise-btn {
   background-color: #f58f29;
   border: none;
   border-radius: 20px;
@@ -112,13 +112,18 @@ table th:first-child, table td:first-child {
   width: 20%;
 }
 
-.edit-btn:hover, .add-btn:hover {
+.edit-btn:hover, .add-btn:hover, .divise-btn  {
   background-color: #f47d24;
 }
 
 .delete-btn {
   background-color: #f44336;
 }
+
+.divise-btn {
+  background-color: #2B414F ;
+}
+
 
 .delete-btn:hover {
   background-color: #f11a0a;

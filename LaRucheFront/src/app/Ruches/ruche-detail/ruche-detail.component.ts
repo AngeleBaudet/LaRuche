@@ -35,7 +35,7 @@ export class RucheDetailComponent {
     //création du reactive form (+validation)
     this.rucheForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
-      cadre: this.formBuilder.control('', Validators.required),
+      cadre: this.formBuilder.control('', [Validators.required, Validators.min(3)]),
       recolteurId: this.formBuilder.control('', Validators.required),
       vulnerabilite: this.formBuilder.control('')
               
@@ -79,7 +79,7 @@ export class RucheDetailComponent {
       this.rucheForm = this.formBuilder.group({
 
         id: this.formBuilder.control(this.formValue.id),
-        cadre: this.formBuilder.control(this.formValue.cadre, Validators.required),
+        cadre: this.formBuilder.control(this.formValue.cadre, [Validators.required, Validators.min(3)]),
         recolteurId: this.formBuilder.control(this.formValue.recolteurId, Validators.required),
         vulnerabilite: this.formBuilder.control(this.formValue.vulnerabilite)
         
