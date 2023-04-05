@@ -24,7 +24,7 @@ main {
 
 .home_box_message {
   width: 50%;
-  height: 30%;
+  height: 40%;
   padding: 20px;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.6); /* white with 60% opacity */
@@ -45,7 +45,7 @@ main {
   text-align: left; /* align text to left */
   flex-grow: 1;
 }
-.message_content .top .left .icon {
+.message_content .left .icon {
   width: 50px;
   height: 50px;
 }
