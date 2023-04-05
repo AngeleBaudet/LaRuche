@@ -1,57 +1,72 @@
-  <body>
-    
-        <h1 *ngIf="!formValue.id else sinon">Gestion des utilisateurs - Ajouter un utilisateur</h1><br>
-          <ng-template #sinon><h1>Gestion des utilisateurs - Modifier l'utilisateur</h1></ng-template><br>
+<body>
 
-      <hr>
-      <div class="wrapper">
-        <form class="form-add" [formGroup]="userForm" (ngSubmit)="submit()">
-            <legend *ngIf="!formValue.id else sinon">Ajouter un utilisateur </legend><br>
-            <ng-template #sinon><legend> Modifier l'utilisateur</legend></ng-template>
-            
-          <label for="typecompte">Type Compte :</label>
-  
-          <input checked type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="recolteur"> Apiculteur
-          <input type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="gestionnaire" > Gestionnaire <br>
-          <br>
-          
-         <div class = "login">
-          <label for="login">Login :</label>
-          <input required name="login" type="text" formControlName="login" [value]="userForm.get('login').value">
-          <div *ngIf="userForm.get('login').dirty && userForm.get('login').errors && userForm.get('login').errors['required']" class="alert alert-danger">
-            <div class="error">Vous devez renseigner un login</div>
+  <h1 *ngIf="!formValue.id else sinon">Gestion des utilisateurs - Ajouter un utilisateur</h1><br>
+  <ng-template #sinon>
+    <h1>Gestion des utilisateurs - Modifier l'utilisateur</h1>
+  </ng-template><br>
+
+  <hr>
+  <div class="wrapper">
+    <form class="form-add" [formGroup]="userForm" (ngSubmit)="submit()">
+      <legend *ngIf="!formValue.id else sinon">Ajouter un utilisateur </legend><br>
+      <ng-template #sinon>
+        <legend> Modifier l'utilisateur</legend>
+      </ng-template>
+
+      <label for="typecompte">Type Compte :</label>
+
+      <input checked type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type"
+        value="recolteur"> Apiculteur
+      <input type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="gestionnaire">
+      Gestionnaire <br>
+      <br>
+
+      <div class="login">
+        <label for="login">Login :</label>
+        <input required name="login" type="text" formControlName="login" [value]="userForm.get('login').value">
+        <div
+          *ngIf="userForm.get('login').dirty && userForm.get('login').errors && userForm.get('login').errors['required']"
+          class="alert alert-danger">
+          <div class="error">Vous devez renseigner un login</div>
         </div>
-      </div> 
-          <div class="mdp">
+      </div>
+      <div class="mdp">
 
-            <div class="mdp1">
-              <label for="mdp">Mot de passe :</label>
-              <input required name="password" type="password" formControlName="password" >
-              <div *ngIf="userForm.get('password').dirty && userForm.get('password').errors && userForm.get('password').errors['required']" class="alert alert-danger">
-                <div class="error">Vous devez mettre un mot de passe</div>
-            </div>
-            </div>
-           
-
-            <div class="mdp1">
-              <label for="mdp">Confirmer le mot de passe :</label>
-              <input class="password" required name="confirmPassword" type="password" formControlName="confirmPassword"><br><br>
-              <div *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['required']" class="alert alert-danger">
-                <div class="error">Veuillez confirmer un mot de passe</div>
-            </div>
-            <div *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['confirmPasswordValidator']" class="alert alert-danger">
-                <div class="error">Les mots de passe doivent être identiques !</div>
-            </div>
+        <div class="mdp1">
+          <label for="mdp">Mot de passe :</label>
+          <input required name="password" type="password" formControlName="password">
+          <div
+            *ngIf="userForm.get('password').dirty && userForm.get('password').errors && userForm.get('password').errors['required']"
+            class="alert alert-danger">
+            <div class="error">Vous devez mettre un mot de passe</div>
           </div>
-        </div> 
-          
-          <div class="buttons">
-          <input type="button" class ="btn1" value="Annuler" (click)="goToHome()">
-          <input  [disabled]="userForm.invalid" type="button" class ="btn2" type="submit" value="Sauvegarder">
         </div>
-        </form>
+
+
+        <div class="mdp1">
+          <label for="mdp">Confirmer le mot de passe :</label>
+          <input class="password" required name="confirmPassword" type="password"
+            formControlName="confirmPassword"><br><br>
+          <div
+            *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['required']"
+            class="alert alert-danger">
+            <div class="error">Veuillez confirmer un mot de passe</div>
+          </div>
+          <div
+            *ngIf="userForm.get('confirmPassword').dirty && userForm.get('confirmPassword').errors && userForm.get('confirmPassword').errors['confirmPasswordValidator']"
+            class="alert alert-danger">
+            <div class="error">Les mots de passe doivent être identiques !</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <input type="button" class="btn1" value="Annuler" (click)="goToHome()">
+        <input [disabled]="userForm.invalid" type="button" class="btn2" type="submit" value="Sauvegarder">
+      </div>
+    </form>
   </div>
-  
-  
-   
+
+
+
   <body>
