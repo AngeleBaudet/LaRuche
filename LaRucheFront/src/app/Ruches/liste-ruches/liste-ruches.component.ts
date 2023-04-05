@@ -26,7 +26,7 @@ export class ListeRuchesComponent {
     this.connectedType = this.connexionService.connectedUser.type;
     console.log(this.allowed());
     console.log(this.connexionService.connectedUser.type);
-
+    this.listeRuchesService.load();
     this.route.params.subscribe((params) => {
       this.vuln = params['vuln'];
       this.nourissage = params['nourrir'];

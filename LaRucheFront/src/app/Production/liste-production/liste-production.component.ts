@@ -10,7 +10,8 @@ import { ProductionHttpService } from '../production-http.service';
 })
 export class ListeProductionComponent {
 
-  constructor(private listeProductionsService:ProductionHttpService, private router: Router){
+  constructor(private listeProductionsService:ProductionHttpService, private router: Router, private productionService: ProductionHttpService){
+    this.productionService.load()
   }
 
   listP():Array<Production> {

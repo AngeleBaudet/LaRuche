@@ -59,7 +59,7 @@ export class ProductionHttpService {
       });
   }
 
-  private load(): void {
+  load(): void {
     this.http
       .get<Array<Production>>(this.productionApiPath)
       .subscribe((resp) => {
