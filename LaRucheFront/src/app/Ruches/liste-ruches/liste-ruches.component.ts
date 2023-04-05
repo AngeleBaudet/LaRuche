@@ -67,16 +67,19 @@ export class ListeRuchesComponent {
     let rucheMere: RucheRequest;
     let rucheFille: RucheRequest;
     this.listeRuchesService.findById(id).subscribe(resp => {
+      if (resp.cadre%2===0){
       rucheMere = new RucheRequest(resp.id, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
       rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-
+    }
+    else {
+      rucheMere = new RucheRequest(resp.id, (resp.cadre / 2) + 1,resp.limite,resp.vulnerabilite,resp.recolteur.id);
+      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
+    
+    }
       this.listeRuchesService.create(rucheFille);
     
       this.listeRuchesService.update(rucheMere);
 
-      console.log(resp);
-      console.log(rucheFille);
-      console.log(rucheMere);
 
     })
   }
