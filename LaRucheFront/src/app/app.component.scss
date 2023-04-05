@@ -3,28 +3,35 @@
 @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
 
 html, body {
-  height: 100%;
+    height: 100%;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-block:auto;
+ 
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  overflow-block: auto;
-}
 
 #page {
- /* Add the height of the footer as padding to the bottom */
+  display: flex;
+  flex-wrap: nowrap;
+  /* height: 1080px; */
+  padding-bottom: 50px; /* Add the height of the footer as padding to the bottom */
+}
+
+#router {
   flex-grow: 1;
   background-color: #EDE8EC ;
   min-height: calc(100vh - 100px); /* Subtract the height of the footer from the viewport height */
   overflow-y: auto;
-  padding-bottom: 50px;
-
+  
 }
+
 .router {
   flex-grow: 1;
-  margin-top: auto;
 }
 
 #footer {
@@ -36,5 +43,4 @@ body {
     width: 13%;
     order:-1;
     background-color:#2b414f;
-    height: 100vh;
   }
