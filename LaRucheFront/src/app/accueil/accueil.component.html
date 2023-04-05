@@ -56,15 +56,15 @@
 					<!-- A CHANGER POUR DIVISER -->
 					<div class="bot">
 						<div class="left">
-							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
+							<ng-container *ngIf="listRucheNourissage.length > 0; else noDivision">
 								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
 									{{listRucheNourissage.length}}
 									<ng-container *ngIf="listRucheNourissage.length === 1">ruche</ng-container>
 									<ng-container *ngIf="listRucheNourissage.length > 1">ruches</ng-container>
 								 à diviser</p>
 							</ng-container>
-							<ng-template #noNourissage>
-								<p>Aucune ruches à diviser</p>
+							<ng-template #noDivision>
+								<p>Aucune ruche à diviser</p>
 							</ng-template>
 						</div>
 
