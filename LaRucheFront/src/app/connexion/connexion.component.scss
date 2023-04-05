@@ -10,6 +10,7 @@
   background-image: url('/assets/connexion/imageLogin.jpg');
   background-size: cover;
   background-position: center;
+  /* height: calc(100vh - 45px); */
   height: 100vh;
   width: 50%;
   float: left;
@@ -18,6 +19,7 @@
 /*Block de droite*/
 .RightBlock {
 background-color: #EDE8EC;
+/* height: calc(100vh - 45px); */
 height: 100vh;
 width: 50%;
 float: left;

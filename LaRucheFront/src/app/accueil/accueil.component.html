@@ -1,7 +1,7 @@
 <html>
 
-<body>
-	<main>
+<body class="page-padding-bottom">
+	<main  >
 
 
 		<div class="home_message_top">
@@ -35,7 +35,10 @@
 						<div class="left">
 							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
 								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
-									{{listRucheNourissage.length}} ruches à nourrir</p>
+									{{listRucheNourissage.length}}
+									<ng-container *ngIf="listRucheNourissage.length === 1">ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">ruches</ng-container>
+								 à nourrir</p>
 							</ng-container>
 							<ng-template #noNourissage>
 								<p>Toutes vos ruches sont nourries</p>
@@ -43,7 +46,33 @@
 						</div>
 
 						<div class="right">
-							<button (click)="goToRucheN()">Voir mes ruches à nourrir</button>
+							<button (click)="goToRucheN()">Voir 
+								<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">mes ruches</ng-container>
+									à nourrir</button>
+						</div>
+					</div>	
+
+					<!-- A CHANGER POUR DIVISER -->
+					<div class="bot">
+						<div class="left">
+							<ng-container *ngIf="listRucheNourissage.length > 0; else noDivision">
+								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
+									{{listRucheNourissage.length}}
+									<ng-container *ngIf="listRucheNourissage.length === 1">ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">ruches</ng-container>
+								 à diviser</p>
+							</ng-container>
+							<ng-template #noDivision>
+								<p>Aucune ruche à diviser</p>
+							</ng-template>
+						</div>
+
+						<div class="right">
+							<button (click)="goToRucheN()">Voir 
+								<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">mes ruches</ng-container>
+									à diviser</button>
 						</div>
 					</div>
 				
@@ -58,22 +87,22 @@
 		<div class="home_button_bot">
 
 			<div class="box-container">
-				<a routerLink="unbeelievable/ruche/ma-ruche" class="img_box">
+				<a (click)="goToRucheN()" class="img_box">
 					<img src="/assets/home_gestionnaire/miel-b.png">
 				</a>
 				<button (click)="goToRuche()" id="button_bot">Voir mes ruches</button>
 			</div>
 
 			<div class="box-container">
-				<a routerLink="unbeelievable/ruche/ma-production" class="img_box">
+				<a (click)="goToProduction()" class="img_box">
 					<img src="/assets/home_gestionnaire/hive-b.png">
 				</a>
 				<button (click)="goToProduction()" id="button_bot">Voir mes productions</button>
 
 			</div>
 
-			<div *ngIf="allowed()" class="box-container">
-				<a routerLink="unbeelievable/ruche/users" class="img_box">
+			<div class="box-container">
+				<a (click)="goToUsers()" class="img_box">
 
 					<img src="/assets/home_gestionnaire/apiculteur-b.png">
 				</a>

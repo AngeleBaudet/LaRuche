@@ -9,34 +9,41 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
-  }
+    overflow-x: hidden;
+    overflow-block:auto;
+ 
+}
 
-  #page{
-    display: flex;
-    flex-wrap: nowrap;
-    height: 1080px;
-  }
 
-  #router {
-    flex-grow: 1;
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
-    background-color: #EDE8EC ;
-    
-  }
+#page {
+  display: flex;
+  flex-wrap: nowrap;
+  /* height: 1080px; */
+ /*  padding-bottom: 50px;  *//* Add the height of the footer as padding to the bottom */
+ overflow-block:auto;
+}
 
-  .router{
-    flex-grow: 1;
-  }
+#router {
+  flex-grow: 1;
+  background-color: #EDE8EC ;
+  min-height: calc(100vh - 45px); /* Subtract the height of the footer from the viewport height */
+  overflow-y: auto;
   
-  #footer {
-    flex-shrink: 0;
-  }
+}
+
+.router {
+  flex-grow: 1;
+}
+
+#footer {
+  flex-shrink: 0;
+}
   
   #navbar {
     flex-shrink: 0;
-    width: 20%;
+    width: 13%;
     order:-1;
     background-color:#2b414f;
+    height: 105vh;
+    min-width: 225px;
   }

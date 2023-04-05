@@ -1,159 +1,176 @@
-/* Police */
+/* Import Fonts */
 @import url('https://fonts.google.com/specimen/Poppins');
 @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
 
+/* Base Styles */
+
+.wrapper {
+  margin: 0;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  background-color: #EDE8EC;
+  font-family: 'Glacial Indifference', sans-serif;
+}
+
 h1 {
-  margin-top: 80px; /* Add margin to the top equal to the height of the navigation bar */
+  margin-top: 30px; /* Add margin to the top equal to the height of the navigation bar */
   color: #33658A;
   text-align: left;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
-  margin-bottom: 0px;
+  margin-bottom: -15px;
   margin-left: 50px;
 }
 
 p {
-  font-family: 'Glacial Indifference', sans-serif;
+  margin: 0;
 }
 
 hr {
-  position: relative;
   border: 1px solid #33658A;
   margin-top: 0;
   z-index: 1;
 }
 
-
-/* Navigation */
-.menu {
-  position: absolute;
-  top: 0%;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #33658A;
-  padding: 20px;
-  height: 100vh;
-  width: 10%;
-}
-
-/* Body */
-.wrapper {
-  position: relative;
-}
-
-.wrapper {
-  margin-left: 180px; /* Set the left margin equal to the width of the navigation bar */
-  padding: 20px;
-}
-
-body {
-  background-color: #EDE8EC ;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  height: 100vh;
-  margin: 0;
-}
-/* Form */
+/* Form Styles */
 
 .form-add {
   top: 20%;
-  left: 50%;
-  transform: translate(-50%, 40%);
-  position: absolute;
-  background-color: #ffffff;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: auto;
-  width: auto;
-  margin-bottom: -12rem;
-  padding: 35px;
-  padding-top: 25px;
-  padding-bottom: 10px;
-  border-radius: 30px;
+  left: 10%;
+  background-color: #FFFFFF;
   font-family: 'Glacial Indifference', sans-serif;
+  max-width: 500px;
+  width: 40%;
+  padding: 50px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  border-radius: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-add input, label {
+.form-add fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form-add legend {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: medium;
+  color: #2B414F;
+  margin-bottom: 10px;
+}
+
+.form-add label {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 15px;
-  flex-basis: auto;
+  font-size: 18px;
 }
 
-input[type="password"],
-input[type="text"] {
+.form-add input[type="text"],
+.form-add input[type="password"] {
   border: 1px solid #2B414F;
   border-radius: 40px;
   background-color: #EDE8EC;
   height: 25px;
   width: 150px;
-
+  margin: 0;
+  padding: 0 10px;
 }
 
+.form-add input[type="radio"] + label {
+  font-weight: normal;
+}
 
-input[type="radio"]:checked + label{
+.form-add input[type="radio"]:checked + label{
   font-weight: bold;
 }
 
-.form-add legend {
-  color: #2B414F ;
-  text-align: left;
-  font-family: 'Poppins', sans-serif, medium;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-
-label[for="login"]{
-  width: 150px;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  margin-right: 10px;
-}
-
-/* Mdp */
-
-.mdp{
+.form-add .mdp-wrapper {
   display: flex;
-  flex-flow: row wrap;
-  align-items: left;
-  gap: 20px;
-}
-
-.mdp label {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10px;
-  font-size: 15px;
+  width: 100%;
 }
 
-.btn1, .btn2 {
+.form-add .mdp-wrapper label {
+  margin-bottom: 0;
+}
+
+.form-add .btn1, .form-add .btn2 {
   background-color: #33658A;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  border: none;
-  color: whitesmoke;
-  font-family: 'Poppins', sans-serif, medium;
+  font-weight: medium;
   text-align: center;
   padding: 10px 25px;
+  border: none;
   border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn2 {
+.form-add .login {
+  margin-bottom: 15px;
+}
+
+.form-add .btn2 {
   background-color: #F58F29;
 }
 
-.btn1:hover{
-  background-color: #33658A;
+.form-add .btn1:hover {
+  background-color: #2B414F;
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  color: whitesmoke;
-  font-family: 'Poppins', sans-serif, medium;
-  text-align: center;
-  padding: 10px 25px;
-  border-radius: 16px;
 }
+
+.form-add .btn2:hover {
+  background-color: #f47d24;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 15px;
+  gap: 20px;
+
+}
+
+.mdp{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.mdp1 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.error {
+  color: #f47d24;
+  font-size: 15px;
+}
+
+.btn2[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+

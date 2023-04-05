@@ -11,8 +11,8 @@ export class ConnexionHttpService {
   //Sert a rien
   users: Array<User> = new Array<User>();
 
- // connectedUser: User = new User("gestionnaire",1,"ges1","ges1");
-  connectedUser: User;
+  connectedUser: User = new User('gestionnaire', 1, 'ges1', 'ges1');
+  // connectedUser: User;
 
   private usersApiPath: string;
 
@@ -20,13 +20,12 @@ export class ConnexionHttpService {
     // should be /user
     this.usersApiPath = globalService.apiPath + 'user';
     this.load();
-    
   }
-//Sert a rien
+  //Sert a rien
   findAll(): Array<User> {
     return this.users;
   }
-//Sert a rien
+  //Sert a rien
   findById(id: number): Observable<User> {
     return this.http.get<User>(this.usersApiPath + '/' + id);
   }
