@@ -34,7 +34,7 @@
               <li class="linkCompte">
                 <img src="assets/navbar/compte-b.png" alt="logo" class="iconesMenu" *ngIf="sourisB==false">
                 <img src="assets/navbar/compte-o.png" alt="logo" class="iconesMenu" *ngIf="sourisB==true">
-                <a href="#" class="alignIconeWithText">Mon compte</a>
+                <a [routerLink]="['unbeelievable/utilisateurs/mon-utilisateur/'+idConnected]" routerLinkActive="active" class="alignIconeWithText">Mon compte</a>
               </li>
             </div>
 

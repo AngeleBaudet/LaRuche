@@ -9,6 +9,7 @@ import { UserRequest } from 'src/app/model';
 import { UserHttpService } from '../user-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
+import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 
 @Component({
   selector: 'user-detail',
@@ -21,12 +22,17 @@ export class UserDetailComponent {
   selectedOption: String;
   submitted: boolean = false;
 
+  compte:boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserHttpService,
     private router: Router, //pour rediriger le bouton annuler (methode goToListRuche)
-    private routes: ActivatedRoute // pour récupérer le param
-  ) {}
+    private routes: ActivatedRoute, // pour récupérer le param
+    private connexionService : ConnexionHttpService,
+  ) {
+
+  }
     //création du reactive form (+validation)
 
     ngOnInit() {
@@ -43,6 +49,11 @@ export class UserDetailComponent {
     this.routes.params.subscribe((params) => {
       if (params['id']) {
         this.edit(params['id']);
+        if (this.connexionService.connectedUser.type==="recolteur"){
+          this.compte=true;
+        }  else {
+          this.compte=false; 
+        }
       }
     });
   }

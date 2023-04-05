@@ -77,8 +77,9 @@ const routes: Routes = [
 
   {path: 'unbeelievable/utilisateurs/recolteurs', component:ListeUserComponent,canActivate: [AuthGuard],},
 
-  {path: 'unbeelievable/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],}
+  {path: 'unbeelievable/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],},
 
+  { path : 'unbeelievable/utilisateurs/mon-utilisateur/:compte', component:UserDetailComponent, canActivate: [AuthGuard],}
 ];
 
 @NgModule({

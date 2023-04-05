@@ -14,7 +14,11 @@ sourisD: boolean = false;
 sourisE: boolean = false;
 sourisF: boolean = false;
 
+
+
 constructor(private connexionService: ConnexionHttpService){}
+
+idConnected:number=this.connexionService.connectedUser.id;
 
 youAre:string = this.connexionService.connectedUser.login;
 

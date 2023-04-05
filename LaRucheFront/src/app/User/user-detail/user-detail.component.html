@@ -3,7 +3,7 @@
   </head> -->
   <body>
     <div id="content">
-        <h1 *ngIf="!formValue.id else sinon"><b>Gestion des utilisateurs - Ajouter un utilisateur coucou</b></h1><br>
+        <h1 *ngIf="!formValue.id else sinon"><b>Gestion des utilisateurs - Ajouter un utilisateur</b></h1><br>
           <ng-template #sinon><h1><b>Gestion des utilisateurs - Modifier l'utilisateur</b></h1></ng-template>
 
       <hr>
@@ -13,9 +13,11 @@
             <ng-template #sinon><legend> <b>Modifier l'utilisateur</b></legend></ng-template>
             
           <label for="typecompte">Type Compte :</label>
-  
+          <div *ngIf="!compte else sinon1">
           <input checked type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="recolteur"> Apiculteur
           <input type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="gestionnaire" > Gestionnaire <br>
+          </div>
+          <ng-template #sinon1><input checked type="radio" name="type" onchange="changeFontWeight(this)" formControlName="type" value="recolteur"> Apiculteur</ng-template>
           <br>
           
           <label for="login">Login :</label><br><br>
