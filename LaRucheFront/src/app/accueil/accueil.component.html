@@ -35,7 +35,10 @@
 						<div class="left">
 							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
 								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
-									{{listRucheNourissage.length}} ruches à nourrir</p>
+									{{listRucheNourissage.length}}
+									<ng-container *ngIf="listRucheNourissage.length === 1">ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">ruches</ng-container>
+								 à nourrir</p>
 							</ng-container>
 							<ng-template #noNourissage>
 								<p>Toutes vos ruches sont nourries</p>
@@ -43,7 +46,33 @@
 						</div>
 
 						<div class="right">
-							<button (click)="goToRucheN()">Voir mes ruches à nourrir</button>
+							<button (click)="goToRucheN()">Voir 
+								<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">mes ruches</ng-container>
+									à nourrir</button>
+						</div>
+					</div>	
+
+					<!-- A CHANGER POUR DIVISER -->
+					<div class="bot">
+						<div class="left">
+							<ng-container *ngIf="listRucheNourissage.length > 0; else noNourissage">
+								<p><img src="/assets/home_gestionnaire/icone-danger.png" class="icon">Vous avez
+									{{listRucheNourissage.length}}
+									<ng-container *ngIf="listRucheNourissage.length === 1">ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">ruches</ng-container>
+								 à diviser</p>
+							</ng-container>
+							<ng-template #noNourissage>
+								<p>Aucune ruches à diviser</p>
+							</ng-template>
+						</div>
+
+						<div class="right">
+							<button (click)="goToRucheN()">Voir 
+								<ng-container *ngIf="listRucheNourissage.length === 1">ma ruche</ng-container>
+									<ng-container *ngIf="listRucheNourissage.length > 1">mes ruches</ng-container>
+									à diviser</button>
 						</div>
 					</div>
 				
