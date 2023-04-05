@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Production } from 'src/app/model';
+import { Production, Ruche } from 'src/app/model';
 import { RucheHttpService } from 'src/app/Ruches/ruche-http.service';
 import { ProductionHttpService } from '../production-http.service';
 
@@ -33,12 +33,14 @@ export class ListeProductionComponent {
     this.listeProductionsService.remove(id);
   }
 
+  listR(): Array<Ruche> {
+    return this.listeRuchesService.findAll();
+  }
+
   afficher() : boolean {
-    if (this.listeRuchesService.findAll.length === 0){
-      console.log(this.listeRuchesService.findAll)
+    if (this.listR().length === 0){
       return false;
     } else {
-      console.log('true')
       return true;
     }
   }

@@ -30,7 +30,8 @@ export class ConnexionHttpService {
   findById(id: number): Observable<User> {
     return this.http.get<User>(this.usersApiPath + '/' + id);
   }
-//Sert a rien
+
+  
   private load(): void {
     this.http.get<Array<User>>(this.usersApiPath).subscribe((resp) => {
       this.users = resp;
