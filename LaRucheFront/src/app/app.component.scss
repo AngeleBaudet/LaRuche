@@ -13,18 +13,18 @@ body {
   overflow-block: auto;
 }
 
-  overflow-block: auto;
-  padding-bottom: 50px; /* Add the height of the footer as padding to the bottom */
-
+#page {
+ /* Add the height of the footer as padding to the bottom */
   flex-grow: 1;
   background-color: #EDE8EC ;
   min-height: calc(100vh - 100px); /* Subtract the height of the footer from the viewport height */
   overflow-y: auto;
-  margin-bottom: 45px;
   padding-bottom: 50px;
 
+}
 .router {
   flex-grow: 1;
+  margin-top: auto;
 }
 
 #footer {
@@ -36,6 +36,5 @@ body {
     width: 13%;
     order:-1;
     background-color:#2b414f;
+    height: 100vh;
   }
-  margin-top: auto;
-  height: 100vh;
