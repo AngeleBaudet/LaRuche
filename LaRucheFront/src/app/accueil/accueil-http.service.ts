@@ -37,6 +37,8 @@ export class AccueilHttpService {
       return this.http.get<Array<Ruche>>(this.rucheApiPath + '/vulnerabilite');
   }
 
+////////
+  //c'est pas terrible mais on a pas le temps 
   findRucheByNourissage(): Observable<Array<Ruche>> {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
   } 
@@ -49,12 +51,11 @@ export class AccueilHttpService {
     if (this.connexionService.connectedUser.type === 'recolteur'){
       return this.listRucheNourissage.filter(ruche => 
         ruche.recolteur.id === this.connexionService.connectedUser.id
-
       )
     } 
     return this.listRucheNourissage
   }
-
+//////////
   load(): void {
     this.http
       .get<Array<Ruche>>(this.rucheApiPath + '/nourrissage')
