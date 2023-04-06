@@ -4,6 +4,7 @@ import { Ruche, RucheRequest } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
+import { ProductionHttpService } from 'src/app/Production/production-http.service';
 
 @Component({
   selector: 'liste-ruches',
@@ -22,14 +23,13 @@ export class ListeRuchesComponent {
     private router: Router,
     private connexionService: ConnexionHttpService,
     private route: ActivatedRoute,
-    private accueilService: AccueilHttpService
+    private accueilService: AccueilHttpService,
+    private prodService: ProductionHttpService
   ) {
-
     this.connectedType = this.connexionService.connectedUser.type;
-    this.listeRuchesService.load()
-
+    this.listeRuchesService.load();
     this.route.params.subscribe((params) => {
-      console.log(params)
+      console.log(params);
       this.tri = params['tri'];
     });
   }
@@ -44,9 +44,20 @@ export class ListeRuchesComponent {
       });
       return listRuches;
     } else if (this.tri == 'nourrissage') {
-        return this.accueilService.findRucheByNourissageBis()
+      return this.accueilService.findRucheByNourissageBis();
     }
     return this.listeRuchesService.findAll();
+  }
+
+  nourrissage(idRuche: number): boolean {
+    let ruche = this.accueilService
+      .findRucheByNourissageBis()
+      .find((r) => r.id == idRuche);
+
+    if (ruche) {
+      return true;
+    } else console.log(idRuche);
+    return false;
   }
 
   goToAdd() {
@@ -61,25 +72,45 @@ export class ListeRuchesComponent {
     this.listeRuchesService.remove(id);
   }
 
-  Division(id:number){
+  Division(id: number) {
     let rucheMere: RucheRequest;
     let rucheFille: RucheRequest;
-    this.listeRuchesService.findById(id).subscribe(resp => {
-      if (resp.cadre%2===0){
-      rucheMere = new RucheRequest(resp.id, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-    }
-    else {
-      rucheMere = new RucheRequest(resp.id, (resp.cadre / 2) + 1,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-    
-    }
+    this.listeRuchesService.findById(id).subscribe((resp) => {
+      if (resp.cadre % 2 === 0) {
+        rucheMere = new RucheRequest(
+          resp.id,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+        rucheFille = new RucheRequest(
+          null,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+      } else {
+        rucheMere = new RucheRequest(
+          resp.id,
+          resp.cadre / 2 + 1,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+        rucheFille = new RucheRequest(
+          null,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+      }
       this.listeRuchesService.create(rucheFille);
-    
+
       this.listeRuchesService.update(rucheMere);
-
-
-    })
+    });
   }
 
   allowed(): boolean {
@@ -88,5 +119,4 @@ export class ListeRuchesComponent {
     }
     return false;
   }
-
 }
