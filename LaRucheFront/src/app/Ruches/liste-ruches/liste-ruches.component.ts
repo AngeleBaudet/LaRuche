@@ -4,6 +4,7 @@ import { Ruche, RucheRequest } from 'src/app/model';
 import { RucheHttpService } from '../ruche-http.service';
 import { ConnexionHttpService } from 'src/app/connexion/connexion-http.service';
 import { AccueilHttpService } from 'src/app/accueil/accueil-http.service';
+import { ProductionHttpService } from 'src/app/Production/production-http.service';
 
 @Component({
   selector: 'liste-ruches',
@@ -22,11 +23,12 @@ export class ListeRuchesComponent {
     private router: Router,
     private connexionService: ConnexionHttpService,
     private route: ActivatedRoute,
-    private accueilService: AccueilHttpService
+    private accueilService: AccueilHttpService,
   ) {
 
     this.connectedType = this.connexionService.connectedUser.type;
     this.listeRuchesService.load()
+    this.accueilService.load()
 
     this.route.params.subscribe((params) => {
       console.log(params)
@@ -45,6 +47,14 @@ export class ListeRuchesComponent {
       return listRuches;
     } else if (this.tri == 'nourrissage') {
         return this.accueilService.findRucheByNourissageBis()
+
+    } else if (this.tri == 'division'){
+      this.listAll.forEach((ruche) => {
+        if (ruche.cadre>5) {
+          listRuches.push(ruche);
+        }
+      });
+      return listRuches;
     }
     return this.listeRuchesService.findAll();
   }

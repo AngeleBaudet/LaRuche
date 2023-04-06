@@ -12,6 +12,7 @@ export class RucheHttpService {
   private ruches: Array<Ruche> = new Array<Ruche>();
   private rucheApiPath: string;
   private rucheByRecolteur: Array<Ruche> = new Array<Ruche>();
+  listRucheDivision: Array<Ruche> = new Array<Ruche>();
 
   constructor(
     private http: HttpClient,
@@ -20,6 +21,7 @@ export class RucheHttpService {
   ) {
     this.rucheApiPath = globalService.apiPath + 'ruche';
     this.load();
+
   }
 
   findAll(): Array<Ruche> {
@@ -68,6 +70,19 @@ export class RucheHttpService {
         )
         .subscribe((resp) => (this.rucheByRecolteur = resp));
     }
+
   }
+ 
+  /*
+  rucheDivision(){    
+    let listAll: Array<Ruche> = this.findAll();
+    console.log(listAll)
+    listAll.forEach((ruche) => {
+      if (ruche.cadre>5) {
+        this.listRucheDivision.push(ruche);
+      }
+    }); 
+    
+  }*/
 
 }

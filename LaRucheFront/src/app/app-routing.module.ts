@@ -35,7 +35,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: 'unbeelievable/ruche/:tri', component: ListeRuchesComponent },
+  { path: 'unbeelievable/ruche/:tri', component: ListeRuchesComponent,canActivate: [AuthGuard], },
 
   
 
@@ -50,11 +50,13 @@ const routes: Routes = [
   {
     path: 'unbeelievable/utilisateurs/mon-utilisateur',
     component: UserDetailComponent,
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'unbeelievable/utilisateurs/mon-utilisateur/:id',
     component: UserDetailComponent,
+    canActivate: [AuthGuard],
   },
 
   {
