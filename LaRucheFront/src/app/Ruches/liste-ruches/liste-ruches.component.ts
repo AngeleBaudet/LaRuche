@@ -50,8 +50,8 @@ export class ListeRuchesComponent {
         if (ruche.cadre>5) {
           listRuches.push(ruche);
         }
-        return listRuches;
       });
+      return listRuches;
     }
     return this.listeRuchesService.findAll();
   }
