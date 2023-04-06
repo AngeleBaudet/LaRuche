@@ -17,6 +17,7 @@
               <th>Nombre de cadres (couvains)</th>
               <th>Récolteur id</th>
               <th>Vulnérabilité</th>
+              <th>Nourrissage</th>
               <th></th>
             </tr>
           </thead>
@@ -28,6 +29,9 @@
               <td>{{ruche.cadre}}</td>
               <td>{{ruche.recolteur.id}}</td>
               <td>{{ruche.vulnerabilite}}</td>
+              
+              <td *ngIf="nourrissage(ruche.id); else noNourrissage">Nourriture insufisantes !</td>
+              <ng-template #noNourrissage><td></td></ng-template>
               <td>
                 <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
                 <button *ngIf="allowed()" (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>

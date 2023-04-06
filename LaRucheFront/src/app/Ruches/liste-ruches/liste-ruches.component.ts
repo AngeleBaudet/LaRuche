@@ -25,13 +25,12 @@ export class ListeRuchesComponent {
     private route: ActivatedRoute,
     private accueilService: AccueilHttpService,
   ) {
-
     this.connectedType = this.connexionService.connectedUser.type;
     this.listeRuchesService.load()
     this.accueilService.load()
 
     this.route.params.subscribe((params) => {
-      console.log(params)
+      console.log(params);
       this.tri = params['tri'];
     });
   }
@@ -59,6 +58,17 @@ export class ListeRuchesComponent {
     return this.listeRuchesService.findAll();
   }
 
+  nourrissage(idRuche: number): boolean {
+    let ruche = this.accueilService
+      .findRucheByNourissageBis()
+      .find((r) => r.id == idRuche);
+
+    if (ruche) {
+      return true;
+    } else console.log(idRuche);
+    return false;
+  }
+
   goToAdd() {
     this.router.navigate(['unbeelievable/ruche/ma-ruche']);
   }
@@ -71,25 +81,45 @@ export class ListeRuchesComponent {
     this.listeRuchesService.remove(id);
   }
 
-  Division(id:number){
+  Division(id: number) {
     let rucheMere: RucheRequest;
     let rucheFille: RucheRequest;
-    this.listeRuchesService.findById(id).subscribe(resp => {
-      if (resp.cadre%2===0){
-      rucheMere = new RucheRequest(resp.id, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-    }
-    else {
-      rucheMere = new RucheRequest(resp.id, (resp.cadre / 2) + 1,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-      rucheFille = new RucheRequest(null, resp.cadre / 2,resp.limite,resp.vulnerabilite,resp.recolteur.id);
-    
-    }
+    this.listeRuchesService.findById(id).subscribe((resp) => {
+      if (resp.cadre % 2 === 0) {
+        rucheMere = new RucheRequest(
+          resp.id,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+        rucheFille = new RucheRequest(
+          null,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+      } else {
+        rucheMere = new RucheRequest(
+          resp.id,
+          resp.cadre / 2 + 1,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+        rucheFille = new RucheRequest(
+          null,
+          resp.cadre / 2,
+          resp.limite,
+          resp.vulnerabilite,
+          resp.recolteur.id
+        );
+      }
       this.listeRuchesService.create(rucheFille);
-    
+
       this.listeRuchesService.update(rucheMere);
-
-
-    })
+    });
   }
 
   allowed(): boolean {
@@ -98,5 +128,4 @@ export class ListeRuchesComponent {
     }
     return false;
   }
-
 }
