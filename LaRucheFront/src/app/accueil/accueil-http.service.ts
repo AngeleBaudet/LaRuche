@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import { RucheHttpService } from '../Ruches/ruche-http.service';
 import { ConnexionHttpService } from '../connexion/connexion-http.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root',
@@ -36,12 +37,19 @@ export class AccueilHttpService {
       return this.http.get<Array<Ruche>>(this.rucheApiPath + '/vulnerabilite');
   }
 
-     findRucheByNourissage() {
+  findRucheByNourissage(): Observable<Array<Ruche>> {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
   } 
 
+  findRucheAll(): Observable<Array<Ruche>> {
+    return this.http.get<Array<Ruche>>(this.rucheApiPath);
+  } 
+
   findRucheByNourissageBis() {
-    return this.listRucheNourissage;
+    if (this.connexionService.connectedUser.type === 'recolteur'){
+      this.listRucheNourissage.filter(ruche => {ruche.id === this.connexionService.connectedUser.id})
+    } 
+    return this.listRucheNourissage
   }
 
   load(): void {

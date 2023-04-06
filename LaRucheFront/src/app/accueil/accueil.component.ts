@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import { Router } from '@angular/router';
 import { ConnexionHttpService } from '../connexion/connexion-http.service';
+import { ProductionHttpService } from '../Production/production-http.service';
 
 @Component({
   selector: 'accueil',
@@ -17,24 +18,34 @@ export class AccueilComponent {
   private rucheApiPath: string;
   listRucheVulnerabilite: Array<Ruche> = new Array<Ruche>();
   listRucheNourissage: Array<Ruche> = new Array<Ruche>();
+  listRucheDivision: Array<Ruche> = new Array<Ruche>();
 
   /*   listRucheNourissage: Array<Ruche> = new Array<Ruche>; */
 
   constructor(
     private accueilService: AccueilHttpService,
     private router: Router,
-    private connexionService: ConnexionHttpService
-  ) {}
+    private connexionService: ConnexionHttpService, 
+    private rucheService: RucheHttpService,
+    private productionService: ProductionHttpService
+  ) {
+    this.productionService.load();
+    this.rucheService.load();
+  }
 
+  //question: pourquoi pas besoin du implements OnInit ? 
   ngOnInit() {
     this.rucheNourissage();
     this.rucheVulnerabilite();
+    this.rucheDiviser();
   }
   
   rucheNourissage(): void {
     this.accueilService.findRucheByNourissage().subscribe({
       next: (ruches) => {
-        this.listRucheNourissage = ruches;
+        if (this.connexionService.connectedUser.type === 'recolteur'){
+        this.listRucheNourissage = ruches.filter(ruche => ruche.id === this.connexionService.connectedUser.id)
+      } else this.listRucheNourissage = ruches
         //do something with the ruches
       },
     });
@@ -53,6 +64,27 @@ export class AccueilComponent {
       },
     });
   }
+
+  rucheDiviser(): void {
+    this.accueilService.findRucheAll().subscribe({
+      next: (ruches) => {
+        this.listRucheDivision = ruches.filter( ruche => ruche.cadre>5)
+        //do something with the ruches
+      },
+    });
+  }
+
+  //c'est là où on fait des choses en double avec méthode listR dans liste ruche
+  /*
+  rucheDivision(){    
+    let listAll: Array<Ruche> = this.rucheService.findAll();
+    console.log(listAll)
+    listAll.forEach((ruche) => {
+      if (ruche.cadre>5) {
+        this.listRucheDivision.push(ruche);
+      }
+    });
+  }*/
 
   //boutons au niveau des alertes
   goToRucheN() {
