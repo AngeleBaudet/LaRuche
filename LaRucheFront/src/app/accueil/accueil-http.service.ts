@@ -47,7 +47,10 @@ export class AccueilHttpService {
 
   findRucheByNourissageBis() {
     if (this.connexionService.connectedUser.type === 'recolteur'){
-      this.listRucheNourissage.filter(ruche => {ruche.id === this.connexionService.connectedUser.id})
+      return this.listRucheNourissage.filter(ruche => 
+        ruche.recolteur.id === this.connexionService.connectedUser.id
+
+      )
     } 
     return this.listRucheNourissage
   }

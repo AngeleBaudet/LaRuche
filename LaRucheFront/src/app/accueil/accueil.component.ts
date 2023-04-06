@@ -43,8 +43,12 @@ export class AccueilComponent {
   rucheNourissage(): void {
     this.accueilService.findRucheByNourissage().subscribe({
       next: (ruches) => {
+        
         if (this.connexionService.connectedUser.type === 'recolteur'){
-        this.listRucheNourissage = ruches.filter(ruche => ruche.id === this.connexionService.connectedUser.id)
+        this.listRucheNourissage = ruches.filter(ruche => 
+           ruche.recolteur.id == this.connexionService.connectedUser.id
+        )
+        console.log(this.listRucheNourissage)
       } else this.listRucheNourissage = ruches
         //do something with the ruches
       },
