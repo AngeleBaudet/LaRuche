@@ -40,7 +40,7 @@
 
             <select formControlName="produit">
               <option disabled selected value="">Sélectionner un produit</option>
-              <option *ngFor="let produit of produit" [value]="produit">{{produit}}</option>
+              <option *ngFor="let produit of produit" [value]="produit">{{produit | gelee}} </option>
             </select>
 
             <select formControlName="recolteurId">

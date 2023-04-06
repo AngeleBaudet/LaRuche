@@ -23,10 +23,10 @@
 
           <tbody>
             <tr *ngFor="let production of listP()">
-              <td>{{production.produit}}</td>
+              <td>{{production.produit | gelee}}</td>
               <td>{{production.stock}}</td>
-              <td>{{production.prixKg}}</td>
-              <td>{{production.annee}}</td>
+              <td>{{production.prixKg | currency:'EUR'}}</td>
+              <td>{{production.annee | date: 'yyyy'}}</td>
               <td>{{production.ruche.id}}</td>
               <td>{{production.recolteur.id}}</td>
               <td>

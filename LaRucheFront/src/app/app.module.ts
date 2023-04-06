@@ -16,6 +16,7 @@ import { ListeProductionComponent } from './Production/liste-production/liste-pr
 import { ProductionDetailComponent } from './Production/production-detail/production-detail.component';
 import { ListeUserComponent } from './User/liste-user/liste-user.component';
 import { UserDetailComponent } from './User/user-detail/user-detail.component';
+import { GeleePipe } from './gelee.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserDetailComponent } from './User/user-detail/user-detail.component';
     ListeProductionComponent,
     ProductionDetailComponent,
     ListeUserComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    GeleePipe,
   ],
   imports: [
     BrowserModule,
