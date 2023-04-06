@@ -19,13 +19,8 @@
           </div>
 
           <div class="mdp">
-            <div class="pkg" [ngClass]="{ 'has-error': prodForm.get('stock').dirty && prodForm.get('stock').errors && prodForm.get('stock').errors['required'] }">
-              <input name="stock" type="number" formControlName="stock" [value]="prodForm.get('stock').value" class="form-input">
-              <div *ngIf="prodForm.get('stock').dirty && prodForm.get('stock').errors && prodForm.get('stock').errors['required']"
-                   class="alert alert-danger">
-                <div class="error">La quantité est obligatoire.</div>
-              </div>
-            </div>
+            <input name="stock" type="number" formControlName="stock" [value]="prodForm.get('stock').value" class="form-input">
+              
             
             <input name="annee" type="date" formControlName="annee" [value]="prodForm.get('annee').value">
 
@@ -34,15 +29,7 @@
                 <option *ngFor="let ruche of listRuches()" [value]="ruche.id">Ruche n°{{ruche.id}}</option>              
               </select>   
 
-              <div class="pkg" [ngClass]="{ 'has-error': prodForm.get('prixKg').dirty && prodForm.get('prixKg').errors && prodForm.get('prixKg').errors['required'] }">
-                <input name="prixKg" type="number" formControlName="prixKg" [value]="prodForm.get('prixKg').value" class="form-input">
-                <div *ngIf="prodForm.get('prixKg').dirty && prodForm.get('prixKg').errors && prodForm.get('prixKg').errors['required']"
-                     class="alert alert-danger">
-                  <div class="error">Le prix au kg est obligatoire.</div>
-                </div>
-              </div>
-
-
+            <input name="prixKg" type="number" formControlName="prixKg" [value]="prodForm.get('prixKg').value" class="form-input">
 
             <select formControlName="produit">
               <option disabled selected value="">Sélectionner un produit</option>
