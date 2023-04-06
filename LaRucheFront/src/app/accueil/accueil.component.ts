@@ -43,22 +43,15 @@ export class AccueilComponent {
   rucheNourissage(): void {
     this.accueilService.findRucheByNourissage().subscribe({
       next: (ruches) => {
-        
         if (this.connexionService.connectedUser.type === 'recolteur'){
         this.listRucheNourissage = ruches.filter(ruche => 
            ruche.recolteur.id == this.connexionService.connectedUser.id
         )
-        console.log(this.listRucheNourissage)
       } else this.listRucheNourissage = ruches
         //do something with the ruches
       },
     });
   } 
-
-  /*
-  rucheNourissage(): void {
-    this.listRucheNourissage = this.accueilService.listRucheNourissage;
-  }*/
 
   rucheVulnerabilite(): void {
     this.accueilService.findRucheByVulnerabilite().subscribe({
@@ -72,8 +65,18 @@ export class AccueilComponent {
   rucheDiviser(): void {
     this.accueilService.findRucheAll().subscribe({
       next: (ruches) => {
-        this.listRucheDivision = ruches.filter( ruche => ruche.cadre>5)
-        //do something with the ruches
+
+        
+        if( this.connexionService.connectedUser.type === 'recolteur') {
+          this.listRucheDivision = ruches.filter( 
+            ruche => ruche.cadre>5
+            && ruche.recolteur.id == this.connexionService.connectedUser.id)
+        }
+        else {
+        this.listRucheDivision = ruches.filter( ruche => ruche.cadre>5)}
+        //do something with the ruches*/
+
+       // this.listRucheDivision = ruches.filter( ruche => ruche.cadre>5)
       },
     });
   }
