@@ -45,6 +45,13 @@ export class ListeRuchesComponent {
       return listRuches;
     } else if (this.tri == 'nourrissage') {
         return this.accueilService.findRucheByNourissageBis()
+    } else if (this.tri == 'division'){
+      this.listAll.forEach((ruche) => {
+        if (ruche.cadre>5) {
+          listRuches.push(ruche);
+        }
+        return listRuches;
+      });
     }
     return this.listeRuchesService.findAll();
   }

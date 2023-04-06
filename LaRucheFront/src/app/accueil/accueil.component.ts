@@ -63,6 +63,10 @@ export class AccueilComponent {
     this.router.navigate(['unbeelievable/ruche/vulnerabilite']);
   }
 
+  goToRucheDiviser(){
+    this.router.navigate(['unbeelievable/ruche/division']);
+  }
+
   //Boutons en bas 
   goToRuche() {
     this.router.navigate(['unbeelievable/ruche']);
