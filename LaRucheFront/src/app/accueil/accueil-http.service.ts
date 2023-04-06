@@ -37,12 +37,13 @@ export class AccueilHttpService {
       return this.http.get<Array<Ruche>>(this.rucheApiPath + '/vulnerabilite');
   }
 
-////////
-  //c'est pas terrible mais on a pas le temps 
+
   findRucheByNourissage(): Observable<Array<Ruche>> {
     return this.http.get<Array<Ruche>>(this.rucheApiPath + '/nourrissage');
   } 
 
+  ////////
+  //c'est pas terrible mais on a pas le temps 
   findRucheAll(): Observable<Array<Ruche>> {
     return this.http.get<Array<Ruche>>(this.rucheApiPath);
   } 
@@ -55,7 +56,7 @@ export class AccueilHttpService {
     } 
     return this.listRucheNourissage
   }
-//////////
+
   load(): void {
     this.http
       .get<Array<Ruche>>(this.rucheApiPath + '/nourrissage')
@@ -63,5 +64,5 @@ export class AccueilHttpService {
         this.listRucheNourissage = resp;
       });
   }
-
+//////////
 }
