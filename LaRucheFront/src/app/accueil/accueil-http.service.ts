@@ -51,4 +51,5 @@ export class AccueilHttpService {
         this.listRucheNourissage = resp;
       });
   }
+
 }

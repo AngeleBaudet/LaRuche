@@ -44,8 +44,6 @@ export class ListeRuchesComponent {
       });
       return listRuches;
     } else if (this.tri == 'nourrissage') {
-      console.log('coucou')
-        console.log(this.listRucheNourissage.length)
         return this.accueilService.findRucheByNourissageBis()
     }
     return this.listeRuchesService.findAll();
