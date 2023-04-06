@@ -30,10 +30,10 @@ constructor(private formBuilder: FormBuilder,
   {
     this.prodForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
-      stock: this.formBuilder.control('', Validators.required),
+      stock: this.formBuilder.control('', [Validators.required, Validators.min(0.01)]),
       annee: this.formBuilder.control('', Validators.required),
       rucheId: this.formBuilder.control('', Validators.required),
-      prixKg: this.formBuilder.control('', Validators.required),
+      prixKg: this.formBuilder.control('', [Validators.required, Validators.min(0.01)]),
       produit: this.formBuilder.control('', Validators.required),
       recolteurId: this.formBuilder.control('', Validators.required)
     })
@@ -74,10 +74,10 @@ constructor(private formBuilder: FormBuilder,
       console.log(resp);
       this.prodForm=this.formBuilder.group({
         id:this.formBuilder.control(this.formValue.id),
-        stock:this.formBuilder.control(this.formValue.stock, Validators.required),
+        stock:this.formBuilder.control(this.formValue.stock, [Validators.required, Validators.min(0.01)]),
         annee:this.formBuilder.control(this.formValue.annee, Validators.required),
         rucheId:this.formBuilder.control(this.formValue.rucheId, Validators.required),
-        prixKg:this.formBuilder.control(this.formValue.prixKg, Validators.required),
+        prixKg:this.formBuilder.control(this.formValue.prixKg, [Validators.required, Validators.min(0.01)]),
         produit:this.formBuilder.control(this.formValue.produit, Validators.required),
         recolteurId:this.formBuilder.control(this.formValue.recolteurId, Validators.required),
       });
