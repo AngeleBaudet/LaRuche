@@ -31,7 +31,7 @@
               <td>
                 <button (click)="goToEdit(ruche.id)" class="edit-btn">Modifier</button>
                 <button *ngIf="allowed()" (click)="remove(ruche.id)" class="delete-btn">Supprimer</button>
-                <button *ngIf="ruche.cadre > 5" (click)="Division(ruche.id)" class="divise-btn">Diviser</button>
+                <button *ngIf="allowed() && ruche.cadre > 5" (click)="Division(ruche.id)" class="divise-btn">Diviser</button>
               </td>
             </tr>
           </tbody>
