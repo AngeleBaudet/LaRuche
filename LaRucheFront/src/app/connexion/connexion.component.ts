@@ -32,7 +32,7 @@ export class ConnexionComponent {
   }
 
   seConnecter() {
-    console.log(this.loginForm.value);
+    
     const login = this.loginForm.get('login').value;
     const pwd = this.loginForm.get('password').value;
     this.connexionService.connexion(login, pwd).subscribe({
@@ -40,9 +40,9 @@ export class ConnexionComponent {
         if (user) {
           this.connexionService.connectedUser = user;
           this.router.navigateByUrl('/unbeelievable');
-          console.log(this.connexionService.connectedUser.type)
+          
         } else {
-          console.log('not an existing user');
+          
           this.wrongCredents=true;
         }
       },

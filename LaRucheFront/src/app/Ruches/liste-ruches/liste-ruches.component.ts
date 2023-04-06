@@ -30,7 +30,7 @@ export class ListeRuchesComponent {
     this.accueilService.load()
 
     this.route.params.subscribe((params) => {
-      console.log(params);
+      
       this.tri = params['tri'];
     });
   }
@@ -65,7 +65,7 @@ export class ListeRuchesComponent {
 
     if (ruche) {
       return true;
-    } else console.log(idRuche);
+    } else 
     return false;
   }
 
