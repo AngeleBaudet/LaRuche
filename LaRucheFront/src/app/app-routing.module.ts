@@ -10,7 +10,6 @@ import { UserDetailComponent } from './User/user-detail/user-detail.component';
 import { AuthGuard } from './auth.guard';
 import { ListeUserComponent } from './User/liste-user/liste-user.component';
 
-
 const routes: Routes = [
   {
     path: 'unbeelievable',
@@ -35,11 +34,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: 'unbeelievable/ruche/:tri', component: ListeRuchesComponent,canActivate: [AuthGuard], },
+  {
+    path: 'unbeelievable/ruche/:tri',
+    component: ListeRuchesComponent,
+    canActivate: [AuthGuard],
+  },
 
-  
-
-  { path: 'connexion', component: ConnexionComponent },
+  { path: 'unbeelievable/connexion', component: ConnexionComponent },
 
   {
     path: 'unbeelievable/utilisateurs',
@@ -75,13 +76,29 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  {path: 'unbeelievable/utilisateurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+  {
+    path: 'unbeelievable/utilisateurs',
+    component: ListeUserComponent,
+    canActivate: [AuthGuard],
+  },
 
-  {path: 'unbeelievable/utilisateurs/recolteurs', component:ListeUserComponent,canActivate: [AuthGuard],},
+  {
+    path: 'unbeelievable/utilisateurs/recolteurs',
+    component: ListeUserComponent,
+    canActivate: [AuthGuard],
+  },
 
-  {path: 'unbeelievable/utilisateurs/clients', component:ListeUserComponent,canActivate: [AuthGuard],},
+  {
+    path: 'unbeelievable/utilisateurs/clients',
+    component: ListeUserComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path : 'unbeelievable/utilisateurs/mon-utilisateur/:compte', component:UserDetailComponent, canActivate: [AuthGuard],}
+  {
+    path: 'unbeelievable/utilisateurs/mon-utilisateur/:compte',
+    component: UserDetailComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

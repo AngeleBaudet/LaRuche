@@ -23,11 +23,11 @@ export class ListeRuchesComponent {
     private router: Router,
     private connexionService: ConnexionHttpService,
     private route: ActivatedRoute,
-    private accueilService: AccueilHttpService,
+    private accueilService: AccueilHttpService
   ) {
     this.connectedType = this.connexionService.connectedUser.type;
-    this.listeRuchesService.load()
-    this.accueilService.load()
+    this.listeRuchesService.load();
+    this.accueilService.load();
 
     this.route.params.subscribe((params) => {
       
@@ -45,11 +45,10 @@ export class ListeRuchesComponent {
       });
       return listRuches;
     } else if (this.tri == 'nourrissage') {
-        return this.accueilService.findRucheByNourissageBis()
-
-    } else if (this.tri == 'division'){
+      return this.accueilService.findRucheByNourissageBis();
+    } else if (this.tri == 'division') {
       this.listAll.forEach((ruche) => {
-        if (ruche.cadre>5) {
+        if (ruche.cadre > 5) {
           listRuches.push(ruche);
         }
       });
@@ -65,8 +64,7 @@ export class ListeRuchesComponent {
 
     if (ruche) {
       return true;
-    } else 
-    return false;
+    } else return false;
   }
 
   goToAdd() {
